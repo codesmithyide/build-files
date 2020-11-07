@@ -7,4 +7,13 @@
 #ifndef _CODESMITHYIDE_BUILDFILES_VISUALSTUDIOSOLUTIONFILE_H_
 #define _CODESMITHYIDE_BUILDFILES_VISUALSTUDIOSOLUTIONFILE_H_
 
+namespace CodeSmithy
+{
+
+class VisualStudioSolutionFile
+{
+};
+
+}
+
 #endif

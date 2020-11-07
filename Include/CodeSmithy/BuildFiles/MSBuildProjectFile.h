@@ -7,4 +7,13 @@
 #ifndef _CODESMITHYIDE_BUILDFILES_MSBUILDPROJECTFILE_H_
 #define _CODESMITHYIDE_BUILDFILES_MSBUILDPROJECTFILE_H_
 
+namespace CodeSmithy
+{
+
+class MSBuildProjectFile
+{
+};
+
+}
+
 #endif

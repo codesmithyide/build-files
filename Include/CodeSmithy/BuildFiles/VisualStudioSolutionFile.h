@@ -16,4 +16,6 @@ class VisualStudioSolutionFile
 
 }
 
+#include "linkoptions.h"
+
 #endif

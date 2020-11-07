@@ -1,0 +1,20 @@
+setting CODESMITHYIDE_BUILDFILES_ROOT
+{
+    help = "Path to the CodeSmithyIDE/BuildFiles installation";
+    default = '$(CODESMITHYIDE)/BuildFiles';
+}
+
+template CodeSmithyBuildFiles
+{
+    includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Lib/$(arch);
+    }
+}

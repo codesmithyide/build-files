@@ -16,4 +16,6 @@ class MSBuildProjectFile
 
 }
 
+#include "linkoptions.h"
+
 #endif

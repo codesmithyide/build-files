@@ -1,3 +1,5 @@
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/BuildFiles/Include/CodeSmithy/CodeSmithyBuildFiles.bkl;
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
@@ -8,7 +10,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyBuildFilesTests.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyBuildFilesTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyBuildFilesTests.sln;
 
-program CodeSmithyBuildFilesTests : IshikoTestFrameworkCore
+program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFrameworkCore
 {
     if ($(toolset) == gnu)
     {

@@ -150,7 +150,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MSBuildProjectFile.cpp" />
+    <ClCompile Include="..\..\Source\VisualStudioSolutionFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles.h" />
+    <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\linkoptions.h" />
+    <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\MSBuildProjectFile.h" />
+    <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

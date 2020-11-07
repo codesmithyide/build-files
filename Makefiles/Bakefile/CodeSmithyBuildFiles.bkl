@@ -29,5 +29,15 @@ library CodeSmithyBuildFiles
     headers
     {
         ../../Include/CodeSmithy/BuildFiles.h
+
+        ../../Include/CodeSmithy/BuildFiles/linkoptions.h
+        ../../Include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
+        ../../Include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
+    }
+
+    sources
+    {
+        ../../Source/MSBuildProjectFile.cpp
+        ../../Source/VisualStudioSolutionFile.cpp
     }
 }

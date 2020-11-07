@@ -7,6 +7,9 @@
 #ifndef _CODESMITHYIDE_BUILDFILES_H_
 #define _CODESMITHYIDE_BUILDFILES_H_
 
+#include "BuildFiles/MSBuildProjectFile.h"
+#include "BuildFiles/VisualStudioSolutionFile.h"
+
 #include "BuildFiles/linkoptions.h"
 
 #endif

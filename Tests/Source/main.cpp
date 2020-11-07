@@ -4,13 +4,19 @@
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "MSBuildProjectFileTests.h"
+#include "VisualStudioSolutionFileTests.h"
+#include <Ishiko/TestFramework/TestFrameworkCore.h>
 
 using namespace Ishiko::Tests;
 
 int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyBuildFiles");
+
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<MSBuildProjectFileTests>();
+    theTests.append<VisualStudioSolutionFileTests>();
 
     return theTestHarness.run();
 }

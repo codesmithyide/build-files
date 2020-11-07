@@ -21,8 +21,16 @@ program CodeSmithyBuildFilesTests : IshikoTestFrameworkCore
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../Source/VisualStudioSolutionFileTests.h
+        ../../Source/MSBuildProjectFileTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/VisualStudioSolutionFileTests.cpp
+        ../../Source/MSBuildProjectFileTests.cpp
     }
 }

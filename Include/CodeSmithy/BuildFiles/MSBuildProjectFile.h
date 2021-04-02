@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
@@ -7,11 +7,16 @@
 #ifndef _CODESMITHYIDE_BUILDFILES_MSBUILDPROJECTFILE_H_
 #define _CODESMITHYIDE_BUILDFILES_MSBUILDPROJECTFILE_H_
 
+#include <Ishiko/Errors/Error.h>
+#include <boost/filesystem/path.hpp>
+
 namespace CodeSmithy
 {
 
 class MSBuildProjectFile
 {
+public:
+    void create(const boost::filesystem::path& path, Ishiko::Error& error);
 };
 
 }

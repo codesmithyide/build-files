@@ -28,7 +28,8 @@ void VisualStudioSolutionFileTests::ConstructorTest1(Test& test)
 
 void VisualStudioSolutionFileTests::CreateTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath = test.environment().getTestOutputPath("VisualStudioSolutionFileTests_CreateTest1.sln");
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "VisualStudioSolutionFileTests_CreateTest1.sln");
 
     VisualStudioSolutionFile solutionFile;
 

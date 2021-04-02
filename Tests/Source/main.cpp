@@ -14,6 +14,9 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyBuildFiles");
 
+    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
+    theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
+
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<MSBuildProjectFileTests>();
     theTests.append<VisualStudioSolutionFileTests>();

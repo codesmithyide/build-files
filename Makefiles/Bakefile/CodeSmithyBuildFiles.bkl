@@ -1,4 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/UUIDs/Include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/Text/Include/Ishiko/IshikoText.bkl;
 import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 
@@ -9,7 +11,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyBuildFiles.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyBuildFiles.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
 {
     includedirs += ../../Include/CodeSmithy/BuildFiles;
 

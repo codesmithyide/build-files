@@ -17,6 +17,7 @@ VisualStudioSolutionFileTests::VisualStudioSolutionFileTests(const TestNumber& n
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("create test 1", CreateTest1);
+    append<FileComparisonTest>("create test 2", CreateTest2);
 }
 
 void VisualStudioSolutionFileTests::ConstructorTest1(Test& test)
@@ -38,7 +39,25 @@ void VisualStudioSolutionFileTests::CreateTest1(FileComparisonTest& test)
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(
-        test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject/VS2019EmptyCppProject.sln"));
+        test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject.sln"));
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_PASS();
+}
+
+void VisualStudioSolutionFileTests::CreateTest2(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "VisualStudioSolutionFileTests_CreateTest2.sln");
+
+    VisualStudioSolutionFile solutionFile;
+
+    Error error;
+    solutionFile.create(outputPath, error);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(
+        test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject2/VS2019EmptyCppProject.sln"));
 
     ISHTF_FAIL_IF(error);
     ISHTF_PASS();

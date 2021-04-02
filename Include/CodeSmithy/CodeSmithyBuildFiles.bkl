@@ -1,10 +1,13 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/UUIDs/Include/Ishiko/UUIDs.bkl;
+
 setting CODESMITHYIDE_BUILDFILES_ROOT
 {
     help = "Path to the CodeSmithyIDE/BuildFiles installation";
     default = '$(CODESMITHYIDE)/BuildFiles';
 }
 
-template CodeSmithyBuildFiles
+template CodeSmithyBuildFiles : IshikoUUIDs
 {
     includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Include;
 

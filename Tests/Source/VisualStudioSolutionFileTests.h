@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
@@ -17,6 +17,7 @@ public:
 
 private:
     static void ConstructorTest1(Ishiko::Tests::Test& test);
+    static void CreateTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

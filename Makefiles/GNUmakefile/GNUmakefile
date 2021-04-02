@@ -33,6 +33,12 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      ISHIKO_CPP_ERRORS_ROOT  Path to the Ishiko Errors installation
+#      BOOST_ROOT              Path to the Boost installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +60,18 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Ishiko Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+
+# ------------
+
 all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuildFiles-d,CodeSmithyBuildFiles).a
 
 ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuildFiles-d,CodeSmithyBuildFiles).a: $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o
@@ -61,10 +79,10 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuil
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o: ../../Source/MSBuildProjectFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/MSBuildProjectFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/MSBuildProjectFile.cpp
 
 $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o: ../../Source/VisualStudioSolutionFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/VisualStudioSolutionFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/VisualStudioSolutionFile.cpp
 
 clean:
 	rm -f $(_builddir)*.o

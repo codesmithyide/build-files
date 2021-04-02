@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
@@ -7,6 +7,8 @@
 #include "VisualStudioSolutionFileTests.h"
 #include "CodeSmithy/BuildFiles/VisualStudioSolutionFile.h"
 
+using namespace CodeSmithy;
+using namespace Ishiko;
 using namespace Ishiko::Tests;
 
 VisualStudioSolutionFileTests::VisualStudioSolutionFileTests(const TestNumber& number,
@@ -14,11 +16,30 @@ VisualStudioSolutionFileTests::VisualStudioSolutionFileTests(const TestNumber& n
     : TestSequence(number, "VisualStudioSolutionFile tests", environment)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<FileComparisonTest>("create test 1", CreateTest1);
 }
 
 void VisualStudioSolutionFileTests::ConstructorTest1(Test& test)
 {
-    CodeSmithy::VisualStudioSolutionFile solutionFile;
+    VisualStudioSolutionFile solutionFile;
 
+    ISHTF_PASS();
+}
+
+void VisualStudioSolutionFileTests::CreateTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "VisualStudioSolutionFileTests_CreateTest1.sln");
+
+    VisualStudioSolutionFile solutionFile;
+
+    Error error;
+    solutionFile.create(outputPath, error);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(
+        test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject/VS2019EmptyCppProject.sln"));
+
+    ISHTF_FAIL_IF(error);
     ISHTF_PASS();
 }

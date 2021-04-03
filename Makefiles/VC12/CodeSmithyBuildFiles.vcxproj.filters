@@ -26,12 +26,18 @@
     <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\MSBuildProjectFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\MSBuildFiltersFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\MSBuildProjectFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MSBuildFiltersFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\VisualStudioSolutionFile.cpp">

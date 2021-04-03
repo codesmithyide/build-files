@@ -15,6 +15,7 @@ MSBuildFiltersFileTests::MSBuildFiltersFileTests(const TestNumber& number, const
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("create test 1", CreateTest1);
+    append<FileComparisonTest>("create test 2", CreateTest2);
 }
 
 void MSBuildFiltersFileTests::ConstructorTest1(Test& test)
@@ -36,6 +37,22 @@ void MSBuildFiltersFileTests::CreateTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj.filters"));
+
+    ISHTF_PASS();
+}
+
+void MSBuildFiltersFileTests::CreateTest2(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "MSBuildFiltersFileTests_CreateTest2.vcxproj.filters");
+
+    MSBuildFiltersFile projectFile;
+
+    projectFile.create(outputPath);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(test.environment().getReferenceDataPath(
+        "VisualStudio/VS2019EmptyCppProject2/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj.filters"));
 
     ISHTF_PASS();
 }

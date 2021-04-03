@@ -7,11 +7,15 @@
 #ifndef _CODESMITHYIDE_BUILDFILES_MSBUILDFILTERSFILE_H_
 #define _CODESMITHYIDE_BUILDFILES_MSBUILDFILTERSFILE_H_
 
+#include <boost/filesystem/path.hpp>
+
 namespace CodeSmithy
 {
 
 class MSBuildFiltersFile
 {
+public:
+    void create(const boost::filesystem::path& path);
 };
 
 }

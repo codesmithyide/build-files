@@ -19,7 +19,7 @@ void VisualStudioSolutionFile::create(const boost::filesystem::path& path, Ishik
 {
     std::ofstream file(path.string());
 
-    UUID cppProjectTypeUUID = "8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942";
+    UUID cppProjectTypeUUID("8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942");
     std::string cppProjectTypeUUIDString = cppProjectTypeUUID.toString();
     ASCII::ToUpperCase(cppProjectTypeUUIDString);
 

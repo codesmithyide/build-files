@@ -25,14 +25,16 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFrameworkCor
 
     headers
     {
-        ../../Source/VisualStudioSolutionFileTests.h
         ../../Source/MSBuildProjectFileTests.h
+        ../../Source/MSBuildFiltersFileTests.h
+        ../../Source/VisualStudioSolutionFileTests.h
     }
 
     sources
     {
         ../../Source/main.cpp
-        ../../Source/VisualStudioSolutionFileTests.cpp
         ../../Source/MSBuildProjectFileTests.cpp
+        ../../Source/MSBuildFiltersFileTests.cpp
+        ../../Source/VisualStudioSolutionFileTests.cpp
     }
 }

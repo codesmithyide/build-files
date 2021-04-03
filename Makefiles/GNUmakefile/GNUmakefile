@@ -37,6 +37,8 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
+#      ISHIKO_CPP_UUIDS_ROOT   Path to the Ishiko Types installation
+#      ISHIKO_CPP_TEXT_ROOT    Path to the Ishiko/Text installation
 #      ISHIKO_CPP_ERRORS_ROOT  Path to the Ishiko Errors installation
 #      BOOST_ROOT              Path to the Boost installation
 
@@ -65,6 +67,10 @@ endif
 # Configurable settings:
 # 
 
+# Path to the Ishiko Types installation
+ISHIKO_CPP_UUIDS_ROOT ?= $(ISHIKO_CPP)/UUIDs
+# Path to the Ishiko/Text installation
+ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/Text
 # Path to the Ishiko Errors installation
 ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
 # Path to the Boost installation
@@ -79,10 +85,10 @@ all: ../Bakefile/../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuil
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o: ../../Source/MSBuildProjectFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/MSBuildProjectFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_UUIDS_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/MSBuildProjectFile.cpp
 
 $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o: ../../Source/VisualStudioSolutionFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/VisualStudioSolutionFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_UUIDS_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../Include/CodeSmithy/BuildFiles -std=c++11 ../../Source/VisualStudioSolutionFile.cpp
 
 clean:
 	rm -f $(_builddir)*.o

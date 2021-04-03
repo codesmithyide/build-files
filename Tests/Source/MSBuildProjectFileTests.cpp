@@ -37,7 +37,7 @@ void MSBuildProjectFileTests::CreateTest1(FileComparisonTest& test)
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
-        "VisualStudio/VS2019EmptyCppProject/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj"));
+        "VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj"));
 
     ISHTF_FAIL_IF(error);
     ISHTF_PASS();

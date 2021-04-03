@@ -1,18 +1,29 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
 #include "MSBuildProjectFile.h"
+#include <Ishiko/UUIDs/UUID.h>
 #include <fstream>
+
+using namespace Ishiko::UUIDs;
 
 namespace CodeSmithy
 {
 
-void MSBuildProjectFile::create(const boost::filesystem::path& path, Ishiko::Error& error)
+void MSBuildProjectFile::create(const boost::filesystem::path& path, UUIDGenerator& uuidGenerator,
+    Ishiko::Error& error)
 {
     std::ofstream file(path.string());
+
+    UUID projectUUID = uuidGenerator.generate(error);
+    if (error)
+    {
+        // TODO: test and delete file?
+        return;
+    }
 
     file << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
     file << "<Project DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
@@ -38,7 +49,7 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, Ishiko::Err
     file << "  <PropertyGroup Label=\"Globals\">" << std::endl;
     file << "    <VCProjectVersion>16.0</VCProjectVersion>" << std::endl;
     file << "    <Keyword>Win32Proj</Keyword>" << std::endl;
-    file << "    <ProjectGuid>{f36308cc-b212-4159-b35f-1ab881130689}</ProjectGuid>" << std::endl;
+    file << "    <ProjectGuid>{" << projectUUID.toString() << "}</ProjectGuid>" << std::endl;
     file << "    <RootNamespace>VS2019EmptyCppProject</RootNamespace>" << std::endl;
     file << "    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>" << std::endl;
     file << "  </PropertyGroup>" << std::endl;

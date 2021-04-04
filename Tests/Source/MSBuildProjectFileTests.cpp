@@ -81,7 +81,7 @@ void MSBuildProjectFileTests::CreateTest2(FileComparisonTest& test)
 void MSBuildProjectFileTests::AddFileTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath = test.environment().getTestOutputPath(
-        "MSBuildProjectFileTests_CreateTest3.vcxproj");
+        "MSBuildProjectFileTests_AddFileTest1.vcxproj");
 
     PrecomputedUUIDGenerator uuidGenerator({ "e64cb64d-8de9-4788-87df-f2ec55ab77c4" });
 

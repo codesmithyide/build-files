@@ -9,6 +9,8 @@
 
 #include <Ishiko/Errors/Error.h>
 #include <boost/filesystem/path.hpp>
+#include <vector>
+#include <string>
 
 namespace CodeSmithy
 {
@@ -17,6 +19,14 @@ class MSBuildFiltersFile
 {
 public:
     void create(const boost::filesystem::path& path, Ishiko::Error& error);
+
+    void addFile(const std::string& path);
+
+    void commit();
+
+private:
+    boost::filesystem::path m_path;
+    std::vector<std::string> m_files;
 };
 
 }

@@ -5,14 +5,21 @@
 */
 
 #include "MSBuildFiltersFile.h"
+#include <Ishiko/Errors/StreamUtilities.h>
 #include <fstream>
+
+using namespace Ishiko;
 
 namespace CodeSmithy
 {
 
-void MSBuildFiltersFile::create(const boost::filesystem::path& path)
+void MSBuildFiltersFile::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
+    if (FailOnFileCreationError(error, file))
+    {
+        return;
+    }
 
     file << "\xEF\xBB\xBF<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
     file << "<Project ToolsVersion=\"4.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;

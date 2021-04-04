@@ -6,6 +6,7 @@
 
 #include "MSBuildProjectFile.h"
 #include <Ishiko/UUIDs/UUID.h>
+#include <Ishiko/Errors/StreamUtilities.h>
 #include <fstream>
 
 using namespace Ishiko::UUIDs;
@@ -17,6 +18,10 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::
     UUIDGenerator& uuidGenerator, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
+    if (FailOnFileCreationError(error, file))
+    {
+        return;
+    }
 
     UUID projectUUID = uuidGenerator.generate(error);
     if (error)

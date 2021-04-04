@@ -8,6 +8,7 @@
 #include "CodeSmithy/BuildFiles/MSBuildFiltersFile.h"
 
 using namespace CodeSmithy;
+using namespace Ishiko;
 using namespace Ishiko::Tests;
 
 MSBuildFiltersFileTests::MSBuildFiltersFileTests(const TestNumber& number, const TestEnvironment& environment)
@@ -32,12 +33,14 @@ void MSBuildFiltersFileTests::CreateTest1(FileComparisonTest& test)
 
     MSBuildFiltersFile projectFile;
 
-    projectFile.create(outputPath);
+    Error error;
+    projectFile.create(outputPath, error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj.filters"));
 
+    ISHTF_FAIL_IF(error);
     ISHTF_PASS();
 }
 
@@ -48,11 +51,13 @@ void MSBuildFiltersFileTests::CreateTest2(FileComparisonTest& test)
 
     MSBuildFiltersFile projectFile;
 
-    projectFile.create(outputPath);
+    Error error;
+    projectFile.create(outputPath, error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019EmptyCppProject2/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj.filters"));
 
+    ISHTF_FAIL_IF(error);
     ISHTF_PASS();
 }

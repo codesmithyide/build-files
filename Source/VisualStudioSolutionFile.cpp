@@ -7,6 +7,7 @@
 #include "VisualStudioSolutionFile.h"
 #include <Ishiko/UUIDs/UUID.h>
 #include <Ishiko/Text/ASCII.h>
+#include <Ishiko/Errors/StreamUtilities.h>
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
@@ -24,6 +25,10 @@ void VisualStudioSolutionFile::create(const boost::filesystem::path& path, UUIDG
     Ishiko::Error& error)
 {
     std::ofstream file(path.string());
+    if (FailOnFileCreationError(error, file))
+    {
+        return;
+    }
 
     UUID extensibilityUUID = uuidGenerator.generate(error);
     if (error)

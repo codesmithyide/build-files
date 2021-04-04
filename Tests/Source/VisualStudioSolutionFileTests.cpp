@@ -8,6 +8,7 @@
 #include "CodeSmithy/BuildFiles/MSBuildProjectFile.h"
 #include "CodeSmithy/BuildFiles/VisualStudioSolutionFile.h"
 #include <Ishiko/UUIDs/PrecomputedUUIDGenerator.h>
+#include <boost/filesystem/operations.hpp>
 
 using namespace CodeSmithy;
 using namespace Ishiko;
@@ -55,9 +56,10 @@ void VisualStudioSolutionFileTests::CreateTest1(FileComparisonTest& test)
 void VisualStudioSolutionFileTests::CreateTest2(FileComparisonTest& test)
 {
     boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
-        "VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+        "VisualStudioSolutionFileTests_CreateTest2/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+    boost::filesystem::create_directories(projectOutputPath.parent_path());
     boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
-        "VisualStudioSolutionFileTests_CreateTest2.sln");
+        "VisualStudioSolutionFileTests_CreateTest2/VS2019EmptyCppProject.sln");
 
     PrecomputedUUIDGenerator uuidGenerator(
         { "f36308cc-b212-4159-b35f-1ab881130689", "a84d6d42-2a06-4ae4-93f4-57a1d1befe2f" });
@@ -83,9 +85,10 @@ void VisualStudioSolutionFileTests::CreateTest2(FileComparisonTest& test)
 void VisualStudioSolutionFileTests::CreateTest3(FileComparisonTest& test)
 {
     boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
-        "VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+        "VisualStudioSolutionFileTests_CreateTest3/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+    boost::filesystem::create_directories(projectOutputPath.parent_path());
     boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
-        "VisualStudioSolutionFileTests_CreateTest3.sln");
+        "VisualStudioSolutionFileTests_CreateTest3/VS2019EmptyCppProject.sln");
 
     PrecomputedUUIDGenerator uuidGenerator(
         { "ccbf91ad-0cc4-4005-be29-f72251f0383d", "0fc49f24-86ed-421e-b72a-3cf918c2c879" });
@@ -111,9 +114,10 @@ void VisualStudioSolutionFileTests::CreateTest3(FileComparisonTest& test)
 void VisualStudioSolutionFileTests::CreateTest4(FileComparisonTest& test)
 {
     boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
-        "VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.vcxproj");
+        "VisualStudioSolutionFileTests_CreateTest4/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.vcxproj");
+    boost::filesystem::create_directories(projectOutputPath.parent_path());
     boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
-        "VisualStudioSolutionFileTests_CreateTest4.sln");
+        "VisualStudioSolutionFileTests_CreateTest4/VS2019CppProjectOneSourceFile.sln");
 
     PrecomputedUUIDGenerator uuidGenerator(
         { "e64cb64d-8de9-4788-87df-f2ec55ab77c4", "167f186e-b706-42d0-912d-611e82e08e83" });

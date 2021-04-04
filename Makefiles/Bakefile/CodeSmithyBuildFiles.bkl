@@ -38,12 +38,14 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
 
         ../../Include/CodeSmithy/BuildFiles/linkoptions.h
         ../../Include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
+        ../../Include/CodeSmithy/BuildFiles/MSBuildFiltersFile.h
         ../../Include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
     }
 
     sources
     {
         ../../Source/MSBuildProjectFile.cpp
+        ../../Source/MSBuildFiltersFile.cpp
         ../../Source/VisualStudioSolutionFile.cpp
     }
 }

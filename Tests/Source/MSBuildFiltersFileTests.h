@@ -1,18 +1,18 @@
 /*
-    Copyright (c) 2020-2021 Xavier Leclercq
+    Copyright (c) 2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#ifndef _CODESMITHYIDE_BUILFILES_TESTS_MSBUILDPROJECTFILETESTS_H_
-#define _CODESMITHYIDE_BUILFILES_TESTS_MSBUILDPROJECTFILETESTS_H_
+#ifndef _CODESMITHYIDE_BUILFILES_TESTS_MSBUILDFILTERSFILETESTS_H_
+#define _CODESMITHYIDE_BUILFILES_TESTS_MSBUILDFILTERSFILETESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class MSBuildProjectFileTests : public Ishiko::Tests::TestSequence
+class MSBuildFiltersFileTests : public Ishiko::Tests::TestSequence
 {
 public:
-    MSBuildProjectFileTests(const Ishiko::Tests::TestNumber& number,
+    MSBuildFiltersFileTests(const Ishiko::Tests::TestNumber& number,
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:

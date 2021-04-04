@@ -5,6 +5,7 @@
 */
 
 #include "MSBuildProjectFileTests.h"
+#include "MSBuildFiltersFileTests.h"
 #include "VisualStudioSolutionFileTests.h"
 #include <Ishiko/TestFramework/TestFrameworkCore.h>
 
@@ -19,6 +20,7 @@ int main(int argc, char* argv[])
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<MSBuildProjectFileTests>();
+    theTests.append<MSBuildFiltersFileTests>();
     theTests.append<VisualStudioSolutionFileTests>();
 
     return theTestHarness.run();

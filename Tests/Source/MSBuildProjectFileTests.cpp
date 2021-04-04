@@ -25,6 +25,9 @@ void MSBuildProjectFileTests::ConstructorTest1(Test& test)
 {
     MSBuildProjectFile projectFile;
 
+    ISHTF_FAIL_IF_NEQ(projectFile.name(), "");
+    ISHTF_FAIL_IF_NOT(projectFile.guid().isNil());
+    ISHTF_FAIL_IF_NEQ(projectFile.path(), "");
     ISHTF_PASS();
 }
 
@@ -38,13 +41,16 @@ void MSBuildProjectFileTests::CreateTest1(FileComparisonTest& test)
     MSBuildProjectFile projectFile;
 
     Error error;
-    projectFile.create(outputPath, uuidGenerator, error);
+    projectFile.create(outputPath, "VS2019EmptyCppProject", uuidGenerator, error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj"));
 
     ISHTF_FAIL_IF(error);
+    ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019EmptyCppProject");
+    ISHTF_FAIL_IF_NEQ(projectFile.guid(), "f36308cc-b212-4159-b35f-1ab881130689");
+    ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
     ISHTF_PASS();
 }
 
@@ -58,12 +64,15 @@ void MSBuildProjectFileTests::CreateTest2(FileComparisonTest& test)
     MSBuildProjectFile projectFile;
 
     Error error;
-    projectFile.create(outputPath, uuidGenerator, error);
+    projectFile.create(outputPath, "VS2019EmptyCppProject", uuidGenerator, error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019EmptyCppProject2/VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj"));
 
     ISHTF_FAIL_IF(error);
+    ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019EmptyCppProject");
+    ISHTF_FAIL_IF_NEQ(projectFile.guid(), "ccbf91ad-0cc4-4005-be29-f72251f0383d");
+    ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
     ISHTF_PASS();
 }

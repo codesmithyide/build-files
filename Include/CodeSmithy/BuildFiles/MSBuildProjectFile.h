@@ -10,6 +10,7 @@
 #include <Ishiko/UUIDs/UUIDGenerator.h>
 #include <Ishiko/Errors/Error.h>
 #include <boost/filesystem/path.hpp>
+#include <string>
 
 namespace CodeSmithy
 {
@@ -17,8 +18,17 @@ namespace CodeSmithy
 class MSBuildProjectFile
 {
 public:
-    void create(const boost::filesystem::path& path, Ishiko::UUIDs::UUIDGenerator& uuidGenerator,
-        Ishiko::Error& error);
+    void create(const boost::filesystem::path& path, const std::string& name,
+        Ishiko::UUIDs::UUIDGenerator& uuidGenerator, Ishiko::Error& error);
+
+    const std::string& name() const;
+    const Ishiko::UUIDs::UUID& guid() const;
+    const boost::filesystem::path path() const;
+
+private:
+    std::string m_name;
+    Ishiko::UUIDs::UUID m_guid;
+    boost::filesystem::path m_path;
 };
 
 }

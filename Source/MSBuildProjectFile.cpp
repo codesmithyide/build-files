@@ -13,8 +13,8 @@ using namespace Ishiko::UUIDs;
 namespace CodeSmithy
 {
 
-void MSBuildProjectFile::create(const boost::filesystem::path& path, UUIDGenerator& uuidGenerator,
-    Ishiko::Error& error)
+void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::string& name,
+    UUIDGenerator& uuidGenerator, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
 
@@ -49,8 +49,8 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, UUIDGenerat
     file << "  <PropertyGroup Label=\"Globals\">" << std::endl;
     file << "    <VCProjectVersion>16.0</VCProjectVersion>" << std::endl;
     file << "    <Keyword>Win32Proj</Keyword>" << std::endl;
-    file << "    <ProjectGuid>{" << projectUUID.toString() << "}</ProjectGuid>" << std::endl;
-    file << "    <RootNamespace>VS2019EmptyCppProject</RootNamespace>" << std::endl;
+    file << "    <ProjectGuid>{" << projectUUID << "}</ProjectGuid>" << std::endl;
+    file << "    <RootNamespace>" << name << "</RootNamespace>" << std::endl;
     file << "    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>" << std::endl;
     file << "  </PropertyGroup>" << std::endl;
     file << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.Default.props\" />" << std::endl;
@@ -175,6 +175,25 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, UUIDGenerat
     file << "  <ImportGroup Label=\"ExtensionTargets\">" << std::endl;
     file << "  </ImportGroup>" << std::endl;
     file << "</Project>" << std::endl;
+
+    m_name = name;
+    m_guid = projectUUID;
+    m_path = path;
+}
+
+const std::string& MSBuildProjectFile::name() const
+{
+    return m_name;
+}
+
+const UUID& MSBuildProjectFile::guid() const
+{
+    return m_guid;
+}
+
+const boost::filesystem::path MSBuildProjectFile::path() const
+{
+    return m_path;
 }
 
 }

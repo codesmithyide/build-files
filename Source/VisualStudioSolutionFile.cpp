@@ -7,6 +7,7 @@
 #include "VisualStudioSolutionFile.h"
 #include <Ishiko/UUIDs/UUID.h>
 #include <Ishiko/Text/ASCII.h>
+#include <boost/filesystem/operations.hpp>
 #include <fstream>
 
 using namespace Ishiko::Text;
@@ -57,12 +58,9 @@ void VisualStudioSolutionFile::create(const boost::filesystem::path& path, const
     std::string cppProjectTypeUUIDString = cppProjectTypeUUID.toString();
     ASCII::ToUpperCase(cppProjectTypeUUIDString);
 
-    UUID projectUUID = uuidGenerator.generate(error);
-    if (error)
-    {
-        // TODO: test and delete file?
-        return;
-    }
+    boost::filesystem::path relativePath = boost::filesystem::relative(projectFile.path(), path.parent_path());
+
+    UUID projectUUID = projectFile.guid();
     std::string projectUUIDString = projectUUID.toString();
     ASCII::ToUpperCase(projectUUIDString);
 
@@ -80,7 +78,7 @@ void VisualStudioSolutionFile::create(const boost::filesystem::path& path, const
     file << "# Visual Studio Version 16" << std::endl;
     file << "VisualStudioVersion = 16.0.30413.136" << std::endl;
     file << "MinimumVisualStudioVersion = 10.0.40219.1" << std::endl;
-    file << "Project(\"{" << cppProjectTypeUUIDString << "}\") = \"VS2019EmptyCppProject\", \"VS2019EmptyCppProject\\VS2019EmptyCppProject.vcxproj\", \"{" << projectUUIDString << "}\"" << std::endl;
+    file << "Project(\"{" << cppProjectTypeUUIDString << "}\") = \"" << projectFile.name() << "\", \"" << relativePath.string() << "\", \"{" << projectUUIDString << "}\"" << std::endl;
     file << "EndProject" << std::endl;
     file << "Global" << std::endl;
     file << "\tGlobalSection(SolutionConfigurationPlatforms) = preSolution" << std::endl;

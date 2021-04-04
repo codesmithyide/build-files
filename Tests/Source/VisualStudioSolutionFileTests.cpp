@@ -22,6 +22,7 @@ VisualStudioSolutionFileTests::VisualStudioSolutionFileTests(const TestNumber& n
     append<FileComparisonTest>("create test 1", CreateTest1);
     append<FileComparisonTest>("create test 2", CreateTest2);
     append<FileComparisonTest>("create test 3", CreateTest3);
+    append<FileComparisonTest>("create test 4", CreateTest4);
 }
 
 void VisualStudioSolutionFileTests::ConstructorTest1(Test& test)
@@ -53,19 +54,25 @@ void VisualStudioSolutionFileTests::CreateTest1(FileComparisonTest& test)
 
 void VisualStudioSolutionFileTests::CreateTest2(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+    boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
+        "VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+    boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
         "VisualStudioSolutionFileTests_CreateTest2.sln");
 
-    MSBuildProjectFile projectFile;
     PrecomputedUUIDGenerator uuidGenerator(
-        {"f36308cc-b212-4159-b35f-1ab881130689", "a84d6d42-2a06-4ae4-93f4-57a1d1befe2f" });
+        { "f36308cc-b212-4159-b35f-1ab881130689", "a84d6d42-2a06-4ae4-93f4-57a1d1befe2f" });
+
+    Error error;
+    MSBuildProjectFile projectFile;
+    projectFile.create(projectOutputPath, "VS2019EmptyCppProject", uuidGenerator, error);
+
+    ISHTF_ABORT_IF(error);
 
     VisualStudioSolutionFile solutionFile;
 
-    Error error;
-    solutionFile.create(outputPath, projectFile, uuidGenerator, error);
+    solutionFile.create(solutionOutputPath, projectFile, uuidGenerator, error);
 
-    test.setOutputFilePath(outputPath);
+    test.setOutputFilePath(solutionOutputPath);
     test.setReferenceFilePath(
         test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject1/VS2019EmptyCppProject.sln"));
 
@@ -75,21 +82,56 @@ void VisualStudioSolutionFileTests::CreateTest2(FileComparisonTest& test)
 
 void VisualStudioSolutionFileTests::CreateTest3(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+    boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
+        "VS2019EmptyCppProject/VS2019EmptyCppProject.vcxproj");
+    boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
         "VisualStudioSolutionFileTests_CreateTest3.sln");
 
-    MSBuildProjectFile projectFile;
     PrecomputedUUIDGenerator uuidGenerator(
-        {"ccbf91ad-0cc4-4005-be29-f72251f0383d", "0fc49f24-86ed-421e-b72a-3cf918c2c879" });
+        { "ccbf91ad-0cc4-4005-be29-f72251f0383d", "0fc49f24-86ed-421e-b72a-3cf918c2c879" });
+
+    Error error;
+    MSBuildProjectFile projectFile;
+    projectFile.create(projectOutputPath, "VS2019EmptyCppProject", uuidGenerator, error);
+
+    ISHTF_ABORT_IF(error);
 
     VisualStudioSolutionFile solutionFile;
 
-    Error error;
-    solutionFile.create(outputPath, projectFile, uuidGenerator, error);
+    solutionFile.create(solutionOutputPath, projectFile, uuidGenerator, error);
 
-    test.setOutputFilePath(outputPath);
+    test.setOutputFilePath(solutionOutputPath);
     test.setReferenceFilePath(
         test.environment().getReferenceDataPath("VisualStudio/VS2019EmptyCppProject2/VS2019EmptyCppProject.sln"));
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_PASS();
+}
+
+void VisualStudioSolutionFileTests::CreateTest4(FileComparisonTest& test)
+{
+    boost::filesystem::path projectOutputPath = test.environment().getTestOutputPath(
+        "VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.vcxproj");
+    boost::filesystem::path solutionOutputPath = test.environment().getTestOutputPath(
+        "VisualStudioSolutionFileTests_CreateTest4.sln");
+
+    PrecomputedUUIDGenerator uuidGenerator(
+        { "e64cb64d-8de9-4788-87df-f2ec55ab77c4", "167f186e-b706-42d0-912d-611e82e08e83" });
+
+    Error error;
+    MSBuildProjectFile projectFile;
+    projectFile.create(projectOutputPath, "VS2019CppProjectOneSourceFile", uuidGenerator, error);
+
+    ISHTF_ABORT_IF(error);
+
+    VisualStudioSolutionFile solutionFile;
+
+    solutionFile.create(solutionOutputPath, projectFile, uuidGenerator, error);
+
+    test.setOutputFilePath(solutionOutputPath);
+    test.setReferenceFilePath(
+        test.environment().getReferenceDataPath(
+            "VisualStudio/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.sln"));
 
     ISHTF_FAIL_IF(error);
     ISHTF_PASS();

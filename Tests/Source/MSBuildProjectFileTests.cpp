@@ -19,6 +19,7 @@ MSBuildProjectFileTests::MSBuildProjectFileTests(const TestNumber& number, const
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("create test 1", CreateTest1);
     append<FileComparisonTest>("create test 2", CreateTest2);
+    append<FileComparisonTest>("addFile test 1", AddFileTest1);
 }
 
 void MSBuildProjectFileTests::ConstructorTest1(Test& test)
@@ -73,6 +74,30 @@ void MSBuildProjectFileTests::CreateTest2(FileComparisonTest& test)
     ISHTF_FAIL_IF(error);
     ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019EmptyCppProject");
     ISHTF_FAIL_IF_NEQ(projectFile.guid(), "ccbf91ad-0cc4-4005-be29-f72251f0383d");
+    ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
+    ISHTF_PASS();
+}
+
+void MSBuildProjectFileTests::AddFileTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "MSBuildProjectFileTests_AddFileTest1.vcxproj");
+
+    PrecomputedUUIDGenerator uuidGenerator({ "e64cb64d-8de9-4788-87df-f2ec55ab77c4" });
+
+    Error error;
+    MSBuildProjectFile projectFile;
+    projectFile.create(outputPath, "VS2019CppProjectOneSourceFile", uuidGenerator, error);
+    projectFile.addFile("main.cpp");
+    projectFile.commit();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(test.environment().getReferenceDataPath(
+        "VisualStudio/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.vcxproj"));
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019CppProjectOneSourceFile");
+    ISHTF_FAIL_IF_NEQ(projectFile.guid(), "e64cb64d-8de9-4788-87df-f2ec55ab77c4");
     ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
     ISHTF_PASS();
 }

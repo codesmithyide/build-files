@@ -6,6 +6,7 @@
 
 #include "MSBuildProjectFile.h"
 #include <Ishiko/UUIDs/UUID.h>
+#include <Ishiko/Errors/StreamUtilities.h>
 #include <fstream>
 
 using namespace Ishiko::UUIDs;
@@ -13,10 +14,177 @@ using namespace Ishiko::UUIDs;
 namespace CodeSmithy
 {
 
+namespace
+{
+
+void WriteProjectConfiguration(std::ostream& output, const char* configuration, const char* architecture)
+{
+    output << "    <ProjectConfiguration Include=\"" << configuration << "|" << architecture << "\">" << std::endl;
+    output << "      <Configuration>" << configuration << "</Configuration>" << std::endl;
+    output << "      <Platform>" << architecture  << "</Platform>" << std::endl;
+    output << "    </ProjectConfiguration>" << std::endl;
+}
+
+void Write(std::ostream& output, const UUID& projectUUID, const std::string& name,
+    const std::vector<std::string>& files)
+{
+    output << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
+    output << "<Project DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
+    output << "  <ItemGroup Label=\"ProjectConfigurations\">" << std::endl;
+    WriteProjectConfiguration(output, "Debug", "Win32");
+    WriteProjectConfiguration(output, "Release", "Win32");
+    WriteProjectConfiguration(output, "Debug", "x64");
+    WriteProjectConfiguration(output, "Release", "x64");
+    output << "  </ItemGroup>" << std::endl;
+    output << "  <PropertyGroup Label=\"Globals\">" << std::endl;
+    output << "    <VCProjectVersion>16.0</VCProjectVersion>" << std::endl;
+    output << "    <Keyword>Win32Proj</Keyword>" << std::endl;
+    output << "    <ProjectGuid>{" << projectUUID << "}</ProjectGuid>" << std::endl;
+    output << "    <RootNamespace>" << name << "</RootNamespace>" << std::endl;
+    output << "    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.Default.props\" />" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\" Label=\"Configuration\">" << std::endl;
+    output << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
+    output << "    <UseDebugLibraries>true</UseDebugLibraries>" << std::endl;
+    output << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
+    output << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\" Label=\"Configuration\">" << std::endl;
+    output << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
+    output << "    <UseDebugLibraries>false</UseDebugLibraries>" << std::endl;
+    output << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
+    output << "    <WholeProgramOptimization>true</WholeProgramOptimization>" << std::endl;
+    output << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\" Label=\"Configuration\">" << std::endl;
+    output << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
+    output << "    <UseDebugLibraries>true</UseDebugLibraries>" << std::endl;
+    output << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
+    output << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\" Label=\"Configuration\">" << std::endl;
+    output << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
+    output << "    <UseDebugLibraries>false</UseDebugLibraries>" << std::endl;
+    output << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
+    output << "    <WholeProgramOptimization>true</WholeProgramOptimization>" << std::endl;
+    output << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.props\" />" << std::endl;
+    output << "  <ImportGroup Label=\"ExtensionSettings\">" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <ImportGroup Label=\"Shared\">" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
+    output << "    <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
+    output << "    <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
+    output << "    <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
+    output << "    <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "  <PropertyGroup Label=\"UserMacros\" />" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
+    output << "    <LinkIncremental>true</LinkIncremental>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
+    output << "    <LinkIncremental>false</LinkIncremental>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
+    output << "    <LinkIncremental>true</LinkIncremental>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
+    output << "    <LinkIncremental>false</LinkIncremental>" << std::endl;
+    output << "  </PropertyGroup>" << std::endl;
+    output << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
+    output << "    <ClCompile>" << std::endl;
+    output << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
+    output << "      <SDLCheck>true</SDLCheck>" << std::endl;
+    output << "      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
+    output << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
+    output << "    </ClCompile>" << std::endl;
+    output << "    <Link>" << std::endl;
+    output << "      <SubSystem>Console</SubSystem>" << std::endl;
+    output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
+    output << "    </Link>" << std::endl;
+    output << "  </ItemDefinitionGroup>" << std::endl;
+    output << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
+    output << "    <ClCompile>" << std::endl;
+    output << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
+    output << "      <FunctionLevelLinking>true</FunctionLevelLinking>" << std::endl;
+    output << "      <IntrinsicFunctions>true</IntrinsicFunctions>" << std::endl;
+    output << "      <SDLCheck>true</SDLCheck>" << std::endl;
+    output << "      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
+    output << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
+    output << "    </ClCompile>" << std::endl;
+    output << "    <Link>" << std::endl;
+    output << "      <SubSystem>Console</SubSystem>" << std::endl;
+    output << "      <EnableCOMDATFolding>true</EnableCOMDATFolding>" << std::endl;
+    output << "      <OptimizeReferences>true</OptimizeReferences>" << std::endl;
+    output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
+    output << "    </Link>" << std::endl;
+    output << "  </ItemDefinitionGroup>" << std::endl;
+    output << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
+    output << "    <ClCompile>" << std::endl;
+    output << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
+    output << "      <SDLCheck>true</SDLCheck>" << std::endl;
+    output << "      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
+    output << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
+    output << "    </ClCompile>" << std::endl;
+    output << "    <Link>" << std::endl;
+    output << "      <SubSystem>Console</SubSystem>" << std::endl;
+    output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
+    output << "    </Link>" << std::endl;
+    output << "  </ItemDefinitionGroup>" << std::endl;
+    output << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
+    output << "    <ClCompile>" << std::endl;
+    output << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
+    output << "      <FunctionLevelLinking>true</FunctionLevelLinking>" << std::endl;
+    output << "      <IntrinsicFunctions>true</IntrinsicFunctions>" << std::endl;
+    output << "      <SDLCheck>true</SDLCheck>" << std::endl;
+    output << "      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
+    output << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
+    output << "    </ClCompile>" << std::endl;
+    output << "    <Link>" << std::endl;
+    output << "      <SubSystem>Console</SubSystem>" << std::endl;
+    output << "      <EnableCOMDATFolding>true</EnableCOMDATFolding>" << std::endl;
+    output << "      <OptimizeReferences>true</OptimizeReferences>" << std::endl;
+    output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
+    output << "    </Link>" << std::endl;
+    output << "  </ItemDefinitionGroup>" << std::endl;
+    if (!files.empty())
+    {
+        output << "  <ItemGroup>" << std::endl;
+        for (const std::string& file : files)
+        {
+            output << "    <ClCompile Include=\"main.cpp\" />" << std::endl;
+        }
+        output << "  </ItemGroup>" << std::endl;
+    }
+    else
+    {
+        output << "  <ItemGroup></ItemGroup>" << std::endl;
+    }    
+    output << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.targets\" />" << std::endl;
+    output << "  <ImportGroup Label=\"ExtensionTargets\">" << std::endl;
+    output << "  </ImportGroup>" << std::endl;
+    output << "</Project>" << std::endl;
+}
+
+}
+
 void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::string& name,
     UUIDGenerator& uuidGenerator, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
+    if (FailOnFileCreationError(error, file))
+    {
+        return;
+    }
 
     UUID projectUUID = uuidGenerator.generate(error);
     if (error)
@@ -25,156 +193,7 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::
         return;
     }
 
-    file << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
-    file << "<Project DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
-    file << "  <ItemGroup Label=\"ProjectConfigurations\">" << std::endl;
-    file << "    <ProjectConfiguration Include=\"Debug|Win32\">" << std::endl;
-    file << "      <Configuration>Debug</Configuration>" << std::endl;
-    file << "      <Platform>Win32</Platform>" << std::endl;
-    file << "    </ProjectConfiguration>" << std::endl;
-    file << "    <ProjectConfiguration Include=\"Release|Win32\">" << std::endl;
-    file << "      <Configuration>Release</Configuration>" << std::endl;
-    file << "      <Platform>Win32</Platform>" << std::endl;
-    file << "    </ProjectConfiguration>" << std::endl;
-    file << "    <ProjectConfiguration Include=\"Debug|x64\">" << std::endl;
-    file << "      <Configuration>Debug</Configuration>" << std::endl;
-    file << "      <Platform>x64</Platform>" << std::endl;
-    file << "    </ProjectConfiguration>" << std::endl;
-    file << "    <ProjectConfiguration Include=\"Release|x64\">" << std::endl;
-    file << "      <Configuration>Release</Configuration>" << std::endl;
-    file << "      <Platform>x64</Platform>" << std::endl;
-    file << "    </ProjectConfiguration>" << std::endl;
-    file << std::endl;
-    file << "  </ItemGroup>" << std::endl;
-    file << "  <PropertyGroup Label=\"Globals\">" << std::endl;
-    file << "    <VCProjectVersion>16.0</VCProjectVersion>" << std::endl;
-    file << "    <Keyword>Win32Proj</Keyword>" << std::endl;
-    file << "    <ProjectGuid>{" << projectUUID << "}</ProjectGuid>" << std::endl;
-    file << "    <RootNamespace>" << name << "</RootNamespace>" << std::endl;
-    file << "    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.Default.props\" />" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\" Label=\"Configuration\">" << std::endl;
-    file << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
-    file << "    <UseDebugLibraries>true</UseDebugLibraries>" << std::endl;
-    file << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
-    file << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\" Label=\"Configuration\">" << std::endl;
-    file << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
-    file << "    <UseDebugLibraries>false</UseDebugLibraries>" << std::endl;
-    file << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
-    file << "    <WholeProgramOptimization>true</WholeProgramOptimization>" << std::endl;
-    file << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\" Label=\"Configuration\">" << std::endl;
-    file << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
-    file << "    <UseDebugLibraries>true</UseDebugLibraries>" << std::endl;
-    file << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
-    file << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\" Label=\"Configuration\">" << std::endl;
-    file << "    <ConfigurationType>Application</ConfigurationType>" << std::endl;
-    file << "    <UseDebugLibraries>false</UseDebugLibraries>" << std::endl;
-    file << "    <PlatformToolset>v142</PlatformToolset>" << std::endl;
-    file << "    <WholeProgramOptimization>true</WholeProgramOptimization>" << std::endl;
-    file << "    <CharacterSet>Unicode</CharacterSet>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << std::endl;
-    file << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.props\" />" << std::endl;
-    file << "  <ImportGroup Label=\"ExtensionSettings\">" << std::endl;
-    file << "  </ImportGroup>" << std::endl;
-    file << "  <ImportGroup Label=\"Shared\" >" << std::endl;
-    file << "  </ImportGroup>" << std::endl;
-    file << "    <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
-    file << "      <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
-    file << "    </ImportGroup>" << std::endl;
-    file << "    <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
-    file << "      <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
-    file << "    </ImportGroup>" << std::endl;
-    file << "    <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
-    file << "      <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
-    file << "    </ImportGroup>" << std::endl;
-    file << "    <ImportGroup Label=\"PropertySheets\" Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
-    file << "      <Import Project=\"$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props\" Condition=\"exists('$(UserRootDir)\\Microsoft.Cpp.$(Platform).user.props')\" Label=\"LocalAppDataPlatform\" />" << std::endl;
-    file << "    </ImportGroup>" << std::endl;
-    file << std::endl;
-    file << "  <PropertyGroup Label=\"UserMacros\" />" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
-    file << "    <LinkIncremental>true</LinkIncremental>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
-    file << "    <LinkIncremental>false</LinkIncremental>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
-    file << "    <LinkIncremental>true</LinkIncremental>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << "  <PropertyGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
-    file << "    <LinkIncremental>false</LinkIncremental>" << std::endl;
-    file << "  </PropertyGroup>" << std::endl;
-    file << std::endl;
-    file << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|Win32'\">" << std::endl;
-    file << "    <ClCompile>" << std::endl;
-    file << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
-    file << "      <SDLCheck>true</SDLCheck>" << std::endl;
-    file << "      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
-    file << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
-    file << "    </ClCompile>" << std::endl;
-    file << "    <Link>" << std::endl;
-    file << "      <SubSystem>Console</SubSystem>" << std::endl;
-    file << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
-    file << "    </Link>" << std::endl;
-    file << "  </ItemDefinitionGroup>" << std::endl;
-    file << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|Win32'\">" << std::endl;
-    file << "    <ClCompile>" << std::endl;
-    file << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
-    file << "      <FunctionLevelLinking>true</FunctionLevelLinking>" << std::endl;
-    file << "      <IntrinsicFunctions>true</IntrinsicFunctions>" << std::endl;
-    file << "      <SDLCheck>true</SDLCheck>" << std::endl;
-    file << "      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
-    file << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
-    file << "    </ClCompile>" << std::endl;
-    file << "    <Link>" << std::endl;
-    file << "      <SubSystem>Console</SubSystem>" << std::endl;
-    file << "      <EnableCOMDATFolding>true</EnableCOMDATFolding>" << std::endl;
-    file << "      <OptimizeReferences>true</OptimizeReferences>" << std::endl;
-    file << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
-    file << "    </Link>" << std::endl;
-    file << "  </ItemDefinitionGroup>" << std::endl;
-    file << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">" << std::endl;
-    file << "    <ClCompile>" << std::endl;
-    file << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
-    file << "      <SDLCheck>true</SDLCheck>" << std::endl;
-    file << "      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
-    file << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
-    file << "    </ClCompile>" << std::endl;
-    file << "    <Link>" << std::endl;
-    file << "      <SubSystem>Console</SubSystem>" << std::endl;
-    file << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
-    file << "    </Link>" << std::endl;
-    file << "  </ItemDefinitionGroup>" << std::endl;
-    file << "  <ItemDefinitionGroup Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">" << std::endl;
-    file << "    <ClCompile>" << std::endl;
-    file << "      <WarningLevel>Level3</WarningLevel>" << std::endl;
-    file << "      <FunctionLevelLinking>true</FunctionLevelLinking>" << std::endl;
-    file << "      <IntrinsicFunctions>true</IntrinsicFunctions>" << std::endl;
-    file << "      <SDLCheck>true</SDLCheck>" << std::endl;
-    file << "      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>" << std::endl;
-    file << "      <ConformanceMode>true</ConformanceMode>" << std::endl;
-    file << "    </ClCompile>" << std::endl;
-    file << "    <Link>" << std::endl;
-    file << "      <SubSystem>Console</SubSystem>" << std::endl;
-    file << "      <EnableCOMDATFolding>true</EnableCOMDATFolding>" << std::endl;
-    file << "      <OptimizeReferences>true</OptimizeReferences>" << std::endl;
-    file << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
-    file << "    </Link>" << std::endl;
-    file << "  </ItemDefinitionGroup>" << std::endl;
-    file << std::endl;
-    file << "  <ItemGroup></ItemGroup>" << std::endl;
-    file << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.targets\" />" << std::endl;
-    file << "  <ImportGroup Label=\"ExtensionTargets\">" << std::endl;
-    file << "  </ImportGroup>" << std::endl;
-    file << "</Project>" << std::endl;
+    Write(file, projectUUID, name, m_files);
 
     m_name = name;
     m_guid = projectUUID;
@@ -194,6 +213,17 @@ const UUID& MSBuildProjectFile::guid() const
 const boost::filesystem::path MSBuildProjectFile::path() const
 {
     return m_path;
+}
+
+void MSBuildProjectFile::addFile(const std::string& path)
+{
+    m_files.emplace_back(path);
+}
+
+void MSBuildProjectFile::commit()
+{
+    std::ofstream file(m_path.string());
+    Write(file, m_guid, m_name, m_files);
 }
 
 }

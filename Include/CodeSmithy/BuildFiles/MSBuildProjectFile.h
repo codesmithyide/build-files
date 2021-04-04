@@ -10,6 +10,7 @@
 #include <Ishiko/UUIDs/UUIDGenerator.h>
 #include <Ishiko/Errors/Error.h>
 #include <boost/filesystem/path.hpp>
+#include <vector>
 #include <string>
 
 namespace CodeSmithy
@@ -25,10 +26,15 @@ public:
     const Ishiko::UUIDs::UUID& guid() const;
     const boost::filesystem::path path() const;
 
+    void addFile(const std::string& path);
+
+    void commit();
+
 private:
     std::string m_name;
     Ishiko::UUIDs::UUID m_guid;
     boost::filesystem::path m_path;
+    std::vector<std::string> m_files;
 };
 
 }

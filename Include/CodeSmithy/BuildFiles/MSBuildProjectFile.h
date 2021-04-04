@@ -28,6 +28,8 @@ public:
 
     void addFile(const std::string& path);
 
+    void commit();
+
 private:
     std::string m_name;
     Ishiko::UUIDs::UUID m_guid;

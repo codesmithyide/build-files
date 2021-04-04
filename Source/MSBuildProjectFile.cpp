@@ -25,7 +25,8 @@ void WriteProjectConfiguration(std::ostream& output, const char* configuration, 
     output << "    </ProjectConfiguration>" << std::endl;
 }
 
-void Write(std::ostream& output, const UUID& projectUUID, const std::string& name)
+void Write(std::ostream& output, const UUID& projectUUID, const std::string& name,
+    const std::vector<std::string>& files)
 {
     output << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
     output << "<Project DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
@@ -155,8 +156,19 @@ void Write(std::ostream& output, const UUID& projectUUID, const std::string& nam
     output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
     output << "    </Link>" << std::endl;
     output << "  </ItemDefinitionGroup>" << std::endl;
-    output << std::endl;
-    output << "  <ItemGroup></ItemGroup>" << std::endl;
+    if (!files.empty())
+    {
+        output << "  <ItemGroup>" << std::endl;
+        for (const std::string& file : files)
+        {
+            output << "    <ClCompile Include=\"main.cpp\" />" << std::endl;
+        }
+        output << "  </ItemGroup>" << std::endl;
+    }
+    else
+    {
+        output << "  <ItemGroup></ItemGroup>" << std::endl;
+    }    
     output << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.targets\" />" << std::endl;
     output << "  <ImportGroup Label=\"ExtensionTargets\">" << std::endl;
     output << "  </ImportGroup>" << std::endl;
@@ -181,16 +193,11 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::
         return;
     }
 
-    Write(file, projectUUID, name);
+    Write(file, projectUUID, name, m_files);
 
     m_name = name;
     m_guid = projectUUID;
     m_path = path;
-}
-
-void MSBuildProjectFile::addFile(const std::string& path)
-{
-    m_files.emplace_back(path);
 }
 
 const std::string& MSBuildProjectFile::name() const
@@ -206,6 +213,17 @@ const UUID& MSBuildProjectFile::guid() const
 const boost::filesystem::path MSBuildProjectFile::path() const
 {
     return m_path;
+}
+
+void MSBuildProjectFile::addFile(const std::string& path)
+{
+    m_files.emplace_back(path);
+}
+
+void MSBuildProjectFile::commit()
+{
+    std::ofstream file(m_path.string());
+    Write(file, m_guid, m_name, m_files);
 }
 
 }

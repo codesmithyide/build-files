@@ -17,7 +17,8 @@ MSBuildFiltersFileTests::MSBuildFiltersFileTests(const TestNumber& number, const
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("create test 1", CreateTest1);
     append<FileComparisonTest>("create test 2", CreateTest2);
-    append<FileComparisonTest>("addFile test 1", AddFileTest1);
+    append<FileComparisonTest>("addSourceFile test 1", AddSourceFileTest1);
+    append<FileComparisonTest>("addHeaderFile test 1", AddHeaderFileTest1);
 }
 
 void MSBuildFiltersFileTests::ConstructorTest1(Test& test)
@@ -63,21 +64,41 @@ void MSBuildFiltersFileTests::CreateTest2(FileComparisonTest& test)
     ISHTF_PASS();
 }
 
-void MSBuildFiltersFileTests::AddFileTest1(FileComparisonTest& test)
+void MSBuildFiltersFileTests::AddSourceFileTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath = test.environment().getTestOutputPath(
-        "MSBuildFiltersFileTests_AddFileTest1.vcxproj.filters");
+        "MSBuildFiltersFileTests_AddSourceFileTest1.vcxproj.filters");
 
     MSBuildFiltersFile filtersFile;
 
     Error error;
     filtersFile.create(outputPath, error);
-    filtersFile.addFile("main.cpp");
+    filtersFile.addSourceFile("main.cpp");
     filtersFile.commit();
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(test.environment().getReferenceDataPath(
         "VisualStudio/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile/VS2019CppProjectOneSourceFile.vcxproj.filters"));
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_PASS();
+}
+
+void MSBuildFiltersFileTests::AddHeaderFileTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "MSBuildFiltersFileTests_AddHeaderFileTest1.vcxproj.filters");
+
+    MSBuildFiltersFile filtersFile;
+
+    Error error;
+    filtersFile.create(outputPath, error);
+    filtersFile.addHeaderFile("Header.h");
+    filtersFile.commit();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(test.environment().getReferenceDataPath(
+        "VisualStudio/VS2019CppProjectOneHeaderFile/VS2019CppProjectOneHeaderFile/VS2019CppProjectOneHeaderFile.vcxproj.filters"));
 
     ISHTF_FAIL_IF(error);
     ISHTF_PASS();

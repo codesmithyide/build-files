@@ -26,7 +26,7 @@ void WriteProjectConfiguration(std::ostream& output, const char* configuration, 
 }
 
 void Write(std::ostream& output, const UUID& projectUUID, const std::string& name,
-    const std::vector<std::string>& files)
+    const std::vector<std::string>& headerFiles, const std::vector<std::string>& sourceFiles)
 {
     output << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
     output << "<Project DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
@@ -156,19 +156,28 @@ void Write(std::ostream& output, const UUID& projectUUID, const std::string& nam
     output << "      <GenerateDebugInformation>true</GenerateDebugInformation>" << std::endl;
     output << "    </Link>" << std::endl;
     output << "  </ItemDefinitionGroup>" << std::endl;
-    if (!files.empty())
+    if (!headerFiles.empty())
     {
         output << "  <ItemGroup>" << std::endl;
-        for (const std::string& file : files)
+        for (const std::string& file : headerFiles)
         {
-            output << "    <ClCompile Include=\"main.cpp\" />" << std::endl;
+            output << "    <ClInclude Include=\"" << file << "\" />" << std::endl;
         }
         output << "  </ItemGroup>" << std::endl;
     }
-    else
+    if (!sourceFiles.empty())
+    {
+        output << "  <ItemGroup>" << std::endl;
+        for (const std::string& file : sourceFiles)
+        {
+            output << "    <ClCompile Include=\"" << file << "\" />" << std::endl;
+        }
+        output << "  </ItemGroup>" << std::endl;
+    }
+    if (headerFiles.empty() && sourceFiles.empty())
     {
         output << "  <ItemGroup></ItemGroup>" << std::endl;
-    }    
+    }
     output << "  <Import Project=\"$(VCTargetsPath)\\Microsoft.Cpp.targets\" />" << std::endl;
     output << "  <ImportGroup Label=\"ExtensionTargets\">" << std::endl;
     output << "  </ImportGroup>" << std::endl;
@@ -193,7 +202,7 @@ void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::
         return;
     }
 
-    Write(file, projectUUID, name, m_files);
+    Write(file, projectUUID, name, m_headerFiles, m_sourceFiles);
 
     m_name = name;
     m_guid = projectUUID;
@@ -215,15 +224,20 @@ const boost::filesystem::path MSBuildProjectFile::path() const
     return m_path;
 }
 
-void MSBuildProjectFile::addFile(const std::string& path)
+void MSBuildProjectFile::addHeaderFile(const std::string& path)
 {
-    m_files.emplace_back(path);
+    m_headerFiles.emplace_back(path);
+}
+
+void MSBuildProjectFile::addSourceFile(const std::string& path)
+{
+    m_sourceFiles.emplace_back(path);
 }
 
 void MSBuildProjectFile::commit()
 {
     std::ofstream file(m_path.string());
-    Write(file, m_guid, m_name, m_files);
+    Write(file, m_guid, m_name, m_headerFiles, m_sourceFiles);
 }
 
 }

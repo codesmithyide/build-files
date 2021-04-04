@@ -26,7 +26,8 @@ public:
     const Ishiko::UUIDs::UUID& guid() const;
     const boost::filesystem::path path() const;
 
-    void addFile(const std::string& path);
+    void addHeaderFile(const std::string& path);
+    void addSourceFile(const std::string& path);
 
     void commit();
 
@@ -34,7 +35,8 @@ private:
     std::string m_name;
     Ishiko::UUIDs::UUID m_guid;
     boost::filesystem::path m_path;
-    std::vector<std::string> m_files;
+    std::vector<std::string> m_headerFiles;
+    std::vector<std::string> m_sourceFiles;
 };
 
 }

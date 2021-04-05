@@ -35,20 +35,26 @@ void Write(std::ostream& output, const std::vector<std::string>& headerFiles,
     output << "      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>" << std::endl;
     output << "    </Filter>" << std::endl;
     output << "  </ItemGroup>" << std::endl;
-    for (const std::string& file : headerFiles)
+    if (!headerFiles.empty())
     {
         output << "  <ItemGroup>" << std::endl;
-        output << "    <ClInclude Include=\"" << file << "\">" << std::endl;
-        output << "      <Filter>Header Files</Filter>" << std::endl;
-        output << "    </ClInclude>" << std::endl;
+        for (const std::string& file : headerFiles)
+        {
+            output << "    <ClInclude Include=\"" << file << "\">" << std::endl;
+            output << "      <Filter>Header Files</Filter>" << std::endl;
+            output << "    </ClInclude>" << std::endl;
+        }
         output << "  </ItemGroup>" << std::endl;
     }
-    for (const std::string& file : sourceFiles)
+    if (!sourceFiles.empty())
     {
         output << "  <ItemGroup>" << std::endl;
-        output << "    <ClCompile Include=\"" << file << "\">" << std::endl;
-        output << "      <Filter>Source Files</Filter>" << std::endl;
-        output << "    </ClCompile>" << std::endl;
+        for (const std::string& file : sourceFiles)
+        {
+            output << "    <ClCompile Include=\"" << file << "\">" << std::endl;
+            output << "      <Filter>Source Files</Filter>" << std::endl;
+            output << "    </ClCompile>" << std::endl;
+        }
         output << "  </ItemGroup>" << std::endl;
     }
     output << "</Project>";

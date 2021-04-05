@@ -21,6 +21,7 @@ MSBuildProjectFileTests::MSBuildProjectFileTests(const TestNumber& number, const
     append<FileComparisonTest>("create test 2", CreateTest2);
     append<FileComparisonTest>("addSourceFile test 1", AddSourceFileTest1);
     append<FileComparisonTest>("addHeaderFile test 1", AddHeaderFileTest1);
+    append<FileComparisonTest>("addHeaderFile and addSourceFile test 1", AddHeaderAndSourceFilesTest1);
 }
 
 void MSBuildProjectFileTests::ConstructorTest1(Test& test)
@@ -123,6 +124,33 @@ void MSBuildProjectFileTests::AddHeaderFileTest1(FileComparisonTest& test)
     ISHTF_FAIL_IF(error);
     ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019CppProjectOneHeaderFile");
     ISHTF_FAIL_IF_NEQ(projectFile.guid(), "15600bbd-c6ad-4e80-b7c9-28bca1cf6970");
+    ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
+    ISHTF_PASS();
+}
+
+void MSBuildProjectFileTests::AddHeaderAndSourceFilesTest1(Ishiko::Tests::FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath = test.environment().getTestOutputPath(
+        "MSBuildProjectFileTests_AddHeaderAndSourceFilesTest1.vcxproj");
+
+    PrecomputedUUIDGenerator uuidGenerator({ "fd8d6e70-1327-4454-8c04-4a619b59a896" });
+
+    Error error;
+    MSBuildProjectFile projectFile;
+    projectFile.create(outputPath, "VS2019CppProjectMultipleFiles", uuidGenerator, error);
+    projectFile.addHeaderFile("Header1.h");
+    projectFile.addHeaderFile("Header2.h");
+    projectFile.addSourceFile("Source1.cpp");
+    projectFile.addSourceFile("Source2.cpp");
+    projectFile.commit();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(test.environment().getReferenceDataPath(
+        "VisualStudio/VS2019CppProjectMultipleFiles/VS2019CppProjectMultipleFiles/VS2019CppProjectMultipleFiles.vcxproj"));
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_FAIL_IF_NEQ(projectFile.name(), "VS2019CppProjectMultipleFiles");
+    ISHTF_FAIL_IF_NEQ(projectFile.guid(), "fd8d6e70-1327-4454-8c04-4a619b59a896");
     ISHTF_FAIL_IF_NEQ(projectFile.path(), outputPath);
     ISHTF_PASS();
 }

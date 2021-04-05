@@ -21,6 +21,7 @@ private:
     static void CreateTest2(Ishiko::Tests::FileComparisonTest& test);
     static void AddSourceFileTest1(Ishiko::Tests::FileComparisonTest& test);
     static void AddHeaderFileTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void AddHeaderAndSourceFilesTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

@@ -21,6 +21,7 @@ private:
     static void CreateTest2(Ishiko::Tests::FileComparisonTest& test);
     static void CreateTest3(Ishiko::Tests::FileComparisonTest& test);
     static void CreateTest4(Ishiko::Tests::FileComparisonTest& test);
+    static void CreateTest5(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

@@ -16,7 +16,8 @@ namespace CodeSmithy
 namespace
 {
 
-void Write(std::ostream& output, const std::vector<std::string>& files)
+void Write(std::ostream& output, const std::vector<std::string>& headerFiles,
+    const std::vector<std::string>& sourceFiles)
 {
     output << "\xEF\xBB\xBF<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
     output << "<Project ToolsVersion=\"4.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">" << std::endl;
@@ -34,12 +35,26 @@ void Write(std::ostream& output, const std::vector<std::string>& files)
     output << "      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>" << std::endl;
     output << "    </Filter>" << std::endl;
     output << "  </ItemGroup>" << std::endl;
-    for (const std::string& file : files)
+    if (!headerFiles.empty())
     {
         output << "  <ItemGroup>" << std::endl;
-        output << "    <ClCompile Include=\"main.cpp\">" << std::endl;
-        output << "      <Filter>Source Files</Filter>" << std::endl;
-        output << "    </ClCompile>" << std::endl;
+        for (const std::string& file : headerFiles)
+        {
+            output << "    <ClInclude Include=\"" << file << "\">" << std::endl;
+            output << "      <Filter>Header Files</Filter>" << std::endl;
+            output << "    </ClInclude>" << std::endl;
+        }
+        output << "  </ItemGroup>" << std::endl;
+    }
+    if (!sourceFiles.empty())
+    {
+        output << "  <ItemGroup>" << std::endl;
+        for (const std::string& file : sourceFiles)
+        {
+            output << "    <ClCompile Include=\"" << file << "\">" << std::endl;
+            output << "      <Filter>Source Files</Filter>" << std::endl;
+            output << "    </ClCompile>" << std::endl;
+        }
         output << "  </ItemGroup>" << std::endl;
     }
     output << "</Project>";
@@ -55,20 +70,25 @@ void MSBuildFiltersFile::create(const boost::filesystem::path& path, Ishiko::Err
         return;
     }
 
-    Write(file, m_files);
+    Write(file, m_headerFiles, m_sourceFiles);
     
     m_path = path;
 }
 
-void MSBuildFiltersFile::addFile(const std::string& path)
+void MSBuildFiltersFile::addHeaderFile(const std::string& path)
 {
-    m_files.emplace_back(path);
+    m_headerFiles.emplace_back(path);
+}
+
+void MSBuildFiltersFile::addSourceFile(const std::string& path)
+{
+    m_sourceFiles.emplace_back(path);
 }
 
 void MSBuildFiltersFile::commit()
 {
     std::ofstream file(m_path.string());
-    Write(file, m_files);
+    Write(file, m_headerFiles, m_sourceFiles);
 }
 
 }

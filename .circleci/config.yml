@@ -11,13 +11,13 @@ jobs:
           path: /codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /codesmithyide/build-files/bakefile/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /codesmithyide/build-files/bakefile/tests/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildToolchainsTests
+          command: cd /codesmithyide/build-files/bakefile/tests/build/gnumake && ./CodeSmithyBakefileTests
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.6.0
@@ -29,13 +29,13 @@ jobs:
           path: /codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /codesmithyide/build-files/bakefile/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /codesmithyide/build-files/bakefile/tests/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildToolchainsTests
+          command: cd /codesmithyide/build-files/bakefile/tests/build/gnumake && ./CodeSmithyBakefileTests
 workflows:
   version: 2
   continuous_build:

@@ -1,0 +1,47 @@
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyBakefileCore.sln;
+vs2015.solutionfile = ../VC14/CodeSmithyBakefileCore.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyBakefileCore.sln;
+
+library CodeSmithyBakefileCore
+{
+    includedirs += ../../../Include/CodeSmithy/Bakefile/Core;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../Lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyBakefileCore-d;
+    }
+
+    headers
+    {
+        ../../../Include/CodeSmithy/Bakefile/Core/Bakefile.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileTarget.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileParser.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileToken.h
+        ../../../Include/CodeSmithy/Bakefile/Core/BakefileTokenizer.h
+        ../../../Include/CodeSmithy/Bakefile/Core/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/Bakefile.cpp
+        ../../Source/BakefileTarget.cpp
+        ../../Source/BakefileToken.cpp
+        ../../Source/BakefileTokenizer.cpp
+        ../../Source/BakefileParser.cpp
+    }
+}

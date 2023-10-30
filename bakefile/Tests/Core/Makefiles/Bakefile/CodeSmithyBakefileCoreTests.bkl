@@ -1,0 +1,47 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Bakefile/Include/CodeSmithy/Bakefile/CodeSmithyBakefileCore.bkl;
+
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyBakefileCoreTests.sln;
+vs2015.solutionfile = ../VC14/CodeSmithyBakefileCoreTests.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyBakefileCoreTests.sln;
+
+program CodeSmithyBakefileCoreTests : CodeSmithyBakefileCore, IshikoTestFrameworkCore
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += IshikoTestFrameworkCore IshikoProcess boost_filesystem boost_system;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
+
+    headers
+    {
+        ../../Source/BakefileTargetTests.h
+        ../../Source/BakefileTokenTests.h
+
+        ../../Source/BakefileTests/BakefileTests.h
+        ../../Source/BakefileParserTests/BakefileParserTests.h
+        ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.h
+    }
+
+    sources
+    {
+        ../../Source/main.cpp
+        ../../Source/BakefileTargetTests.cpp
+        ../../Source/BakefileTokenTests.cpp
+
+        ../../Source/BakefileTests/BakefileTests.cpp
+        ../../Source/BakefileParserTests/BakefileParserTests.cpp
+        ../../Source/BakefileTokenizerTests/BakefileTokenizerTests.cpp
+
+    }
+}

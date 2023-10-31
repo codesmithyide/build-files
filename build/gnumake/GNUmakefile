@@ -99,8 +99,8 @@ $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o: ../../src/MSBuild/MSBuild
 $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o: ../../src/MSBuild/MSBuildFiltersFile.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/MSBuild/MSBuildFiltersFile.cpp
 
-$(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o: ../../src/VisualStudioSolutionFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/VisualStudioSolutionFile.cpp
+$(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o: ../../src/VisualStudio/VisualStudioSolutionFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/VisualStudio/VisualStudioSolutionFile.cpp
 
 $(_builddir)CodeSmithyBuildFiles_Bakefile.o: ../../src/Bakefile.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile.cpp

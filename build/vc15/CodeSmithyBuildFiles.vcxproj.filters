@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h">
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\Bakefile.h">
@@ -58,7 +58,7 @@
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\VisualStudioSolutionFile.cpp">
+    <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Bakefile.cpp">

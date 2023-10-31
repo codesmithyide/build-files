@@ -152,7 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
-    <ClCompile Include="..\..\src\VisualStudioSolutionFile.cpp" />
+    <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp" />
     <ClCompile Include="..\..\src\Bakefile.cpp" />
     <ClCompile Include="..\..\src\BakefileTarget.cpp" />
     <ClCompile Include="..\..\src\BakefileToken.cpp" />
@@ -164,7 +164,7 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\linkoptions.h" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\Bakefile.h" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileTarget.h" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileParser.h" />

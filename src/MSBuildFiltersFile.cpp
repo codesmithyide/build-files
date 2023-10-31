@@ -1,11 +1,12 @@
 /*
-    Copyright (c) 2021 Xavier Leclercq
+    Copyright (c) 2021-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
 #include "MSBuildFiltersFile.h"
-#include <Ishiko/Errors/StreamUtilities.h>
+#include <Ishiko/IO.hpp>
+#include <Ishiko/Errors.hpp>
 #include <fstream>
 
 using namespace Ishiko;
@@ -65,7 +66,7 @@ void Write(std::ostream& output, const std::vector<std::string>& headerFiles,
 void MSBuildFiltersFile::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
-    if (FailOnFileCreationError(error, file))
+    if (Ishiko::FailIfCreateFileError(file, error))
     {
         return;
     }

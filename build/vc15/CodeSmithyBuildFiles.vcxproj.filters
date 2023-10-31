@@ -32,6 +32,24 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\Bakefile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileTarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\BakefileTokenizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\MSBuildProjectFile.cpp">
@@ -41,6 +59,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\VisualStudioSolutionFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Bakefile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BakefileTarget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BakefileToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BakefileTokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BakefileParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

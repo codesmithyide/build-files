@@ -1,18 +1,16 @@
 /*
-    Copyright (c) 2020-2021 Xavier Leclercq
+    Copyright (c) 2020-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
 #include "VisualStudioSolutionFile.h"
-#include <Ishiko/UUIDs/UUID.h>
-#include <Ishiko/Text/ASCII.h>
-#include <Ishiko/Errors/StreamUtilities.h>
+#include <Ishiko/UUIDs.hpp>
+#include <Ishiko/IO.hpp>
+#include <Ishiko/Text.hpp>
+#include <Ishiko/Errors.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
-
-using namespace Ishiko::Text;
-using namespace Ishiko::UUIDs;
 
 namespace CodeSmithy
 {
@@ -21,23 +19,23 @@ VisualStudioSolutionFile::VisualStudioSolutionFile()
 {
 }
 
-void VisualStudioSolutionFile::create(const boost::filesystem::path& path, UUIDGenerator& uuidGenerator,
+void VisualStudioSolutionFile::create(const boost::filesystem::path& path, Ishiko::UUIDGenerator& uuidGenerator,
     Ishiko::Error& error)
 {
     std::ofstream file(path.string());
-    if (FailOnFileCreationError(error, file))
+    if (Ishiko::FailIfCreateFileError(file, error))
     {
         return;
     }
 
-    UUID extensibilityUUID = uuidGenerator.generate(error);
+    Ishiko::UUID extensibilityUUID = uuidGenerator.generate(error);
     if (error)
     {
         // TODO: test and delete file?
         return;
     }
     std::string extensibilityUUIDString = extensibilityUUID.toString();
-    ASCII::ToUpperCase(extensibilityUUIDString);
+    Ishiko::ASCII::ToUpperCase(extensibilityUUIDString);
 
     file << "\xEF\xBB\xBF" << std::endl;
     file << "Microsoft Visual Studio Solution File, Format Version 12.00" << std::endl;
@@ -55,28 +53,28 @@ void VisualStudioSolutionFile::create(const boost::filesystem::path& path, UUIDG
 }
 
 void VisualStudioSolutionFile::create(const boost::filesystem::path& path, const MSBuildProjectFile& projectFile,
-    UUIDGenerator& uuidGenerator, Ishiko::Error& error)
+    Ishiko::UUIDGenerator& uuidGenerator, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
 
-    UUID cppProjectTypeUUID("8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942");
+    Ishiko::UUID cppProjectTypeUUID("8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942");
     std::string cppProjectTypeUUIDString = cppProjectTypeUUID.toString();
-    ASCII::ToUpperCase(cppProjectTypeUUIDString);
+    Ishiko::ASCII::ToUpperCase(cppProjectTypeUUIDString);
 
     boost::filesystem::path relativePath = boost::filesystem::relative(projectFile.path(), path.parent_path());
 
-    UUID projectUUID = projectFile.guid();
+    Ishiko::UUID projectUUID = projectFile.guid();
     std::string projectUUIDString = projectUUID.toString();
-    ASCII::ToUpperCase(projectUUIDString);
+    Ishiko::ASCII::ToUpperCase(projectUUIDString);
 
-    UUID extensibilityUUID = uuidGenerator.generate(error);
+    Ishiko::UUID extensibilityUUID = uuidGenerator.generate(error);
     if (error)
     {
         // TODO: test and delete file?
         return;
     }
     std::string extensibilityUUIDString = extensibilityUUID.toString();
-    ASCII::ToUpperCase(extensibilityUUIDString);
+    Ishiko::ASCII::ToUpperCase(extensibilityUUIDString);
 
     file << "\xEF\xBB\xBF" << std::endl;
     file << "Microsoft Visual Studio Solution File, Format Version 12.00" << std::endl;

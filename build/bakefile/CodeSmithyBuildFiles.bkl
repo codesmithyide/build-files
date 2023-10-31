@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/io/include/Ishiko/IO.bkl;
 import $(ishikopath)/text/include/Ishiko/Text.bkl;
 import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
@@ -12,7 +13,7 @@ vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyBuildFiles.sln;
 vs2013.solutionfile = ../vc12/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     includedirs += ../../include/CodeSmithy/BuildFiles;
 
@@ -41,6 +42,13 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
         ../../include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
         ../../include/CodeSmithy/BuildFiles/MSBuildFiltersFile.h
         ../../include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
+
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/Bakefile.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileTarget.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileParser.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileToken.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileTokenizer.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/linkoptions.h
     }
 
     sources
@@ -48,5 +56,11 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
         ../../src/MSBuildProjectFile.cpp
         ../../src/MSBuildFiltersFile.cpp
         ../../src/VisualStudioSolutionFile.cpp
+
+        ../../src/Bakefile.cpp
+        ../../src/BakefileTarget.cpp
+        ../../src/BakefileToken.cpp
+        ../../src/BakefileTokenizer.cpp
+        ../../src/BakefileParser.cpp
     }
 }

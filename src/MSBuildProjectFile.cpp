@@ -1,15 +1,14 @@
 /*
-    Copyright (c) 2020-2021 Xavier Leclercq
+    Copyright (c) 2020-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
 #include "MSBuildProjectFile.h"
-#include <Ishiko/UUIDs/UUID.h>
-#include <Ishiko/Errors/StreamUtilities.h>
+#include <Ishiko/UUIDs.hpp>
+#include <Ishiko/IO.hpp>
+#include <Ishiko/Errors.hpp>
 #include <fstream>
-
-using namespace Ishiko::UUIDs;
 
 namespace CodeSmithy
 {
@@ -25,7 +24,7 @@ void WriteProjectConfiguration(std::ostream& output, const char* configuration, 
     output << "    </ProjectConfiguration>" << std::endl;
 }
 
-void Write(std::ostream& output, const UUID& projectUUID, const std::string& name,
+void Write(std::ostream& output, const Ishiko::UUID& projectUUID, const std::string& name,
     const std::vector<std::string>& headerFiles, const std::vector<std::string>& sourceFiles)
 {
     output << "<?xml version=\"1.0\" encoding=\"utf-8\"?>" << std::endl;
@@ -187,15 +186,15 @@ void Write(std::ostream& output, const UUID& projectUUID, const std::string& nam
 }
 
 void MSBuildProjectFile::create(const boost::filesystem::path& path, const std::string& name,
-    UUIDGenerator& uuidGenerator, Ishiko::Error& error)
+    Ishiko::UUIDGenerator& uuidGenerator, Ishiko::Error& error)
 {
     std::ofstream file(path.string());
-    if (FailOnFileCreationError(error, file))
+    if (Ishiko::FailIfCreateFileError(file, error))
     {
         return;
     }
 
-    UUID projectUUID = uuidGenerator.generate(error);
+    Ishiko::UUID projectUUID = uuidGenerator.generate(error);
     if (error)
     {
         // TODO: test and delete file?
@@ -214,7 +213,7 @@ const std::string& MSBuildProjectFile::name() const
     return m_name;
 }
 
-const UUID& MSBuildProjectFile::guid() const
+const Ishiko::UUID& MSBuildProjectFile::guid() const
 {
     return m_guid;
 }

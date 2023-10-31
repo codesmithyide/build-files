@@ -39,8 +39,8 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
         ../../include/CodeSmithy/BuildFiles.h
 
         ../../include/CodeSmithy/BuildFiles/linkoptions.h
-        ../../include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
-        ../../include/CodeSmithy/BuildFiles/MSBuildFiltersFile.h
+        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
+        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
 
         ../../include/CodeSmithy/BuildFiles/Bakefile/Core/Bakefile.h
@@ -53,8 +53,8 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
 
     sources
     {
-        ../../src/MSBuildProjectFile.cpp
-        ../../src/MSBuildFiltersFile.cpp
+        ../../src/MSBuild/MSBuildProjectFile.cpp
+        ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/VisualStudioSolutionFile.cpp
 
         ../../src/Bakefile.cpp

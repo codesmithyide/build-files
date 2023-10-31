@@ -4,7 +4,7 @@
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#include "MSBuildProjectFile.h"
+#include "MSBuild/MSBuildProjectFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 #include <Ishiko/IO.hpp>
 #include <Ishiko/Errors.hpp>

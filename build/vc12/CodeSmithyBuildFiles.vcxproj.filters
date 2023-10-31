@@ -23,10 +23,10 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuildProjectFile.h">
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuildFiltersFile.h">
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudioSolutionFile.h">
@@ -52,10 +52,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\MSBuildProjectFile.cpp">
+    <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\MSBuildFiltersFile.cpp">
+    <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\VisualStudioSolutionFile.cpp">

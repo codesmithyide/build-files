@@ -50,35 +50,35 @@ _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 builddir = .
 
 ifneq ($(builddir),.)
-_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
+_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../gnumake/
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
-all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a
+all: ../bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefile).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a: $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileToken.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
-	$(AR) rc $@ $(_builddir)CodeSmithyBakefileCore_Bakefile.o $(_builddir)CodeSmithyBakefileCore_BakefileTarget.o $(_builddir)CodeSmithyBakefileCore_BakefileToken.o $(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o $(_builddir)CodeSmithyBakefileCore_BakefileParser.o
+../bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefile).a: $(_builddir)CodeSmithyBakefile_Bakefile.o $(_builddir)CodeSmithyBakefile_BakefileTarget.o $(_builddir)CodeSmithyBakefile_BakefileToken.o $(_builddir)CodeSmithyBakefile_BakefileTokenizer.o $(_builddir)CodeSmithyBakefile_BakefileParser.o
+	$(AR) rc $@ $(_builddir)CodeSmithyBakefile_Bakefile.o $(_builddir)CodeSmithyBakefile_BakefileTarget.o $(_builddir)CodeSmithyBakefile_BakefileToken.o $(_builddir)CodeSmithyBakefile_BakefileTokenizer.o $(_builddir)CodeSmithyBakefile_BakefileParser.o
 	$(RANLIB) $@
 
-$(_builddir)CodeSmithyBakefileCore_Bakefile.o: ../../Source/Bakefile.cpp
+$(_builddir)CodeSmithyBakefile_Bakefile.o: ../../Source/Bakefile.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/Bakefile.cpp
 
-$(_builddir)CodeSmithyBakefileCore_BakefileTarget.o: ../../Source/BakefileTarget.cpp
+$(_builddir)CodeSmithyBakefile_BakefileTarget.o: ../../Source/BakefileTarget.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileTarget.cpp
 
-$(_builddir)CodeSmithyBakefileCore_BakefileToken.o: ../../Source/BakefileToken.cpp
+$(_builddir)CodeSmithyBakefile_BakefileToken.o: ../../Source/BakefileToken.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileToken.cpp
 
-$(_builddir)CodeSmithyBakefileCore_BakefileTokenizer.o: ../../Source/BakefileTokenizer.cpp
+$(_builddir)CodeSmithyBakefile_BakefileTokenizer.o: ../../Source/BakefileTokenizer.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileTokenizer.cpp
 
-$(_builddir)CodeSmithyBakefileCore_BakefileParser.o: ../../Source/BakefileParser.cpp
+$(_builddir)CodeSmithyBakefile_BakefileParser.o: ../../Source/BakefileParser.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Bakefile/Core -std=c++11 ../../Source/BakefileParser.cpp
 
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefileCore).a
+	rm -f ../bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBakefileCore-d,CodeSmithyBakefile).a
 
 .PHONY: all clean
 

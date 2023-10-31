@@ -6,50 +6,39 @@ jobs:
     steps:
       - run: 
           name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/build-files
+          path: /CodeSmithyIDE/BuildFiles
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /CodeSmithyIDE/BuildFiles/Makefiles/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /CodeSmithyIDE/BuildFiles/Tests/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildToolchainsTests
+          command: cd /CodeSmithyIDE/BuildFiles/Tests/Makefiles/GNUmakefile && ./CodeSmithyBuildFilesTests
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.6.0
     steps:
       - run:
           name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/build-files
+          path: /CodeSmithyIDE/BuildFiles
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /CodeSmithyIDE/BuildFiles/Makefiles/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /CodeSmithyIDE/BuildFiles/Tests/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildToolchainsTests
+          command: cd /CodeSmithyIDE/BuildFiles/Tests/Makefiles/GNUmakefile && ./CodeSmithyBuildFilesTests
 workflows:
   version: 2
-  continuous_build:
+  build:
     jobs:
       - bootstrap-build
       - build
-  weekly_build:
-    jobs:
-      - bootstrap-build
-      - build
-    triggers:
-      - schedule:
-          cron: "0 8 * * 0"
-          filters:
-            branches:
-              only:
-                 - main

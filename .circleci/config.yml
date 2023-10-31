@@ -11,7 +11,7 @@ jobs:
           path: /codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/build-files/build/gnumake && make
       - run:
           name: Test build
           command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && make
@@ -29,7 +29,7 @@ jobs:
           path: /codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/build-files/build/gnumake && make
       - run:
           name: Test build
           command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && make

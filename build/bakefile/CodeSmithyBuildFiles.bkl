@@ -4,27 +4,28 @@ import $(ishikopath)/text/include/Ishiko/Text.bkl;
 import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/CodeSmithyBuildFiles.sln;
-vs2015.solutionfile = ../VC14/CodeSmithyBuildFiles.sln;
-vs2013.solutionfile = ../VC12/CodeSmithyBuildFiles.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyBuildFiles.sln;
+vs2013.solutionfile = ../vc12/CodeSmithyBuildFiles.sln;
 
 library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
 {
-    includedirs += ../../Include/CodeSmithy/BuildFiles;
+    includedirs += ../../include/CodeSmithy/BuildFiles;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../Lib;
+        outputdir = ../../lib;
     }
 
     if ($(toolset) != gnu)
     {
         archs = x86 x86_64;
-        outputdir = ../../Lib/$(arch);
+        outputdir = ../../lib/$(arch);
     }
 
     if ($(config) == Debug)
@@ -34,18 +35,18 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoText, IshikoErrors, Boost
 
     headers
     {
-        ../../Include/CodeSmithy/BuildFiles.h
+        ../../include/CodeSmithy/BuildFiles.h
 
-        ../../Include/CodeSmithy/BuildFiles/linkoptions.h
-        ../../Include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
-        ../../Include/CodeSmithy/BuildFiles/MSBuildFiltersFile.h
-        ../../Include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
+        ../../include/CodeSmithy/BuildFiles/linkoptions.h
+        ../../include/CodeSmithy/BuildFiles/MSBuildProjectFile.h
+        ../../include/CodeSmithy/BuildFiles/MSBuildFiltersFile.h
+        ../../include/CodeSmithy/BuildFiles/VisualStudioSolutionFile.h
     }
 
     sources
     {
-        ../../Source/MSBuildProjectFile.cpp
-        ../../Source/MSBuildFiltersFile.cpp
-        ../../Source/VisualStudioSolutionFile.cpp
+        ../../src/MSBuildProjectFile.cpp
+        ../../src/MSBuildFiltersFile.cpp
+        ../../src/VisualStudioSolutionFile.cpp
     }
 }

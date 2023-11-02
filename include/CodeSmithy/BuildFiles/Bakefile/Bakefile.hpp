@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,22 +20,26 @@
     IN THE SOFTWARE.
 */
 
-#include "Bakefile.h"
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILE_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILE_HPP
+
+#include "BakefileTarget.hpp"
+#include <vector>
+#include <memory>
 
 namespace CodeSmithy
 {
+    class Bakefile
+    {
+    public:
+        Bakefile();
+        ~Bakefile();
 
-Bakefile::Bakefile()
-{
+        std::vector<std::shared_ptr<BakefileTarget> >& targets();
+
+    private:
+        std::vector<std::shared_ptr<BakefileTarget>> m_targets;
+    };
 }
 
-Bakefile::~Bakefile()
-{
-}
-
-std::vector<std::shared_ptr<BakefileTarget> >& Bakefile::targets()
-{
-    return m_targets;
-}
-
-}
+#endif

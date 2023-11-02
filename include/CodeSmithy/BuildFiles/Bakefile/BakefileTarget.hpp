@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,17 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTarget.h"
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETARGET_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETARGET_HPP
 
 namespace CodeSmithy
 {
-
-BakefileTarget::BakefileTarget()
-{
+    class BakefileTarget
+    {
+    public:
+        BakefileTarget();
+        ~BakefileTarget();
+    };
 }
 
-BakefileTarget::~BakefileTarget()
-{
-}
-
-}
+#endif

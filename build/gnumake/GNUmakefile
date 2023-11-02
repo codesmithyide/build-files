@@ -89,9 +89,24 @@ ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/text
 
 all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuildFiles-d,CodeSmithyBuildFiles).a
 
-../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuildFiles-d,CodeSmithyBuildFiles).a: $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o $(_builddir)CodeSmithyBuildFiles_Bakefile.o $(_builddir)CodeSmithyBuildFiles_BakefileTarget.o $(_builddir)CodeSmithyBuildFiles_BakefileToken.o $(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o $(_builddir)CodeSmithyBuildFiles_BakefileParser.o
-	$(AR) rc $@ $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o $(_builddir)CodeSmithyBuildFiles_Bakefile.o $(_builddir)CodeSmithyBuildFiles_BakefileTarget.o $(_builddir)CodeSmithyBuildFiles_BakefileToken.o $(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o $(_builddir)CodeSmithyBuildFiles_BakefileParser.o
+../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyBuildFiles-d,CodeSmithyBuildFiles).a: $(_builddir)CodeSmithyBuildFiles_Bakefile.o $(_builddir)CodeSmithyBuildFiles_BakefileParser.o $(_builddir)CodeSmithyBuildFiles_BakefileTarget.o $(_builddir)CodeSmithyBuildFiles_BakefileToken.o $(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o
+	$(AR) rc $@ $(_builddir)CodeSmithyBuildFiles_Bakefile.o $(_builddir)CodeSmithyBuildFiles_BakefileParser.o $(_builddir)CodeSmithyBuildFiles_BakefileTarget.o $(_builddir)CodeSmithyBuildFiles_BakefileToken.o $(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o
 	$(RANLIB) $@
+
+$(_builddir)CodeSmithyBuildFiles_Bakefile.o: ../../src/Bakefile/Bakefile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile/Bakefile.cpp
+
+$(_builddir)CodeSmithyBuildFiles_BakefileParser.o: ../../src/Bakefile/BakefileParser.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile/BakefileParser.cpp
+
+$(_builddir)CodeSmithyBuildFiles_BakefileTarget.o: ../../src/Bakefile/BakefileTarget.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile/BakefileTarget.cpp
+
+$(_builddir)CodeSmithyBuildFiles_BakefileToken.o: ../../src/Bakefile/BakefileToken.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile/BakefileToken.cpp
+
+$(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o: ../../src/Bakefile/BakefileTokenizer.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile/BakefileTokenizer.cpp
 
 $(_builddir)CodeSmithyBuildFiles_MSBuildProjectFile.o: ../../src/MSBuild/MSBuildProjectFile.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/MSBuild/MSBuildProjectFile.cpp
@@ -101,21 +116,6 @@ $(_builddir)CodeSmithyBuildFiles_MSBuildFiltersFile.o: ../../src/MSBuild/MSBuild
 
 $(_builddir)CodeSmithyBuildFiles_VisualStudioSolutionFile.o: ../../src/VisualStudio/VisualStudioSolutionFile.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/VisualStudio/VisualStudioSolutionFile.cpp
-
-$(_builddir)CodeSmithyBuildFiles_Bakefile.o: ../../src/Bakefile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/Bakefile.cpp
-
-$(_builddir)CodeSmithyBuildFiles_BakefileTarget.o: ../../src/BakefileTarget.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/BakefileTarget.cpp
-
-$(_builddir)CodeSmithyBuildFiles_BakefileToken.o: ../../src/BakefileToken.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/BakefileToken.cpp
-
-$(_builddir)CodeSmithyBuildFiles_BakefileTokenizer.o: ../../src/BakefileTokenizer.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/BakefileTokenizer.cpp
-
-$(_builddir)CodeSmithyBuildFiles_BakefileParser.o: ../../src/BakefileParser.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I../../include/CodeSmithy/BuildFiles -std=c++11 ../../src/BakefileParser.cpp
 
 clean:
 	rm -f $(_builddir)*.o

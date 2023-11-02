@@ -37,30 +37,28 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
     headers
     {
         ../../include/CodeSmithy/BuildFiles.h
-
         ../../include/CodeSmithy/BuildFiles/linkoptions.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileParser.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
 
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/Bakefile.h
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileTarget.h
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileParser.h
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileToken.h
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/BakefileTokenizer.h
         ../../include/CodeSmithy/BuildFiles/Bakefile/Core/linkoptions.h
     }
 
     sources
     {
+        ../../src/Bakefile/Bakefile.cpp
+        ../../src/Bakefile/BakefileParser.cpp
+        ../../src/Bakefile/BakefileTarget.cpp
+        ../../src/Bakefile/BakefileToken.cpp
+        ../../src/Bakefile/BakefileTokenizer.cpp
         ../../src/MSBuild/MSBuildProjectFile.cpp
         ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp
-
-        ../../src/Bakefile.cpp
-        ../../src/BakefileTarget.cpp
-        ../../src/BakefileToken.cpp
-        ../../src/BakefileTokenizer.cpp
-        ../../src/BakefileParser.cpp
     }
 }

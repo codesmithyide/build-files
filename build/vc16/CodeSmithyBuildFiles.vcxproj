@@ -170,7 +170,6 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

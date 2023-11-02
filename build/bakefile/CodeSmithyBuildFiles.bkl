@@ -46,8 +46,6 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
-
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Core/linkoptions.h
     }
 
     sources

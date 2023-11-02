@@ -47,9 +47,6 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Core\linkoptions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Bakefile\Bakefile.cpp">

@@ -1,5 +1,9 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/UUIDs/Include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/io/include/Ishiko/IO.bkl;
+import $(ishikopath)/text/include/Ishiko/Text.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
 setting CODESMITHYIDE_BUILDFILES_ROOT
 {
@@ -7,17 +11,17 @@ setting CODESMITHYIDE_BUILDFILES_ROOT
     default = '$(CODESMITHYIDE)/BuildFiles';
 }
 
-template CodeSmithyBuildFiles : IshikoUUIDs
+template CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
 {
-    includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Include;
+    includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Lib;
+        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/Lib/$(arch);
+        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/lib/$(arch);
     }
 }

@@ -4,7 +4,7 @@
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#include "MSBuildFiltersFile.h"
+#include "MSBuild/MSBuildFiltersFile.hpp"
 #include <Ishiko/IO.hpp>
 #include <Ishiko/Errors.hpp>
 #include <fstream>

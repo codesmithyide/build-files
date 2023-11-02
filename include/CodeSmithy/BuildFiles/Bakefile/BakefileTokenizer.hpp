@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,30 +20,32 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTokenizer.h"
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETOKENIZER_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETOKENIZER_HPP
+
+#include "BakefileToken.hpp"
+#include <istream>
 
 namespace CodeSmithy
 {
-
-BakefileTokenizer::BakefileTokenizer(std::istream& input)
-    : m_input(input)
-{
-}
-
-BakefileTokenizer::~BakefileTokenizer()
-{
-}
-
-int BakefileTokenizer::getNextToken(BakefileToken& token)
-{
-    const int bufferSize = 1024;
-    std::string buffer;
-    buffer.reserve(bufferSize);
-    while (m_input.get(&buffer[0], bufferSize))
+    class BakefileTokenizer
     {
-    }
+    public:
+        enum EState
+        {
+            eTokenExtracted = 0,
+            eEnd = 1
+        };
 
-    return eEnd;
+    public:
+        BakefileTokenizer(std::istream& input);
+        ~BakefileTokenizer();
+
+        int getNextToken(BakefileToken& token);
+
+    private:
+        std::istream& m_input;
+    };
 }
 
-}
+#endif

@@ -20,13 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_BAKEFILE_CORE_LINKOPTIONS_H_
-#define _CODESMITHY_BAKEFILE_CORE_LINKOPTIONS_H_
+#include "Bakefile/BakefileTarget.hpp"
 
-#ifdef _DEBUG
-#pragma comment(lib, "CodeSmithyBakefileCore-d.lib")
-#else
-#pragma comment(lib, "CodeSmithyBakefileCore.lib")
-#endif
+CodeSmithy::BakefileTarget::BakefileTarget()
+{
+}
 
-#endif
+CodeSmithy::BakefileTarget::~BakefileTarget()
+{
+}

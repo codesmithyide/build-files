@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,17 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileToken.h"
+#include "Bakefile/Bakefile.hpp"
 
-namespace CodeSmithy
-{
-
-BakefileToken::BakefileToken()
+CodeSmithy::Bakefile::Bakefile()
 {
 }
 
-BakefileToken::~BakefileToken()
+CodeSmithy::Bakefile::~Bakefile()
 {
 }
 
+std::vector<std::shared_ptr<CodeSmithy::BakefileTarget>>& CodeSmithy::Bakefile::targets()
+{
+    return m_targets;
 }

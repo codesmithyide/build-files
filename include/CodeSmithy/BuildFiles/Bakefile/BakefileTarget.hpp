@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,36 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKENIZER_H_
-#define _CODESMITHY_BAKEFILE_CORE_BAKEFILETOKENIZER_H_
-
-#include "BakefileToken.h"
-#include <istream>
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETARGET_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILETARGET_HPP
 
 namespace CodeSmithy
 {
-
-class BakefileTokenizer
-{
-public:
-    enum EState
+    class BakefileTarget
     {
-        eTokenExtracted = 0,
-        eEnd = 1
+    public:
+        BakefileTarget();
+        ~BakefileTarget();
     };
-
-public:
-    BakefileTokenizer(std::istream& input);
-    ~BakefileTokenizer();
-
-    int getNextToken(BakefileToken& token);
-
-private:
-    std::istream& m_input;
-};
-
 }
-
-#include "linkoptions.h"
 
 #endif

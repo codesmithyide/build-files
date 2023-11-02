@@ -4,7 +4,7 @@
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#include "VisualStudioSolutionFile.h"
+#include "VisualStudio/VisualStudioSolutionFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 #include <Ishiko/IO.hpp>
 #include <Ishiko/Text.hpp>

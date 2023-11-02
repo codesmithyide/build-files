@@ -20,30 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_BAKEFILE_CORE_BAKEFILE_H_
-#define _CODESMITHY_BAKEFILE_CORE_BAKEFILE_H_
+#include "Bakefile/BakefileTarget.hpp"
 
-#include "BakefileTarget.h"
-#include <vector>
-#include <memory>
-
-namespace CodeSmithy
+CodeSmithy::BakefileTarget::BakefileTarget()
 {
-
-class Bakefile
-{
-public:
-    Bakefile();
-    ~Bakefile();
-
-    std::vector<std::shared_ptr<BakefileTarget> >& targets();
-
-private:
-    std::vector<std::shared_ptr<BakefileTarget> > m_targets;
-};
-
 }
 
-#include "linkoptions.h"
-
-#endif
+CodeSmithy::BakefileTarget::~BakefileTarget()
+{
+}

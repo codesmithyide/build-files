@@ -5,8 +5,8 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.5.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variables"
+          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
       - checkout:
           path: /codesmithyide/build-files
       - run:
@@ -23,8 +23,8 @@ jobs:
       - image: codesmithy/gcc-build-prerequisites:0.6.0
     steps:
       - run:
-          name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variables"
+          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
       - checkout:
           path: /codesmithyide/build-files
       - run:

@@ -16,7 +16,8 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyBuildFiles IshikoUUIDs IshikoTestFrameworkCore IshikoProcess IshikoText IshikoErrors boost_filesystem;
+        libs += CodeSmithyBuildFiles IshikoUUIDs IshikoTestFrameworkCore IshikoProcess IshikoText IshikoErrors;
+        libs += boost_filesystem;
     }
 
     if ($(toolset) != gnu)
@@ -26,16 +27,16 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
 
     headers
     {
-        ../../Source/MSBuildProjectFileTests.h
-        ../../Source/MSBuildFiltersFileTests.h
-        ../../Source/VisualStudioSolutionFileTests.h
+        ../../src/MSBuildProjectFileTests.h
+        ../../src/MSBuildFiltersFileTests.h
+        ../../src/VisualStudioSolutionFileTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
-        ../../Source/MSBuildProjectFileTests.cpp
-        ../../Source/MSBuildFiltersFileTests.cpp
-        ../../Source/VisualStudioSolutionFileTests.cpp
+        ../../src/main.cpp
+        ../../src/MSBuildProjectFileTests.cpp
+        ../../src/MSBuildFiltersFileTests.cpp
+        ../../src/VisualStudioSolutionFileTests.cpp
     }
 }

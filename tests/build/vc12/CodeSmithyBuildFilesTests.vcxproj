@@ -156,15 +156,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp" />
-    <ClCompile Include="..\..\Source\MSBuildProjectFileTests.cpp" />
-    <ClCompile Include="..\..\Source\MSBuildFiltersFileTests.cpp" />
-    <ClCompile Include="..\..\Source\VisualStudioSolutionFileTests.cpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildFiltersFileTests.cpp" />
+    <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\MSBuildProjectFileTests.h" />
-    <ClInclude Include="..\..\Source\MSBuildFiltersFileTests.h" />
-    <ClInclude Include="..\..\Source\VisualStudioSolutionFileTests.h" />
+    <ClInclude Include="..\..\src\MSBuildProjectFileTests.h" />
+    <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h" />
+    <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

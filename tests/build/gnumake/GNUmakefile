@@ -91,7 +91,7 @@ ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
 # Path to the Ishiko/Text installation
 ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/text
 # Path to the CodeSmithyIDE/BuildFiles installation
-CODESMITHYIDE_BUILDFILES_ROOT ?= $(CODESMITHYIDE)/BuildFiles
+CODESMITHYIDE_BUILDFILES_ROOT ?= $(CODESMITHYIDE_ROOT)/build-files
 # Path to the Ishiko Configuration installation
 ISHIKO_CPP_CONFIGURATION_ROOT ?= $(ISHIKO_CPP)/configuration
 # Path to the Ishiko FileSystem installation

@@ -8,7 +8,7 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 setting CODESMITHYIDE_BUILDFILES_ROOT
 {
     help = "Path to the CodeSmithyIDE/BuildFiles installation";
-    default = '$(CODESMITHYIDE)/BuildFiles';
+    default = '$(CODESMITHYIDE_ROOT)/build-files';
 }
 
 template CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost

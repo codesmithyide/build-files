@@ -17,27 +17,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\MSBuildProjectFileTests.h">
+    <ClInclude Include="..\..\src\MSBuildProjectFileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MSBuildFiltersFileTests.h">
+    <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\VisualStudioSolutionFileTests.h">
+    <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp">
+    <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MSBuildProjectFileTests.cpp">
+    <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MSBuildFiltersFileTests.cpp">
+    <ClCompile Include="..\..\src\MSBuildFiltersFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\VisualStudioSolutionFileTests.cpp">
+    <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

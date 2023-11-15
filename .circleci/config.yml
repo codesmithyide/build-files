@@ -5,8 +5,8 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.5.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variables"
+          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
       - checkout:
           path: /codesmithyide/build-files
       - run:
@@ -14,17 +14,28 @@ jobs:
           command: cd /codesmithyide/build-files/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/build-files/tests/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && ./CodeSmithyBuildFilesTests
+          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+      - store_artifacts:
+          name: Upload test output files
+          path: /build/test-output
+          destination: test-output
+      - store_artifacts:
+          name: Upload test report files
+          path: /build/test-results/CodeSmithyBuildFiles.xml
+          destination: CodeSmithyBuildFiles-test-results.xml
+      - store_test_results:
+          name: Upload test results to CircleCI
+          path: /build/test-results/CodeSmithyBuildFiles.xml
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.6.0
+      - image: codesmithy/gcc-build-prerequisites:0.7.0
     steps:
       - run:
-          name: "Set CODESMITHYIDE environment variables"
-          command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variables"
+          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
       - checkout:
           path: /codesmithyide/build-files
       - run:
@@ -32,10 +43,21 @@ jobs:
           command: cd /codesmithyide/build-files/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/build-files/tests/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/Tests/Makefiles/GNUmakefile && ./CodeSmithyBuildFilesTests
+          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+      - store_artifacts:
+          name: Upload test output files
+          path: /build/test-output
+          destination: test-output
+      - store_artifacts:
+          name: Upload test report files
+          path: /build/test-results/CodeSmithyBuildFiles.xml
+          destination: CodeSmithyBuildFiles-test-results.xml
+      - store_test_results:
+          name: Upload test results to CircleCI
+          path: /build/test-results/CodeSmithyBuildFiles.xml
 workflows:
   version: 2
   continuous_build:

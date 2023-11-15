@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 
     Ishiko::TestHarness theTestHarness("CodeSmithyBuildFiles", configuration);
 
-    theTestHarness.context().setOutputDirectory("../../TestOutput");
-    theTestHarness.context().setReferenceDirectory("../../ReferenceData");
+    theTestHarness.context().setOutputDirectory("../../output");
+    theTestHarness.context().setReferenceDirectory("../../reference");
 
     Ishiko::TestSequence& theTests = theTestHarness.tests();
     theTests.append<MSBuildProjectFileTests>();

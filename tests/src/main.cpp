@@ -12,7 +12,11 @@
 
 int main(int argc, char* argv[])
 {
-    Ishiko::TestHarness theTestHarness("CodeSmithyBuildFiles");
+    Ishiko::TestHarness::CommandLineSpecification commandLineSpec;
+    Ishiko::Configuration configuration = commandLineSpec.createDefaultConfiguration();
+    Ishiko::CommandLineParser::parse(commandLineSpec, argc, argv, configuration);
+
+    Ishiko::TestHarness theTestHarness("CodeSmithyBuildFiles", configuration);
 
     theTestHarness.context().setOutputDirectory("../../TestOutput");
     theTestHarness.context().setReferenceDirectory("../../ReferenceData");

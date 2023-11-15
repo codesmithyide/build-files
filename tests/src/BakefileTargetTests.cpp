@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,19 +21,17 @@
 */
 
 #include "BakefileTargetTests.h"
-#include "CodeSmithy/Bakefile/Core/BakefileTarget.h"
+#include "CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp"
 
-using namespace Ishiko::Tests;
-
-BakefileTargetTests::BakefileTargetTests(const TestNumber& number, const TestEnvironment& environment)
-	: TestSequence(number, "BakefileTarget tests", environment)
+BakefileTargetTests::BakefileTargetTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+	: Ishiko::TestSequence(number, "BakefileTarget tests", context)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-void BakefileTargetTests::CreationTest1(Test& test)
+void BakefileTargetTests::CreationTest1(Ishiko::Test& test)
 {
     CodeSmithy::BakefileTarget target;
     
-	ISHTF_PASS();
+	ISHIKO_TEST_PASS();
 }

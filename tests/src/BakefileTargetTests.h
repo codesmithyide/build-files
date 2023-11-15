@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,15 +23,15 @@
 #ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETARGETTESTS_H_
 #define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETARGETTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/TestFramework.hpp>
 
-class BakefileTargetTests : public Ishiko::Tests::TestSequence
+class BakefileTargetTests : public Ishiko::TestSequence
 {
 public:
-	BakefileTargetTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+	BakefileTargetTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-	static void CreationTest1(Ishiko::Tests::Test& test);
+	static void CreationTest1(Ishiko::Test& test);
 };
 
 #endif

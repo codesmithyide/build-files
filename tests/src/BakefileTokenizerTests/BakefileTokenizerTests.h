@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,16 +23,16 @@
 #ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
 #define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/TestFramework.hpp>
 
-class BakefileTokenizerTests : public Ishiko::Tests::TestSequence
+class BakefileTokenizerTests : public Ishiko::TestSequence
 {
 public:
-	BakefileTokenizerTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+	BakefileTokenizerTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-	static void CreationTest1(Ishiko::Tests::Test& test);
-	static void GetNextToken(Ishiko::Tests::Test& test);
+	static void CreationTest1(Ishiko::Test& test);
+	static void GetNextToken(Ishiko::Test& test);
 };
 
 #endif

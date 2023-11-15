@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,19 +21,17 @@
 */
 
 #include "BakefileTokenTests.h"
-#include "CodeSmithy/Bakefile/Core/BakefileToken.h"
+#include "CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp"
 
-using namespace Ishiko::Tests;
-
-BakefileTokenTests::BakefileTokenTests(const TestNumber& number, const TestEnvironment& environment)
-	: TestSequence(number, "BakefileToken tests", environment)
+BakefileTokenTests::BakefileTokenTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+	: Ishiko::TestSequence(number, "BakefileToken tests", context)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-void BakefileTokenTests::CreationTest1(Test& test)
+void BakefileTokenTests::CreationTest1(Ishiko::Test& test)
 {
     CodeSmithy::BakefileToken token;
     
-	ISHTF_PASS();
+	ISHIKO_TEST_PASS();
 }

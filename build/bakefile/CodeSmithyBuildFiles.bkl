@@ -1,0 +1,62 @@
+ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/io/include/Ishiko/IO.bkl;
+import $(ishikopath)/text/include/Ishiko/Text.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyBuildFiles.sln;
+vs2013.solutionfile = ../vc12/CodeSmithyBuildFiles.sln;
+
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+{
+    includedirs += ../../include/CodeSmithy/BuildFiles;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyBuildFiles-d;
+    }
+
+    headers
+    {
+        ../../include/CodeSmithy/BuildFiles.h
+        ../../include/CodeSmithy/BuildFiles/linkoptions.h
+        ../../include/CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileParser.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
+        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
+        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
+        ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
+    }
+
+    sources
+    {
+        ../../src/Bakefile/Bakefile.cpp
+        ../../src/Bakefile/BakefileParser.cpp
+        ../../src/Bakefile/BakefileTarget.cpp
+        ../../src/Bakefile/BakefileToken.cpp
+        ../../src/Bakefile/BakefileTokenizer.cpp
+        ../../src/MSBuild/MSBuildProjectFile.cpp
+        ../../src/MSBuild/MSBuildFiltersFile.cpp
+        ../../src/VisualStudio/VisualStudioSolutionFile.cpp
+    }
+}

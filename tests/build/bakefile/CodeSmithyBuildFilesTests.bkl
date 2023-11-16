@@ -1,0 +1,52 @@
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
+import $(codesmithyidepath)/build-files/include/CodeSmithy/CodeSmithyBuildFiles.bkl;
+ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
+
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/CodeSmithyBuildFilesTests.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyBuildFilesTests.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyBuildFilesTests.sln;
+vs2013.solutionfile = ../vc12/CodeSmithyBuildFilesTests.sln;
+
+program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += CodeSmithyBuildFiles IshikoUUIDs IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors;
+        libs += fmt boost_filesystem;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
+
+    headers
+    {
+        ../../src/BakefileTargetTests.h
+        ../../src/BakefileTokenTests.h
+        ../../src/BakefileTests/BakefileTests.h
+        ../../src/BakefileParserTests/BakefileParserTests.h
+        ../../src/BakefileTokenizerTests/BakefileTokenizerTests.h
+        ../../src/MSBuildProjectFileTests.h
+        ../../src/MSBuildFiltersFileTests.h
+        ../../src/VisualStudioSolutionFileTests.h
+    }
+
+    sources
+    {
+        ../../src/BakefileTargetTests.cpp
+        ../../src/BakefileTokenTests.cpp
+        ../../src/BakefileTests/BakefileTests.cpp
+        ../../src/BakefileParserTests/BakefileParserTests.cpp
+        ../../src/BakefileTokenizerTests/BakefileTokenizerTests.cpp
+        ../../src/main.cpp
+        ../../src/MSBuildProjectFileTests.cpp
+        ../../src/MSBuildFiltersFileTests.cpp
+        ../../src/VisualStudioSolutionFileTests.cpp
+    }
+}

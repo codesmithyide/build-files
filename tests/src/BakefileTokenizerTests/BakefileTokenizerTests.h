@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,27 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileTargetTests.h"
-#include "BakefileTests/BakefileTests.h"
-#include "BakefileTokenTests.h"
-#include "BakefileTokenizerTests/BakefileTokenizerTests.h"
-#include "BakefileParserTests/BakefileParserTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
+#define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
 
-using namespace Ishiko::Tests;
+#include <Ishiko/TestFramework.hpp>
 
-int main(int argc, char* argv[])
+class BakefileTokenizerTests : public Ishiko::TestSequence
 {
-    Ishiko::Tests::TestHarness theTestHarness("CodeSmithyBakefileCore");
+public:
+	BakefileTokenizerTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
-	theTestHarness.environment().setTestDataDirectory("../../TestData");
+private:
+	static void CreationTest1(Ishiko::Test& test);
+	static void GetNextToken(Ishiko::Test& test);
+};
 
-	TestSequence& theTests = theTestHarness.tests();
-	theTests.append<BakefileTargetTests>();
-	theTests.append<BakefileTests>();
-	theTests.append<BakefileTokenTests>();
-	theTests.append<BakefileTokenizerTests>();
-	theTests.append<BakefileParserTests>();
-
-    return theTestHarness.run();
-}
+#endif

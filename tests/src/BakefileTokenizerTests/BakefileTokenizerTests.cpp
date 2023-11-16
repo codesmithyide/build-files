@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,36 +21,34 @@
 */
 
 #include "BakefileTokenizerTests.h"
-#include "CodeSmithy/Bakefile/Core/BakefileTokenizer.h"
+#include "CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp"
 #include <fstream>
 
-using namespace Ishiko::Tests;
-
-BakefileTokenizerTests::BakefileTokenizerTests(const TestNumber& number, const TestEnvironment& environment)
-	: TestSequence(number, "BakefileTokenizer tests", environment)
+BakefileTokenizerTests::BakefileTokenizerTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+	: Ishiko::TestSequence(number, "BakefileTokenizer tests", context)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-	append<HeapAllocationErrorsTest>("getNextToken test 1", GetNextToken);
+	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+	append<Ishiko::HeapAllocationErrorsTest>("getNextToken test 1", GetNextToken);
 }
 
-void BakefileTokenizerTests::CreationTest1(Test& test)
+void BakefileTokenizerTests::CreationTest1(Ishiko::Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
+    boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileTokenizer tokenizer(input);
 
-	ISHTF_PASS();
+	ISHIKO_TEST_PASS();
 }
 
-void BakefileTokenizerTests::GetNextToken(Test& test)
+void BakefileTokenizerTests::GetNextToken(Ishiko::Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "MinimalBakefile.bkl");
+    boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
     CodeSmithy::BakefileTokenizer tokenizer(input);
     CodeSmithy::BakefileToken token;
 
-	ISHTF_FAIL_UNLESS(tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd);
-	ISHTF_PASS();
+	ISHIKO_TEST_FAIL_IF_NOT(tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd);
+    ISHIKO_TEST_PASS();
 }

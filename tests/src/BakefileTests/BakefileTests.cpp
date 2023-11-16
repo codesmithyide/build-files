@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2019 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,19 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
-#define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILETOKENIZERTESTS_BAKEFILETOKENIZERTESTS_H_
+#include "BakefileTests.h"
+#include "CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp"
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
-
-class BakefileTokenizerTests : public Ishiko::Tests::TestSequence
+BakefileTests::BakefileTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+	: Ishiko::TestSequence(number, "Bakefile tests", context)
 {
-public:
-	BakefileTokenizerTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+}
 
-private:
-	static void CreationTest1(Ishiko::Tests::Test& test);
-	static void GetNextToken(Ishiko::Tests::Test& test);
-};
+void BakefileTests::CreationTest1(Ishiko::Test& test)
+{
+    CodeSmithy::Bakefile bakefile;
 
-#endif
+	ISHIKO_TEST_PASS();
+}

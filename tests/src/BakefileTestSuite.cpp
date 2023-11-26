@@ -5,7 +5,6 @@
 */
 
 #include "BakefileTestSuite.hpp"
-
 #include "BakefileTestSuite/BakefileTargetTests.h"
 #include "BakefileTestSuite/BakefileTests.h"
 #include "BakefileTestSuite/BakefileTokenTests.h"

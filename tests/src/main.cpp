@@ -5,8 +5,7 @@
 */
 
 #include "BakefileTestSuite.hpp"
-#include "MSBuildTestSuite/MSBuildProjectFileTests.h"
-#include "MSBuildTestSuite/MSBuildFiltersFileTests.h"
+#include "MSBuildTestSuite.hpp"
 #include "VisualStudioSolutionFileTests.h"
 #include "CodeSmithy/BuildFiles/linkoptions.h"
 #include <Ishiko/TestFramework.hpp>
@@ -25,8 +24,7 @@ int main(int argc, char* argv[])
 
     Ishiko::TestSequence& theTests = theTestHarness.tests();
     theTests.append<BakefileTestSuite>();
-    theTests.append<MSBuildProjectFileTests>();
-    theTests.append<MSBuildFiltersFileTests>();
+    theTests.append<MSBuildTestSuite>();
     theTests.append<VisualStudioSolutionFileTests>();
 
     return theTestHarness.run();

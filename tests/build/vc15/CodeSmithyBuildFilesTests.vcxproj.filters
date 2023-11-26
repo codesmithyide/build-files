@@ -17,19 +17,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\BakefileTargetTests.h">
+    <ClInclude Include="..\..\src\BakefileTests\BakefileParserTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTokenTests.h">
+    <ClInclude Include="..\..\src\BakefileTests\BakefileTargetTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BakefileTests\BakefileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileParserTests\BakefileParserTests.h">
+    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenizerTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTokenizerTests\BakefileTokenizerTests.h">
+    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\MSBuildProjectFileTests.h">
@@ -43,19 +43,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\BakefileTargetTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTests\BakefileParserTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTokenTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTests\BakefileTargetTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BakefileTests\BakefileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileParserTests\BakefileParserTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenizerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTokenizerTests\BakefileTokenizerTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\main.cpp">

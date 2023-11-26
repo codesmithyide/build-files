@@ -4,11 +4,11 @@
     See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
 */
 
-#include "BakefileTargetTests.h"
+#include "BakefileTests/BakefileTargetTests.h"
 #include "BakefileTests/BakefileTests.h"
-#include "BakefileTokenTests.h"
-#include "BakefileTokenizerTests/BakefileTokenizerTests.h"
-#include "BakefileParserTests/BakefileParserTests.h"
+#include "BakefileTests/BakefileTokenTests.h"
+#include "BakefileTests/BakefileTokenizerTests.h"
+#include "BakefileTests/BakefileParserTests.h"
 #include "MSBuildProjectFileTests.h"
 #include "MSBuildFiltersFileTests.h"
 #include "VisualStudioSolutionFileTests.h"

@@ -6,11 +6,11 @@
 
 #include "BakefileTestSuite.hpp"
 
-#include "BakefileTests/BakefileTargetTests.h"
-#include "BakefileTests/BakefileTests.h"
-#include "BakefileTests/BakefileTokenTests.h"
-#include "BakefileTests/BakefileTokenizerTests.h"
-#include "BakefileTests/BakefileParserTests.h"
+#include "BakefileTestSuite/BakefileTargetTests.h"
+#include "BakefileTestSuite/BakefileTests.h"
+#include "BakefileTestSuite/BakefileTokenTests.h"
+#include "BakefileTestSuite/BakefileTokenizerTests.h"
+#include "BakefileTestSuite/BakefileParserTests.h"
 
 BakefileTestSuite::BakefileTestSuite(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
     : Ishiko::TestSequence(number, "Bakefile test suite", context)

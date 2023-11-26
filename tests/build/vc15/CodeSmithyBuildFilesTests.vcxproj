@@ -156,11 +156,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileParserTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTargetTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenizerTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileParserTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTargetTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp" />
@@ -168,11 +168,11 @@
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileParserTests.h" />
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTargetTests.h" />
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTests.h" />
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenizerTests.h" />
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileParserTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTargetTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
     <ClInclude Include="..\..\src\MSBuildProjectFileTests.h" />
     <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h" />

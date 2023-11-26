@@ -27,11 +27,11 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
 
     headers
     {
-        ../../src/BakefileTests/BakefileParserTests.h
-        ../../src/BakefileTests/BakefileTargetTests.h
-        ../../src/BakefileTests/BakefileTests.h
-        ../../src/BakefileTests/BakefileTokenizerTests.h
-        ../../src/BakefileTests/BakefileTokenTests.h
+        ../../src/BakefileTestSuite/BakefileParserTests.h
+        ../../src/BakefileTestSuite/BakefileTargetTests.h
+        ../../src/BakefileTestSuite/BakefileTests.h
+        ../../src/BakefileTestSuite/BakefileTokenizerTests.h
+        ../../src/BakefileTestSuite/BakefileTokenTests.h
         ../../src/BakefileTestSuite.hpp
         ../../src/MSBuildProjectFileTests.h
         ../../src/MSBuildFiltersFileTests.h
@@ -40,11 +40,11 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
 
     sources
     {
-        ../../src/BakefileTests/BakefileParserTests.cpp
-        ../../src/BakefileTests/BakefileTargetTests.cpp
-        ../../src/BakefileTests/BakefileTests.cpp
-        ../../src/BakefileTests/BakefileTokenizerTests.cpp
-        ../../src/BakefileTests/BakefileTokenTests.cpp
+        ../../src/BakefileTestSuite/BakefileParserTests.cpp
+        ../../src/BakefileTestSuite/BakefileTargetTests.cpp
+        ../../src/BakefileTestSuite/BakefileTests.cpp
+        ../../src/BakefileTestSuite/BakefileTokenizerTests.cpp
+        ../../src/BakefileTestSuite/BakefileTokenTests.cpp
         ../../src/BakefileTestSuite.cpp
         ../../src/main.cpp
         ../../src/MSBuildProjectFileTests.cpp

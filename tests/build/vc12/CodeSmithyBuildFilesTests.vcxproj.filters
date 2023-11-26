@@ -17,19 +17,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileParserTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileParserTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTargetTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTargetTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenizerTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTokenTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp">
@@ -46,19 +46,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileParserTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileParserTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTargetTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTargetTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenizerTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTokenTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp">

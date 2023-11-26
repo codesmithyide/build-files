@@ -161,6 +161,7 @@
     <ClCompile Include="..\..\src\BakefileTests\BakefileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTests\BakefileTokenizerTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTests\BakefileTokenTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildFiltersFileTests.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="..\..\src\BakefileTests\BakefileTests.h" />
     <ClInclude Include="..\..\src\BakefileTests\BakefileTokenizerTests.h" />
     <ClInclude Include="..\..\src\BakefileTests\BakefileTokenTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
     <ClInclude Include="..\..\src\MSBuildProjectFileTests.h" />
     <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h" />
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />

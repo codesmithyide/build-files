@@ -32,6 +32,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTests/BakefileTests.h
         ../../src/BakefileTests/BakefileTokenizerTests.h
         ../../src/BakefileTests/BakefileTokenTests.h
+        ../../src/BakefileTestSuite.hpp
         ../../src/MSBuildProjectFileTests.h
         ../../src/MSBuildFiltersFileTests.h
         ../../src/VisualStudioSolutionFileTests.h
@@ -44,6 +45,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTests/BakefileTests.cpp
         ../../src/BakefileTests/BakefileTokenizerTests.cpp
         ../../src/BakefileTests/BakefileTokenTests.cpp
+        ../../src/BakefileTestSuite.cpp
         ../../src/main.cpp
         ../../src/MSBuildProjectFileTests.cpp
         ../../src/MSBuildFiltersFileTests.cpp

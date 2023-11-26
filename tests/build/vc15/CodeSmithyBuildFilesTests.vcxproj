@@ -156,25 +156,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\BakefileTargetTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTokenTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTests\BakefileTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileParserTests\BakefileParserTests.cpp" />
-    <ClCompile Include="..\..\src\BakefileTokenizerTests\BakefileTokenizerTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
-    <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp" />
-    <ClCompile Include="..\..\src\MSBuildFiltersFileTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildTestSuite.cpp" />
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileParserTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTargetTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\BakefileTargetTests.h" />
-    <ClInclude Include="..\..\src\BakefileTokenTests.h" />
-    <ClInclude Include="..\..\src\BakefileTests\BakefileTests.h" />
-    <ClInclude Include="..\..\src\BakefileParserTests\BakefileParserTests.h" />
-    <ClInclude Include="..\..\src\BakefileTokenizerTests\BakefileTokenizerTests.h" />
-    <ClInclude Include="..\..\src\MSBuildProjectFileTests.h" />
-    <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
+    <ClInclude Include="..\..\src\MSBuildTestSuite.hpp" />
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileParserTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTargetTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h" />
+    <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h" />
+    <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

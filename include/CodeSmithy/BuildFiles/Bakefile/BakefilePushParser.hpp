@@ -4,8 +4,8 @@
     See https://github.com/codesmithyide/build-files/blob/main/LICENSE.txt
 */
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILEPARSER_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILEPARSER_HPP
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILEPUSHPARSER_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILEPUSHPARSER_HPP
 
 #include "Bakefile.hpp"
 #include "BakefileTokenizer.hpp"
@@ -14,11 +14,10 @@
 
 namespace CodeSmithy
 {
-    class BakefileParser
+    class BakefilePushParser
     {
     public:
-        BakefileParser(std::istream& input);
-        ~BakefileParser();
+        BakefilePushParser(std::istream& input);
 
         std::shared_ptr<Bakefile> parse();
 

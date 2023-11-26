@@ -25,10 +25,10 @@
 
 #include <Ishiko/TestFramework.hpp>
 
-class BakefileParserTests : public Ishiko::TestSequence
+class BakefilePushParserTests : public Ishiko::TestSequence
 {
 public:
-	BakefileParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
+    BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
 	static void CreationTest1(Ishiko::Test& test);

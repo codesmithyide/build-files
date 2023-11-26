@@ -151,7 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Bakefile\Bakefile.cpp" />
-    <ClCompile Include="..\..\src\Bakefile\BakefileParser.cpp" />
+    <ClCompile Include="..\..\src\Bakefile\BakefilePushParser.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileTarget.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileToken.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileTokenizer.cpp" />
@@ -163,7 +163,7 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles.h" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\linkoptions.h" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Bakefile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileParser.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefilePushParser.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileToken.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp" />

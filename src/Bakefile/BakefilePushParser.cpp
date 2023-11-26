@@ -4,18 +4,14 @@
     See https://github.com/codesmithyide/build-files/blob/main/LICENSE.txt
 */
 
-#include "Bakefile/BakefileParser.hpp"
+#include "Bakefile/BakefilePushParser.hpp"
 
-CodeSmithy::BakefileParser::BakefileParser(std::istream& input)
+CodeSmithy::BakefilePushParser::BakefilePushParser(std::istream& input)
     : m_tokenizer(input)
 {
 }
 
-CodeSmithy::BakefileParser::~BakefileParser()
-{
-}
-
-std::shared_ptr<CodeSmithy::Bakefile> CodeSmithy::BakefileParser::parse()
+std::shared_ptr<CodeSmithy::Bakefile> CodeSmithy::BakefilePushParser::parse()
 {
     std::shared_ptr<Bakefile> result = std::make_shared<Bakefile>();
 

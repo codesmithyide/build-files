@@ -20,35 +20,35 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileParserTests.h"
-#include "CodeSmithy/BuildFiles/Bakefile/BakefileParser.hpp"
+#include "BakefilePushParserTests.hpp"
+#include "CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp"
 #include <fstream>
 
-BakefileParserTests::BakefileParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
-	: Ishiko::TestSequence(number, "BakefileParser tests", context)
+BakefilePushParserTests::BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
+	: Ishiko::TestSequence(number, "BakefilePushParser tests", context)
 {
 	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 	append<Ishiko::HeapAllocationErrorsTest>("parse test 1", ParseTest1);
 	append<Ishiko::HeapAllocationErrorsTest>("parse test 2", ParseTest2);
 }
 
-void BakefileParserTests::CreationTest1(Test& test)
+void BakefilePushParserTests::CreationTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefileParser parser(input);
+    CodeSmithy::BakefilePushParser parser(input);
     input.close();
 
 	ISHIKO_TEST_PASS();
 }
 
-void BakefileParserTests::ParseTest1(Test& test)
+void BakefilePushParserTests::ParseTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefileParser parser(input);
+    CodeSmithy::BakefilePushParser parser(input);
     std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
     input.close();
 
@@ -56,12 +56,12 @@ void BakefileParserTests::ParseTest1(Test& test)
 	ISHIKO_TEST_PASS();
 }
 
-void BakefileParserTests::ParseTest2(Test& test)
+void BakefilePushParserTests::ParseTest2(Test& test)
 {
     boost::filesystem::path inputPath(test.context().getDataDirectory() / "EmptyTargetBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefileParser parser(input);
+    CodeSmithy::BakefilePushParser parser(input);
     std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
     input.close();
 

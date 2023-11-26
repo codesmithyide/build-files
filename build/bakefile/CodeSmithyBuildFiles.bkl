@@ -39,7 +39,7 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
         ../../include/CodeSmithy/BuildFiles.h
         ../../include/CodeSmithy/BuildFiles/linkoptions.h
         ../../include/CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileParser.hpp
+        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
@@ -51,7 +51,7 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
     sources
     {
         ../../src/Bakefile/Bakefile.cpp
-        ../../src/Bakefile/BakefileParser.cpp
+        ../../src/Bakefile/BakefilePushParser.cpp
         ../../src/Bakefile/BakefileTarget.cpp
         ../../src/Bakefile/BakefileToken.cpp
         ../../src/Bakefile/BakefileTokenizer.cpp

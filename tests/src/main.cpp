@@ -5,8 +5,8 @@
 */
 
 #include "BakefileTestSuite.hpp"
-#include "MSBuildProjectFileTests.h"
-#include "MSBuildFiltersFileTests.h"
+#include "MSBuildTestSuite/MSBuildProjectFileTests.h"
+#include "MSBuildTestSuite/MSBuildFiltersFileTests.h"
 #include "VisualStudioSolutionFileTests.h"
 #include "CodeSmithy/BuildFiles/linkoptions.h"
 #include <Ishiko/TestFramework.hpp>

@@ -163,8 +163,8 @@
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
-    <ClCompile Include="..\..\src\MSBuildProjectFileTests.cpp" />
-    <ClCompile Include="..\..\src\MSBuildFiltersFileTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp" />
+    <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.cpp" />
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,8 +174,8 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
-    <ClInclude Include="..\..\src\MSBuildProjectFileTests.h" />
-    <ClInclude Include="..\..\src\MSBuildFiltersFileTests.h" />
+    <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h" />
+    <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.h" />
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

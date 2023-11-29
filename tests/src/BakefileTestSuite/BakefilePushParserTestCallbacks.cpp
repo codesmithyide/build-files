@@ -8,9 +8,9 @@
 #include <Ishiko/XML.hpp>
 #include <Ishiko/Errors.hpp>
 
-void BakefilePushParserTestCallbacks::onTarget(boost::string_view id)
+void BakefilePushParserTestCallbacks::onTargetStart(boost::string_view id)
 {
-    m_events.emplace_back("onTarget", id);
+    m_events.emplace_back("onTargetStart", id);
 }
 
 void BakefilePushParserTestCallbacks::onToolset(boost::string_view value)

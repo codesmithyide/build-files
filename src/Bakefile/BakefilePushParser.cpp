@@ -19,7 +19,7 @@ namespace
     }
 }
 
-void CodeSmithy::BakefilePushParser::Callbacks::onTarget(boost::string_view id)
+void CodeSmithy::BakefilePushParser::Callbacks::onTargetStart(boost::string_view id)
 {
 }
 
@@ -104,6 +104,7 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
                 if (tokenEquals(previous, current, "program"))
                 {
                     m_parsing_mode_stack.back() = ParsingMode::target;
+                    m_parsing_mode_stack.push_back(ParsingMode::target_id);
                     m_parsing_mode_stack.push_back(ParsingMode::whitespace);
                 }
                 else if (tokenEquals(previous, current, "toolsets"))
@@ -111,9 +112,10 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
                     m_parsing_mode_stack.back() = ParsingMode::toolsets;
                     m_parsing_mode_stack.push_back(ParsingMode::whitespace);
                 }
-                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::target)
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::target_id)
                 {
-                    m_callbacks.onTarget(boost::string_view(previous, (current - previous)));
+                    m_callbacks.onTargetStart(boost::string_view(previous, (current - previous)));
+                    m_parsing_mode_stack.pop_back();
                     m_parsing_mode_stack.back() = ParsingMode::whitespace;
                 }
                 else

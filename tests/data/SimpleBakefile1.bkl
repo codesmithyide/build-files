@@ -1,0 +1,14 @@
+toolsets = vs2015;
+
+program HelloWorld
+{
+    headers
+    {
+        include/main.h
+    }
+
+    sources
+    {
+        src/main.cpp
+    }
+}

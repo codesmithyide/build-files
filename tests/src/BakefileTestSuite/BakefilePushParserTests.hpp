@@ -20,30 +20,21 @@
     IN THE SOFTWARE.
 */
 
-#include "Bakefile/BakefileParser.hpp"
+#ifndef _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILEPARSERTESTS_BAKEFILEPARSERTESTS_H_
+#define _CODESMITHY_TEST_BAKEFILE_CORE_BAKEFILEPARSERTESTS_BAKEFILEPARSERTESTS_H_
 
-namespace CodeSmithy
+#include <Ishiko/TestFramework.hpp>
+
+class BakefilePushParserTests : public Ishiko::TestSequence
 {
+public:
+    BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
-BakefileParser::BakefileParser(std::istream& input)
-    : m_tokenizer(input)
-{
-}
+private:
+	static void ConstructorTest1(Ishiko::Test& test);
+	static void OnDataTest1(Ishiko::Test& test);
+	static void OnDataTest2(Ishiko::Test& test);
+    static void OnDataTest3(Ishiko::Test& test);
+};
 
-BakefileParser::~BakefileParser()
-{
-}
-
-std::shared_ptr<Bakefile> BakefileParser::parse()
-{
-    std::shared_ptr<Bakefile> result = std::make_shared<Bakefile>();
-
-    BakefileToken token;
-    while (m_tokenizer.getNextToken(token) == BakefileTokenizer::eTokenExtracted)
-    {
-    }
-
-    return result;
-}
-
-}
+#endif

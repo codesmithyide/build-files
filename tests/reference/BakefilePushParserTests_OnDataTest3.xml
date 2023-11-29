@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    <callback>
+        <name>onToolset</name>
+        <argument>vs2015</argument>
+    </callback>
+    <callback>
+        <name>onTargetStart</name>
+        <argument>HelloWorld</argument>
+    </callback>
+    <callback>
+        <name>onHeader</name>
+        <argument>include/main.h</argument>
+    </callback>
+    <callback>
+        <name>onSource</name>
+        <argument>src/main.cpp</argument>
+    </callback>
+</events>

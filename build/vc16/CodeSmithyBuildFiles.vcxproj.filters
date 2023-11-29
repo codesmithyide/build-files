@@ -26,7 +26,7 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Bakefile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileParser.hpp">
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefilePushParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp">
@@ -52,7 +52,7 @@
     <ClCompile Include="..\..\src\Bakefile\Bakefile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Bakefile\BakefileParser.cpp">
+    <ClCompile Include="..\..\src\Bakefile\BakefilePushParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Bakefile\BakefileTarget.cpp">

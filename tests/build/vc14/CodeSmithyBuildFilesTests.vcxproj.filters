@@ -26,7 +26,10 @@
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BakefileTestSuite\BakefileParserTests.h">
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTargetTests.h">
@@ -61,7 +64,10 @@
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BakefileTestSuite\BakefileParserTests.cpp">
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTargetTests.cpp">

@@ -9,7 +9,7 @@
 #include "BakefileTestSuite/BakefileTests.h"
 #include "BakefileTestSuite/BakefileTokenTests.h"
 #include "BakefileTestSuite/BakefileTokenizerTests.h"
-#include "BakefileTestSuite/BakefileParserTests.h"
+#include "BakefileTestSuite/BakefilePushParserTests.hpp"
 
 BakefileTestSuite::BakefileTestSuite(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
     : Ishiko::TestSequence(number, "Bakefile test suite", context)
@@ -18,5 +18,5 @@ BakefileTestSuite::BakefileTestSuite(const Ishiko::TestNumber& number, const Ish
     append<BakefileTests>();
     append<BakefileTokenTests>();
     append<BakefileTokenizerTests>();
-    append<BakefileParserTests>();
+    append<BakefilePushParserTests>();
 }

@@ -4,4 +4,8 @@
         <name>onToolset</name>
         <argument>vs2015</argument>
     </callback>
+    <callback>
+        <name>onTarget</name>
+        <argument>HelloWorld</argument>
+    </callback>
 </events>

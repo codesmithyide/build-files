@@ -35,7 +35,8 @@ namespace CodeSmithy
         enum class ParsingMode
         {
             assignment,
-            file,
+            bakefile,
+            filepath,
             headers,
             identifier,
             sources,

@@ -4,11 +4,11 @@ program HelloWorld
 {
     headers
     {
-        main.h
+        include/main.h
     }
 
     sources
     {
-        main.cpp
+        src/main.cpp
     }
 }

@@ -10,8 +10,12 @@ namespace
 {
     bool IsAlphaNum(char c)
     {
-        // TODO: remove . and have specific parser for paths
-        return ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')) || (('0' <= c) && (c <= '9')) || (c == '.'));
+        return ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')) || (('0' <= c) && (c <= '9')));
+    }
+
+    bool IsFilePathChar(char c)
+    {
+        return (IsAlphaNum(c) || (c == '.') || (c == '/'));
     }
 
     bool IsWhitespace(char c)
@@ -39,7 +43,7 @@ void CodeSmithy::BakefilePushParser::Callbacks::onToolset(boost::string_view val
 CodeSmithy::BakefilePushParser::BakefilePushParser(Callbacks& callbacks)
     : m_callbacks{callbacks}
 {
-    m_parsing_mode_stack.push_back(ParsingMode::file);
+    m_parsing_mode_stack.push_back(ParsingMode::bakefile);
 }
 
 bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
@@ -51,8 +55,40 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
     {
         switch (m_parsing_mode_stack.back())
         {
-        case ParsingMode::file:
+        case ParsingMode::bakefile:
             m_parsing_mode_stack.push_back(ParsingMode::whitespace);
+            break;
+
+        case ParsingMode::filepath:
+            while (current < end)
+            {
+                if (!IsFilePathChar(*current))
+                {
+                    break;
+                }
+                ++current;
+            }
+            if (current == end)
+            {
+                m_fragmented_data.append(previous, (current - previous));
+            }
+            else
+            {
+                if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::headers)
+                {
+                    m_callbacks.onHeader(boost::string_view(previous, (current - previous)));
+                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
+                }
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::sources)
+                {
+                    m_callbacks.onSource(boost::string_view(previous, (current - previous)));
+                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
+                }
+                else
+                {
+                    // TODO: error
+                }
+            }
             break;
 
         case ParsingMode::toolsets:
@@ -131,16 +167,6 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
                     m_parsing_mode_stack.back() = ParsingMode::toolsets;
                     m_parsing_mode_stack.push_back(ParsingMode::whitespace);
                 }
-                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::headers)
-                {
-                    m_callbacks.onHeader(boost::string_view(previous, (current - previous)));
-                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
-                }
-                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::sources)
-                {
-                    m_callbacks.onSource(boost::string_view(previous, (current - previous)));
-                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
-                }
                 else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::target_id)
                 {
                     m_callbacks.onTargetStart(boost::string_view(previous, (current - previous)));
@@ -185,7 +211,23 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
                 }
                 else if (*current == '}')
                 {
+                    if ((*(m_parsing_mode_stack.end() - 2) == ParsingMode::headers)
+                        || (*(m_parsing_mode_stack.end() - 2) == ParsingMode::sources))
+                    {
+                        m_parsing_mode_stack.pop_back();
+                        m_parsing_mode_stack.back() = ParsingMode::whitespace;
+                    }
                     ++current;
+                }
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::headers)
+                {
+                    m_parsing_mode_stack.back() = ParsingMode::filepath;
+                    previous = current;
+                }
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::sources)
+                {
+                    m_parsing_mode_stack.back() = ParsingMode::filepath;
+                    previous = current;
                 }
                 else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::toolsets_value)
                 {

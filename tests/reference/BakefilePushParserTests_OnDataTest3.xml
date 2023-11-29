@@ -10,10 +10,10 @@
     </callback>
     <callback>
         <name>onHeader</name>
-        <argument>main.h</argument>
+        <argument>include/main.h</argument>
     </callback>
     <callback>
         <name>onSource</name>
-        <argument>main.cpp</argument>
+        <argument>src/main.cpp</argument>
     </callback>
 </events>

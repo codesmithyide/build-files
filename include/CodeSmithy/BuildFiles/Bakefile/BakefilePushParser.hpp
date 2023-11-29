@@ -8,21 +8,43 @@
 #define GUARD_CODESMITHYIDE_BUILDFILES_BAKEFILE_BAKEFILEPUSHPARSER_HPP
 
 #include "Bakefile.hpp"
-#include "BakefileTokenizer.hpp"
-#include <istream>
-#include <memory>
+#include <boost/utility/string_view.hpp>
 
 namespace CodeSmithy
 {
     class BakefilePushParser
     {
     public:
-        BakefilePushParser(std::istream& input);
+        class Callbacks
+        {
+        public:
+            virtual ~Callbacks() = default;
 
-        std::shared_ptr<Bakefile> parse();
+            virtual void onToolset(boost::string_view value);
+        };
+
+    public:
+        BakefilePushParser(Callbacks& callbacks);
+
+        bool onData(boost::string_view data, bool eod);
 
     private:
-        BakefileTokenizer m_tokenizer;
+        enum class ParsingMode
+        {
+            assignment,
+            file,
+            identifier,
+            toolset,
+            toolsets,
+            toolsets_value,
+            whitespace
+        };
+
+        bool tokenEquals(const char* start, const char* end, const char* token) const;
+
+        std::vector<ParsingMode> m_parsing_mode_stack;
+        std::string m_fragmented_data;
+        Callbacks& m_callbacks;
     };
 }
 

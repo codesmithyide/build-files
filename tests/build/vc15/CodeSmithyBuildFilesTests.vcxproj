@@ -161,6 +161,7 @@
     <ClCompile Include="..\..\src\MSBuildTestSuite.cpp" />
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.cpp" />
+    <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTargetTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="..\..\src\MSBuildTestSuite.hpp" />
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.hpp" />
+    <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.hpp" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTargetTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />

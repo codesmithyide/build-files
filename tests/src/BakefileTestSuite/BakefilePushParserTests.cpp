@@ -21,50 +21,58 @@
 */
 
 #include "BakefilePushParserTests.hpp"
+#include "BakefilePushParserTestCallbacks.hpp"
 #include "CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp"
-#include <fstream>
+#include <Ishiko/FileSystem.hpp>
 
 BakefilePushParserTests::BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
 	: Ishiko::TestSequence(number, "BakefilePushParser tests", context)
 {
-	append<Ishiko::HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-	append<Ishiko::HeapAllocationErrorsTest>("parse test 1", ParseTest1);
-	append<Ishiko::HeapAllocationErrorsTest>("parse test 2", ParseTest2);
+	append<Ishiko::HeapAllocationErrorsTest>("constructor test 1", ConstructorTest1);
+	append<Ishiko::HeapAllocationErrorsTest>("onData test 1", OnDataTest1);
+	append<Ishiko::HeapAllocationErrorsTest>("onData test 2", OnDataTest2);
 }
 
-void BakefilePushParserTests::CreationTest1(Test& test)
+void BakefilePushParserTests::ConstructorTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
+    BakefilePushParserTestCallbacks callbacks;
+    CodeSmithy::BakefilePushParser parser{callbacks};
 
-    std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefilePushParser parser(input);
-    input.close();
+    ISHIKO_TEST_PASS();
+}
 
+void BakefilePushParserTests::OnDataTest1(Test& test)
+{
+    boost::filesystem::path input_path = test.context().getDataPath("MinimalBakefile.bkl");
+    std::string bakefile_data = Ishiko::FileSystem::ReadFile(input_path);
+
+    BakefilePushParserTestCallbacks callbacks;
+    CodeSmithy::BakefilePushParser parser{callbacks};
+
+    bool complete = parser.onData(bakefile_data, true);
+
+    const char* outputFileName = "BakefilePushParserTests_OnDataTest1.xml";
+    callbacks.exportToXML(test.context().getOutputPath(outputFileName));
+
+    ISHIKO_TEST_FAIL_IF_NOT(complete);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputFileName);
 	ISHIKO_TEST_PASS();
 }
 
-void BakefilePushParserTests::ParseTest1(Test& test)
+void BakefilePushParserTests::OnDataTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
+    boost::filesystem::path input_path = test.context().getDataPath("EmptyTargetBakefile.bkl");
+    std::string bakefile_data = Ishiko::FileSystem::ReadFile(input_path);
 
-    std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefilePushParser parser(input);
-    std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
-    input.close();
+    BakefilePushParserTestCallbacks callbacks;
+    CodeSmithy::BakefilePushParser parser{ callbacks };
 
-	ISHIKO_TEST_FAIL_IF_NOT(bakefile->targets().empty());
-	ISHIKO_TEST_PASS();
-}
+    bool complete = parser.onData(bakefile_data, true);
 
-void BakefilePushParserTests::ParseTest2(Test& test)
-{
-    boost::filesystem::path inputPath(test.context().getDataDirectory() / "EmptyTargetBakefile.bkl");
+    const char* outputFileName = "BakefilePushParserTests_OnDataTest2.xml";
+    callbacks.exportToXML(test.context().getOutputPath(outputFileName));
 
-    std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefilePushParser parser(input);
-    std::shared_ptr<CodeSmithy::Bakefile> bakefile = parser.parse();
-    input.close();
-
-	ISHIKO_TEST_FAIL_IF_NOT(bakefile->targets().size() == 1);
-	ISHIKO_TEST_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(complete);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputFileName);
+    ISHIKO_TEST_PASS();
 }

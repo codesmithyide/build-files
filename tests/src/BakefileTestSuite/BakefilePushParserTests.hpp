@@ -31,9 +31,9 @@ public:
     BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-	static void CreationTest1(Ishiko::Test& test);
-	static void ParseTest1(Ishiko::Test& test);
-	static void ParseTest2(Ishiko::Test& test);
+	static void ConstructorTest1(Ishiko::Test& test);
+	static void OnDataTest1(Ishiko::Test& test);
+	static void OnDataTest2(Ishiko::Test& test);
 };
 
 #endif

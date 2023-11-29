@@ -20,6 +20,8 @@ namespace CodeSmithy
         public:
             virtual ~Callbacks() = default;
 
+            virtual void onHeader(boost::string_view path);
+            virtual void onSource(boost::string_view path);
             virtual void onTargetStart(boost::string_view id);
             virtual void onToolset(boost::string_view value);
         };
@@ -34,7 +36,9 @@ namespace CodeSmithy
         {
             assignment,
             file,
+            headers,
             identifier,
+            sources,
             target,
             target_id,
             toolset,

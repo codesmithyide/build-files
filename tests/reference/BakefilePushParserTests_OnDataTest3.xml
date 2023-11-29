@@ -8,4 +8,12 @@
         <name>onTargetStart</name>
         <argument>HelloWorld</argument>
     </callback>
+    <callback>
+        <name>onHeader</name>
+        <argument>main.h</argument>
+    </callback>
+    <callback>
+        <name>onSource</name>
+        <argument>main.cpp</argument>
+    </callback>
 </events>

@@ -4,9 +4,11 @@ program HelloWorld
 {
     headers
     {
+        main.h
     }
 
     sources
     {
+        main.cpp
     }
 }

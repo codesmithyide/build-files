@@ -16,6 +16,8 @@
 class BakefilePushParserTestCallbacks : public CodeSmithy::BakefilePushParser::Callbacks
 {
 public:
+    void onHeader(boost::string_view path) override;
+    void onSource(boost::string_view path) override;
     void onTargetStart(boost::string_view id) override;
     void onToolset(boost::string_view value) override;
 

@@ -10,13 +10,22 @@ namespace
 {
     bool IsAlphaNum(char c)
     {
-        return ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')) || (('0' <= c) && (c <= '9')));
+        // TODO: remove . and have specific parser for paths
+        return ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')) || (('0' <= c) && (c <= '9')) || (c == '.'));
     }
 
     bool IsWhitespace(char c)
     {
         return ((c == ' ') || (c == '\r') || (c == '\n'));
     }
+}
+
+void CodeSmithy::BakefilePushParser::Callbacks::onHeader(boost::string_view path)
+{
+}
+
+void CodeSmithy::BakefilePushParser::Callbacks::onSource(boost::string_view path)
+{
 }
 
 void CodeSmithy::BakefilePushParser::Callbacks::onTargetStart(boost::string_view id)
@@ -101,16 +110,36 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
             }
             else
             {
-                if (tokenEquals(previous, current, "program"))
+                if (tokenEquals(previous, current, "headers"))
+                {
+                    m_parsing_mode_stack.back() = ParsingMode::headers;
+                    m_parsing_mode_stack.push_back(ParsingMode::whitespace);
+                }
+                else if (tokenEquals(previous, current, "program"))
                 {
                     m_parsing_mode_stack.back() = ParsingMode::target;
                     m_parsing_mode_stack.push_back(ParsingMode::target_id);
+                    m_parsing_mode_stack.push_back(ParsingMode::whitespace);
+                }
+                else if (tokenEquals(previous, current, "sources"))
+                {
+                    m_parsing_mode_stack.back() = ParsingMode::sources;
                     m_parsing_mode_stack.push_back(ParsingMode::whitespace);
                 }
                 else if (tokenEquals(previous, current, "toolsets"))
                 {
                     m_parsing_mode_stack.back() = ParsingMode::toolsets;
                     m_parsing_mode_stack.push_back(ParsingMode::whitespace);
+                }
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::headers)
+                {
+                    m_callbacks.onHeader(boost::string_view(previous, (current - previous)));
+                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
+                }
+                else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::sources)
+                {
+                    m_callbacks.onSource(boost::string_view(previous, (current - previous)));
+                    m_parsing_mode_stack.back() = ParsingMode::whitespace;
                 }
                 else if (*(m_parsing_mode_stack.end() - 2) == ParsingMode::target_id)
                 {

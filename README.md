@@ -12,7 +12,7 @@ A library to manipulate various kind of build files.
 
 ## Project Status
 
-[![CodeSmithy](https://circleci.com/gh/CodeSmithyIDE/BuildFiles.svg?style=shield)](https://circleci.com/gh/CodeSmithyIDE/BuildFiles)
+[![CodeSmithy](https://circleci.com/gh/codesmithyide/build-files.svg?style=shield)](https://circleci.com/gh/codesmithyide/build-files)
 
 This project is intended for use by its author only.
 

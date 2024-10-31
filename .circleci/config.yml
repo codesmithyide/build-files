@@ -2,22 +2,22 @@ version: 2
 jobs:
   bootstrap-build:
     docker:
-      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.8.0
+      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.9.0
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/build-files
+          path: /workspace/projects/codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/build-files/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output
@@ -31,22 +31,22 @@ jobs:
           path: /build/test-results/CodeSmithyBuildFiles.xml
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.10.0
+      - image: codesmithy/gcc-build-prerequisites:0.11.0
     steps:
       - run:
           name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/build-files
+          path: /workspace/projects/codesmithyide/build-files
       - run:
           name: Build
-          command: cd /codesmithyide/build-files/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/build-files/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/build-files/tests/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/build-files/tests/build/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output

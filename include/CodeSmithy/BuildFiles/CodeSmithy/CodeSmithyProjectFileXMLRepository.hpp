@@ -11,7 +11,7 @@
 namespace CodeSmithy
 {
     // This class allows to store one or more projects in a file.
-    class ProjectRepository
+    class CodeSmithyProjectFileXMLRepository
     {
     public:
         void create(const boost::filesystem::path& path, Ishiko::Error& error);

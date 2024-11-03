@@ -38,8 +38,8 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
 
     headers
     {
-        ../../include/CodeSmithy/BuildFiles.h
-        ../../include/CodeSmithy/BuildFiles/linkoptions.h
+        ../../include/CodeSmithy/BuildFiles.hpp
+        ../../include/CodeSmithy/BuildFiles/linkoptions.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp

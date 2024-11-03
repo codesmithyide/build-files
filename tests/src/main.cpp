@@ -5,7 +5,7 @@
 #include "CodeSmithyTestSuite.hpp"
 #include "MSBuildTestSuite.hpp"
 #include "VisualStudioSolutionFileTests.h"
-#include "CodeSmithy/BuildFiles/linkoptions.h"
+#include "CodeSmithy/BuildFiles/linkoptions.hpp"
 #include <Ishiko/TestFramework.hpp>
 
 int main(int argc, char* argv[])

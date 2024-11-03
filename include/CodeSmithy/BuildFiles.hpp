@@ -4,9 +4,16 @@
 #ifndef GUARD_CODESMITHYIDE_BUILDFILES_HPP
 #define GUARD_CODESMITHYIDE_BUILDFILES_HPP
 
+#include "BuildFiles/Bakefile/Bakefile.hpp"
+#include "BuildFiles/Bakefile/BakefilePushParser.hpp"
+#include "BuildFiles/Bakefile/BakefileTarget.hpp"
+#include "BuildFiles/Bakefile/BakefileToken.hpp"
+#include "BuildFiles/Bakefile/BakefileTokenizer.hpp"
+#include "BuildFiles/CodeSmithy/CodeSmithyProjectFile.hpp"
+#include "BuildFiles/CodeSmithy/CodeSmithyProjectFileXMLRepository.hpp"
 #include "BuildFiles/linkoptions.hpp"
-#include "BuildFiles/MSBuildFiltersFile.hpp"
-#include "BuildFiles/MSBuildProjectFile.hpp"
-#include "BuildFiles/VisualStudioSolutionFile.hpp"
+#include "BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
+#include "BuildFiles/MSBuild/MSBuildProjectFile.hpp"
+#include "BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp"
 
 #endif

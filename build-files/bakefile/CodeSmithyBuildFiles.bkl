@@ -1,3 +1,5 @@
+diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
+import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
@@ -13,7 +15,7 @@ vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     includedirs += ../../include/CodeSmithy/BuildFiles;
 
@@ -43,6 +45,8 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
+        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyProjectFile.hpp
+        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyProjectFileXMLRepository.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
@@ -55,6 +59,7 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, 
         ../../src/Bakefile/BakefileTarget.cpp
         ../../src/Bakefile/BakefileToken.cpp
         ../../src/Bakefile/BakefileTokenizer.cpp
+        ../../src/CodeSmithy/CodeSmithyProjectFileXMLRepository.cpp
         ../../src/MSBuild/MSBuildProjectFile.cpp
         ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp

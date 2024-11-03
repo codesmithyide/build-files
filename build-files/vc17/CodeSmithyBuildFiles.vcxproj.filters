@@ -38,6 +38,12 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyProjectFile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyProjectFileXMLRepository.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,6 +68,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Bakefile\BakefileTokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CodeSmithy\CodeSmithyProjectFileXMLRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp">

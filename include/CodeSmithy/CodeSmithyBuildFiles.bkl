@@ -1,3 +1,5 @@
+diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
+import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
@@ -11,7 +13,7 @@ setting CODESMITHYIDE_BUILDFILES_ROOT
     default = '$(CODESMITHYIDE_ROOT)/build-files';
 }
 
-template CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+template CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/include;
 

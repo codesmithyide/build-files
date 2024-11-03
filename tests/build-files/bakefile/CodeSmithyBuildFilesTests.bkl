@@ -16,7 +16,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyBuildFiles IshikoUUIDs IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
+        libs += CodeSmithyBuildFiles DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoUUIDs IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
         libs += fmt boost_filesystem;
     }
 
@@ -28,6 +28,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     headers
     {
         ../../src/BakefileTestSuite.hpp
+        ../../src/CodeSmithyTestSuite.hpp
         ../../src/MSBuildTestSuite.hpp
         ../../src/VisualStudioSolutionFileTests.h
 
@@ -37,6 +38,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTestSuite/BakefileTests.h
         ../../src/BakefileTestSuite/BakefileTokenizerTests.h
         ../../src/BakefileTestSuite/BakefileTokenTests.h
+        ../../src/CodeSmithyTestSuite/CodeSmithyProjectFileXMLRepositoryTests.hpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.h
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.h
     }
@@ -44,6 +46,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     sources
     {
         ../../src/BakefileTestSuite.cpp
+        ../../src/CodeSmithyTestSuite.cpp
         ../../src/main.cpp
         ../../src/MSBuildTestSuite.cpp
         ../../src/VisualStudioSolutionFileTests.cpp
@@ -54,6 +57,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTestSuite/BakefileTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenizerTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenTests.cpp
+        ../../src/CodeSmithyTestSuite/CodeSmithyProjectFileXMLRepositoryTests.cpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.cpp
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.cpp
     }

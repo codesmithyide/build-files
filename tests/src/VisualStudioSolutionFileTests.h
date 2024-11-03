@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2020-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #ifndef _CODESMITHYIDE_BUILFILES_TESTS_VISUALSTUDIOSOLUTIONFILETESTS_H_
 #define _CODESMITHYIDE_BUILFILES_TESTS_VISUALSTUDIOSOLUTIONFILETESTS_H_

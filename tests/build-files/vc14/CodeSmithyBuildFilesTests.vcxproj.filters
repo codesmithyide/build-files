@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\MSBuildTestSuite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -44,6 +47,9 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\main.cpp">
@@ -80,6 +89,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp">

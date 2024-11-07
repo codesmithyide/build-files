@@ -26,7 +26,7 @@ namespace CodeSmithy
         DiplodocusDB::XMLTreeDB& db();
 
         std::unique_ptr<CodeSmithyBuildFile> getBuildFileNode(const std::string& name, Ishiko::Error& error);
-        DiplodocusDB::XMLTreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
+        DiplodocusDB::XMLTreeDBNode addBuildFileNode(const std::string& name, Ishiko::Error& error);
 
     private:
         class BuildFileAdapter : public CodeSmithyBuildFile

@@ -89,7 +89,7 @@ std::unique_ptr<CodeSmithyBuildFile> CodeSmithyBuildFileXMLRepository::getBuildF
     return std::unique_ptr<BuildFileAdapter>(new BuildFileAdapter(m_db, result));
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(const std::string& name, Ishiko::Error& error)
 {
     if (m_projectsNode)
     {

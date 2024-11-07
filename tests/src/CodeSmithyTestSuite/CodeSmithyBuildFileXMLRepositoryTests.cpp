@@ -16,7 +16,7 @@ CodeSmithyBuildFileXMLRepositoryTests::CodeSmithyBuildFileXMLRepositoryTests(con
     append<Ishiko::HeapAllocationErrorsTest>("open test 1", OpenTest1);
     append<Ishiko::HeapAllocationErrorsTest>("open test 2", OpenTest2);
     append<Ishiko::HeapAllocationErrorsTest>("setName test 1", SetNameTest1);
-    append<Ishiko::HeapAllocationErrorsTest>("addProjectNode test 1", AddProjectNodeTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("addBuildFileNode test 1", AddBuildFileNodeTest1);
     append<Ishiko::HeapAllocationErrorsTest>("getBuildFileNode test 1", GetBuildFileNodeTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addSourceFile test 1", AddSourceFileTest1);
 }
@@ -87,7 +87,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::SetNameTest1(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyBuildFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::AddBuildFileNodeTest1(Ishiko::Test& test)
 {
     const char* outputName = "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj";
 
@@ -95,7 +95,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& te
     CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
-    DiplodocusDB::XMLTreeDBNode project1 = repository.addProjectNode("Project1", error);
+    DiplodocusDB::XMLTreeDBNode project1 = repository.addBuildFileNode("Project1", error);
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
@@ -131,7 +131,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& tes
     CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(output_name), error);
     repository.setName("CodeSmithyBuildFileXMLRepositoryTests_AddSourceFileTest1");
-    repository.addProjectNode("Project1", error);
+    repository.addBuildFileNode("Project1", error);
 
     ISHIKO_TEST_ABORT_IF(error);
 

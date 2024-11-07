@@ -12,13 +12,12 @@ int main(int argc, char* argv[])
 {
     Ishiko::TestHarness::CommandLineSpecification commandLineSpec;
     Ishiko::Configuration configuration = commandLineSpec.createDefaultConfiguration();
+    configuration.set("context.data", "../../data");
+    configuration.set("context.output", "../../output");
+    configuration.set("context.reference", "../../reference");
     Ishiko::CommandLineParser::parse(commandLineSpec, argc, argv, configuration);
 
     Ishiko::TestHarness theTestHarness("CodeSmithyBuildFiles", configuration);
-
-    theTestHarness.context().setDataDirectory("../../data");
-    theTestHarness.context().setOutputDirectory("../../output");
-    theTestHarness.context().setReferenceDirectory("../../reference");
 
     Ishiko::TestSequence& theTests = theTestHarness.tests();
     theTests.append<BakefileTestSuite>();

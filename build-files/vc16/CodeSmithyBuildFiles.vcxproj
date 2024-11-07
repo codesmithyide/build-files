@@ -155,7 +155,7 @@
     <ClCompile Include="..\..\src\Bakefile\BakefileTarget.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileToken.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileTokenizer.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithy\CodeSmithyProjectFileXMLRepository.cpp" />
+    <ClCompile Include="..\..\src\CodeSmithy\CodeSmithyBuildFileXMLRepository.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
     <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp" />
@@ -168,8 +168,8 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileToken.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyProjectFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyProjectFileXMLRepository.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyBuildFile.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyBuildFileXMLRepository.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />

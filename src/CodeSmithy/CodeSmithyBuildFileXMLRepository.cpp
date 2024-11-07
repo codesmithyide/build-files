@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "CodeSmithy/CodeSmithyProjectFileXMLRepository.hpp"
+#include "CodeSmithy/CodeSmithyBuildFileXMLRepository.hpp"
 #include <fstream>
 
 using namespace CodeSmithy;
@@ -13,7 +13,7 @@ static const char* repositoryProjectsElementName = "projects";
 static const char* projectElementName = "codesmithy-project";
 static const char* projectNameElementName = "name";
 
-void CodeSmithyProjectFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
+void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.create(path, error);
 
@@ -29,7 +29,7 @@ void CodeSmithyProjectFileXMLRepository::create(const boost::filesystem::path& p
     }
 }
 
-void CodeSmithyProjectFileXMLRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
+void CodeSmithyBuildFileXMLRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.open(path, error);
     DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
@@ -37,12 +37,12 @@ void CodeSmithyProjectFileXMLRepository::open(const boost::filesystem::path& pat
     m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
 }
 
-void CodeSmithyProjectFileXMLRepository::close()
+void CodeSmithyBuildFileXMLRepository::close()
 {
     m_db.close();
 }
 
-std::string CodeSmithyProjectFileXMLRepository::name() const
+std::string CodeSmithyBuildFileXMLRepository::name() const
 {
     std::string result;
     if (m_nameNode)
@@ -54,19 +54,20 @@ std::string CodeSmithyProjectFileXMLRepository::name() const
     return result;
 }
 
-void CodeSmithyProjectFileXMLRepository::setName(const std::string& name)
+void CodeSmithyBuildFileXMLRepository::setName(const std::string& name)
 {
     // TODO : should setName commit immediately?
     Ishiko::Error error;
     m_db.setValue(m_nameNode, DiplodocusDB::Value::UTF8String(name), error);
 }
 
-DiplodocusDB::XMLTreeDB& CodeSmithyProjectFileXMLRepository::db()
+DiplodocusDB::XMLTreeDB& CodeSmithyBuildFileXMLRepository::db()
 {
     return m_db;
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
+std::unique_ptr<CodeSmithyBuildFile> CodeSmithyBuildFileXMLRepository::getBuildFileNode(const std::string& name,
+    Ishiko::Error& error)
 {
     DiplodocusDB::XMLTreeDBNode result;
     for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
@@ -85,10 +86,10 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::getProjectNode(c
             break;
         }
     }
-    return result;
+    return std::unique_ptr<BuildFileAdapter>(new BuildFileAdapter(m_db, result));
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(const std::string& name, Ishiko::Error& error)
 {
     if (m_projectsNode)
     {
@@ -101,4 +102,22 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::addProjectNode(c
     {
         return DiplodocusDB::XMLTreeDBNode();
     }
+}
+
+CodeSmithyBuildFileXMLRepository::BuildFileAdapter::BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,
+    DiplodocusDB::XMLTreeDBNode build_file_node) noexcept
+    : m_db(db), m_build_file_node(build_file_node)
+{
+}
+
+void CodeSmithyBuildFileXMLRepository::BuildFileAdapter::addSourceFile(const std::string& file_path)
+{
+    // TODO: handle errors
+    Ishiko::Error error;
+    DiplodocusDB::XMLTreeDBNode source_files_node = m_db.child(m_build_file_node, "source-files", error);
+    if (!source_files_node)
+    {
+        source_files_node = m_db.appendChildNode(m_build_file_node, "source-files", error);
+    }
+    m_db.appendChildNode(source_files_node, "file", DiplodocusDB::Value::UTF8String(file_path), error);
 }

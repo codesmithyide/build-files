@@ -45,8 +45,8 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
-        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyProjectFile.hpp
-        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyProjectFileXMLRepository.hpp
+        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyBuildFile.hpp
+        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyBuildFileXMLRepository.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
@@ -59,7 +59,7 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
         ../../src/Bakefile/BakefileTarget.cpp
         ../../src/Bakefile/BakefileToken.cpp
         ../../src/Bakefile/BakefileTokenizer.cpp
-        ../../src/CodeSmithy/CodeSmithyProjectFileXMLRepository.cpp
+        ../../src/CodeSmithy/CodeSmithyBuildFileXMLRepository.cpp
         ../../src/MSBuild/MSBuildProjectFile.cpp
         ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp

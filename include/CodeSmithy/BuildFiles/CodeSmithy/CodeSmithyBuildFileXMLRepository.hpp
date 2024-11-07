@@ -32,9 +32,13 @@ namespace CodeSmithy
         class BuildFileAdapter : public CodeSmithyBuildFile
         {
         public:
-            explicit BuildFileAdapter(DiplodocusDB::XMLTreeDBNode build_file_node) noexcept;
+            explicit BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,
+                DiplodocusDB::XMLTreeDBNode build_file_node) noexcept;
+
+            void addSourceFile(const std::string& file_path) override;
 
         private:
+            DiplodocusDB::XMLTreeDB& m_db;
             DiplodocusDB::XMLTreeDBNode m_build_file_node;
         };
 

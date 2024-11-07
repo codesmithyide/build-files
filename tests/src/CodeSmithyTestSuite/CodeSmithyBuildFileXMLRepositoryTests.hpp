@@ -19,6 +19,7 @@ private:
     static void SetNameTest1(Ishiko::Test& test);
     static void AddProjectNodeTest1(Ishiko::Test& test);
     static void GetBuildFileNodeTest1(Ishiko::Test& test);
+    static void AddSourceFileTest1(Ishiko::Test& test);
 };
 
 #endif

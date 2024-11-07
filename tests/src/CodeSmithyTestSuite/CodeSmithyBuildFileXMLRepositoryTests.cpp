@@ -142,7 +142,6 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& tes
     build_file->addSourceFile("SourceFile1");
 
     repository.close();
-
     
     ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();

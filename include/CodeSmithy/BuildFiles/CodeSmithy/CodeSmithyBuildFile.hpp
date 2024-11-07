@@ -8,6 +8,8 @@ namespace CodeSmithy
 {
     class CodeSmithyBuildFile
     {
+    public:
+        virtual ~CodeSmithyBuildFile() = default;
     };
 }
 

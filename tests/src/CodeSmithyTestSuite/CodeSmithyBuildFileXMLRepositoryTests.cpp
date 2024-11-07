@@ -17,7 +17,7 @@ CodeSmithyBuildFileXMLRepositoryTests::CodeSmithyBuildFileXMLRepositoryTests(con
     append<Ishiko::HeapAllocationErrorsTest>("open test 2", OpenTest2);
     append<Ishiko::HeapAllocationErrorsTest>("setName test 1", SetNameTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addProjectNode test 1", AddProjectNodeTest1);
-    append<Ishiko::HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("getBuildFileNode test 1", GetBuildFileNodeTest1);
 }
 
 void CodeSmithyBuildFileXMLRepositoryTests::ConstructorTest1(Ishiko::Test& test)
@@ -102,7 +102,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& te
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyBuildFileXMLRepositoryTests::GetProjectNodeTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::GetBuildFileNodeTest1(Ishiko::Test& test)
 {
     boost::filesystem::path inputPath =
         test.context().getDataPath("ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
@@ -115,9 +115,9 @@ void CodeSmithyBuildFileXMLRepositoryTests::GetProjectNodeTest1(Ishiko::Test& te
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("Project1", error);
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFileNode("Project1", error);
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_NOT(projectNode);
+    ISHIKO_TEST_FAIL_IF_NOT(build_file);
     ISHIKO_TEST_PASS();
 }

@@ -47,10 +47,10 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileTests.hpp">
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.hpp">
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h">
@@ -94,10 +94,10 @@
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileTests.cpp">
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.cpp">
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp">

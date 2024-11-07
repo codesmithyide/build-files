@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "CodeSmithyProjectFileXMLRepositoryTests.hpp"
-#include "CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyProjectFileXMLRepository.hpp"
+#include "CodeSmithyBuildFileXMLRepositoryTests.hpp"
+#include "CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyBuildFileXMLRepository.hpp"
 
 using namespace CodeSmithy;
 using namespace boost::filesystem;

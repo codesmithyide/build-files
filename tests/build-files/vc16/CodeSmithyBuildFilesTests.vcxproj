@@ -167,8 +167,8 @@
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileTests.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.cpp" />
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.cpp" />
+    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.cpp" />
   </ItemGroup>
@@ -183,8 +183,8 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h" />
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileTests.hpp" />
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyProjectFileXMLRepositoryTests.hpp" />
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.hpp" />
+    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.hpp" />
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h" />
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.h" />
   </ItemGroup>

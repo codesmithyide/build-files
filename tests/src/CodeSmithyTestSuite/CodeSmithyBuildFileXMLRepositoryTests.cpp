@@ -7,9 +7,9 @@
 using namespace CodeSmithy;
 using namespace boost::filesystem;
 
-CodeSmithyProjectFileXMLRepositoryTests::CodeSmithyProjectFileXMLRepositoryTests(const Ishiko::TestNumber& number,
+CodeSmithyBuildFileXMLRepositoryTests::CodeSmithyBuildFileXMLRepositoryTests(const Ishiko::TestNumber& number,
     const Ishiko::TestContext& context)
-    : TestSequence(number, "CodeSmithyProjectFileXMLRepository tests", context)
+    : TestSequence(number, "CodeSmithyBuildFileXMLRepository tests", context)
 {
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<Ishiko::HeapAllocationErrorsTest>("create test 1", CreateTest1);
@@ -20,19 +20,19 @@ CodeSmithyProjectFileXMLRepositoryTests::CodeSmithyProjectFileXMLRepositoryTests
     append<Ishiko::HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::ConstructorTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::ConstructorTest1(Ishiko::Test& test)
 {
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
 
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::CreateTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::CreateTest1(Ishiko::Test& test)
 {
     const char* outputName = "ProjectRepositoryTests_CreateTest1.csmthprj";
     
     Ishiko::Error error;
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
     repository.close();
 
@@ -42,13 +42,13 @@ void CodeSmithyProjectFileXMLRepositoryTests::CreateTest1(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::OpenTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::OpenTest1(Ishiko::Test& test)
 {
     path inputPath = test.context().getDataPath("ProjectRepositoryTests_OpenTest1.csmthprj");
 
     Ishiko::Error error;
 
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_FAIL_IF(error);
@@ -56,13 +56,13 @@ void CodeSmithyProjectFileXMLRepositoryTests::OpenTest1(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::OpenTest2(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::OpenTest2(Ishiko::Test& test)
 {
     path inputPath = test.context().getDataPath("ProjectRepositoryTests_OpenTest2.csmthprj");
 
     Ishiko::Error error;
 
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_FAIL_IF(error);
@@ -70,12 +70,12 @@ void CodeSmithyProjectFileXMLRepositoryTests::OpenTest2(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::SetNameTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::SetNameTest1(Ishiko::Test& test)
 {
     const char* outputName = "ProjectRepositoryTests_SetNameTest1.csmthprj";
 
     Ishiko::Error error;
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_SetNameTest1");
     repository.close();
@@ -86,12 +86,12 @@ void CodeSmithyProjectFileXMLRepositoryTests::SetNameTest1(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& test)
 {
     const char* outputName = "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj";
 
     Ishiko::Error error;
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
     DiplodocusDB::XMLTreeDBNode project1 = repository.addProjectNode("Project1", error);
@@ -102,14 +102,14 @@ void CodeSmithyProjectFileXMLRepositoryTests::AddProjectNodeTest1(Ishiko::Test& 
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyProjectFileXMLRepositoryTests::GetProjectNodeTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::GetProjectNodeTest1(Ishiko::Test& test)
 {
     boost::filesystem::path inputPath =
         test.context().getDataPath("ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
 
     Ishiko::Error error;
 
-    CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_FAIL_IF(error);

@@ -1,15 +1,15 @@
 // SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_TESTS_CODESMITHYTESTSUITE_CODESMITHYPROJECTFILEXMLREPOSITORYTESTS_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_TESTS_CODESMITHYTESTSUITE_CODESMITHYPROJECTFILEXMLREPOSITORYTESTS_HPP
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_TESTS_CODESMITHYTESTSUITE_CODESMITHYBUILDFILEXMLREPOSITORYTESTS_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_TESTS_CODESMITHYTESTSUITE_CODESMITHYBUILDFILEXMLREPOSITORYTESTS_HPP
 
 #include <Ishiko/TestFramework.hpp>
 
-class CodeSmithyProjectFileXMLRepositoryTests : public Ishiko::TestSequence
+class CodeSmithyBuildFileXMLRepositoryTests : public Ishiko::TestSequence
 {
 public:
-    CodeSmithyProjectFileXMLRepositoryTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
+    CodeSmithyBuildFileXMLRepositoryTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
     static void ConstructorTest1(Ishiko::Test& test);

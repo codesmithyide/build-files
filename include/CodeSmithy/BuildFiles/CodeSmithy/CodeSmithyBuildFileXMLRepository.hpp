@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_CODESMITHY_CODESMITHYPROJECTFILEXMLREPOSITORY_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_CODESMITHY_CODESMITHYPROJECTFILEXMLREPOSITORY_HPP
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_CODESMITHY_CODESMITHYBUILDFILEXMLREPOSITORY_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_CODESMITHY_CODESMITHYBUILDFILEXMLREPOSITORY_HPP
 
 #include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <boost/filesystem/path.hpp>
@@ -11,7 +11,7 @@
 namespace CodeSmithy
 {
     // This class allows to store one or more projects in a file.
-    class CodeSmithyProjectFileXMLRepository
+    class CodeSmithyBuildFileXMLRepository
     {
     public:
         void create(const boost::filesystem::path& path, Ishiko::Error& error);

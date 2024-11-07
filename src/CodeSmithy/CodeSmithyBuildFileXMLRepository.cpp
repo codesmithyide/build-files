@@ -13,7 +13,7 @@ static const char* repositoryProjectsElementName = "projects";
 static const char* projectElementName = "codesmithy-project";
 static const char* projectNameElementName = "name";
 
-void CodeSmithyProjectFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
+void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.create(path, error);
 
@@ -29,7 +29,7 @@ void CodeSmithyProjectFileXMLRepository::create(const boost::filesystem::path& p
     }
 }
 
-void CodeSmithyProjectFileXMLRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
+void CodeSmithyBuildFileXMLRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.open(path, error);
     DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
@@ -37,12 +37,12 @@ void CodeSmithyProjectFileXMLRepository::open(const boost::filesystem::path& pat
     m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
 }
 
-void CodeSmithyProjectFileXMLRepository::close()
+void CodeSmithyBuildFileXMLRepository::close()
 {
     m_db.close();
 }
 
-std::string CodeSmithyProjectFileXMLRepository::name() const
+std::string CodeSmithyBuildFileXMLRepository::name() const
 {
     std::string result;
     if (m_nameNode)
@@ -54,19 +54,19 @@ std::string CodeSmithyProjectFileXMLRepository::name() const
     return result;
 }
 
-void CodeSmithyProjectFileXMLRepository::setName(const std::string& name)
+void CodeSmithyBuildFileXMLRepository::setName(const std::string& name)
 {
     // TODO : should setName commit immediately?
     Ishiko::Error error;
     m_db.setValue(m_nameNode, DiplodocusDB::Value::UTF8String(name), error);
 }
 
-DiplodocusDB::XMLTreeDB& CodeSmithyProjectFileXMLRepository::db()
+DiplodocusDB::XMLTreeDB& CodeSmithyBuildFileXMLRepository::db()
 {
     return m_db;
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
 {
     DiplodocusDB::XMLTreeDBNode result;
     for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
@@ -88,7 +88,7 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::getProjectNode(c
     return result;
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyProjectFileXMLRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
 {
     if (m_projectsNode)
     {

@@ -47,9 +47,6 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -92,9 +89,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.cpp">

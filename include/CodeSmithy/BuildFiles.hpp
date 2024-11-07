@@ -9,7 +9,7 @@
 #include "BuildFiles/Bakefile/BakefileTarget.hpp"
 #include "BuildFiles/Bakefile/BakefileToken.hpp"
 #include "BuildFiles/Bakefile/BakefileTokenizer.hpp"
-#include "BuildFiles/CodeSmithy/CodeSmithBuildFile.hpp"
+#include "BuildFiles/CodeSmithy/CodeSmithyBuildFile.hpp"
 #include "BuildFiles/CodeSmithy/CodeSmithyBuildFileXMLRepository.hpp"
 #include "BuildFiles/linkoptions.hpp"
 #include "BuildFiles/MSBuild/MSBuildFiltersFile.hpp"

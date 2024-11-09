@@ -89,7 +89,8 @@ std::unique_ptr<CodeSmithyBuildFile> CodeSmithyBuildFileXMLRepository::getBuildF
     return std::unique_ptr<BuildFileAdapter>(new BuildFileAdapter(m_db, result));
 }
 
-DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(const std::string& name,
+    Ishiko::Error& error)
 {
     if (m_projectsNode)
     {
@@ -102,6 +103,29 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(c
     {
         return DiplodocusDB::XMLTreeDBNode();
     }
+}
+
+DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::getBuildFileRawNode(const std::string& name,
+    Ishiko::Error& error)
+{
+    DiplodocusDB::XMLTreeDBNode result;
+    for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
+        projectNode;
+        projectNode = m_db.nextSibling(projectNode, projectElementName, error))
+    {
+        DiplodocusDB::Value nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
+            DiplodocusDB::DataType(DiplodocusDB::PrimitiveDataType::unicodeString), error);
+        if (error)
+        {
+            break;
+        }
+        if (nameNodeValue.asUTF8String() == name)
+        {
+            result = projectNode;
+            break;
+        }
+    }
+    return result;
 }
 
 CodeSmithyBuildFileXMLRepository::BuildFileAdapter::BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,

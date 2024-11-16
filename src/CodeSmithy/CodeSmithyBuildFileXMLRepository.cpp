@@ -12,7 +12,7 @@ namespace
     const char* k_version_element_name = "file-format-version";
     const char* k_repository_name_element_name = "name";
     const char* k_build_files_element_name = "build-files";
-    const char* projectElementName = "codesmithy-project";
+    const char* k_codesmithy_build_file_element_name = "codesmithy-build-file";
     const char* projectNameElementName = "name";
 }
 
@@ -73,9 +73,10 @@ std::unique_ptr<CodeSmithyBuildFile> CodeSmithyBuildFileXMLRepository::getBuildF
     Ishiko::Error& error)
 {
     DiplodocusDB::XMLTreeDBNode result;
-    for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
+    for (DiplodocusDB::XMLTreeDBNode projectNode =
+            m_db.child(m_projectsNode, k_codesmithy_build_file_element_name, error);
          projectNode; 
-         projectNode = m_db.nextSibling(projectNode, projectElementName, error))
+         projectNode = m_db.nextSibling(projectNode, k_codesmithy_build_file_element_name, error))
     {
         DiplodocusDB::Value nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
             DiplodocusDB::DataType(DiplodocusDB::PrimitiveDataType::unicodeString), error);
@@ -97,7 +98,8 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::addBuildFileNode(c
 {
     if (m_projectsNode)
     {
-        DiplodocusDB::XMLTreeDBNode projectNode = m_db.appendChildNode(m_projectsNode, projectElementName, error);
+        DiplodocusDB::XMLTreeDBNode projectNode =
+            m_db.appendChildNode(m_projectsNode, k_codesmithy_build_file_element_name, error);
         DiplodocusDB::XMLTreeDBNode nameNode = m_db.appendChildNode(projectNode, projectNameElementName,
             DiplodocusDB::Value::UTF8String(name), error);
         return DiplodocusDB::XMLTreeDBNode(projectNode);
@@ -112,9 +114,10 @@ DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::getBuildFileRawNod
     Ishiko::Error& error)
 {
     DiplodocusDB::XMLTreeDBNode result;
-    for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
+    for (DiplodocusDB::XMLTreeDBNode projectNode =
+            m_db.child(m_projectsNode, k_codesmithy_build_file_element_name, error);
         projectNode;
-        projectNode = m_db.nextSibling(projectNode, projectElementName, error))
+        projectNode = m_db.nextSibling(projectNode, k_codesmithy_build_file_element_name, error))
     {
         DiplodocusDB::Value nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
             DiplodocusDB::DataType(DiplodocusDB::PrimitiveDataType::unicodeString), error);

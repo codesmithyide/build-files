@@ -37,7 +37,9 @@ namespace CodeSmithy
             explicit BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,
                 DiplodocusDB::XMLTreeDBNode build_file_node) noexcept;
 
-            void addSourceFile(const std::string& file_path) override;
+            void addProject(const std::string& name) override;
+
+            void addSourceFile(const std::string& project_name, const std::string& file_path) override;
 
         private:
             DiplodocusDB::XMLTreeDB& m_db;

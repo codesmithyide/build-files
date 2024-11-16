@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<diplodocusdb-xmltreedb>
+  <codesmithy-build-file-repository>
+    <file-format-version data-type="unicode-string">0.1.0</file-format-version>
+    <name data-type="unicode-string">CodeSmithyBuildFileXMLRepositoryTests_AddProjectTest1</name>
+    <build-files>
+      <build-file>
+        <name data-type="unicode-string">Project1</name>
+        <projects>
+          <project>
+            <name data-type="unicode-string">Project1</name>
+          </project>
+        </projects>
+      </build-file>
+    </build-files>
+  </codesmithy-build-file-repository>
+</diplodocusdb-xmltreedb>

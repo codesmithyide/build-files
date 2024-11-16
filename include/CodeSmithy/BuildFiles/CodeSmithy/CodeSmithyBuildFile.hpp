@@ -13,7 +13,9 @@ namespace CodeSmithy
     public:
         virtual ~CodeSmithyBuildFile() = default;
 
-        virtual void addSourceFile(const std::string& file_path) = 0;
+        virtual void addProject(const std::string& name) = 0;
+
+        virtual void addSourceFile(const std::string& project_name, const std::string& file_path) = 0;
     };
 }
 

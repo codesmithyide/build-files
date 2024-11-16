@@ -18,6 +18,7 @@ CodeSmithyBuildFileXMLRepositoryTests::CodeSmithyBuildFileXMLRepositoryTests(con
     append<Ishiko::HeapAllocationErrorsTest>("setName test 1", SetNameTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addBuildFileNode test 1", AddBuildFileNodeTest1);
     append<Ishiko::HeapAllocationErrorsTest>("getBuildFileNode test 1", GetBuildFileNodeTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("addProject test 1", AddProjectTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addSourceFile test 1", AddSourceFileTest1);
 }
 
@@ -123,6 +124,30 @@ void CodeSmithyBuildFileXMLRepositoryTests::GetBuildFileNodeTest1(Ishiko::Test& 
     ISHIKO_TEST_PASS();
 }
 
+void CodeSmithyBuildFileXMLRepositoryTests::AddProjectTest1(Ishiko::Test& test)
+{
+    const char* output_name = "CodeSmithyBuildFileXMLRepositoryTests_AddProjectTest1.csbld";
+
+    Ishiko::Error error;
+    CodeSmithyBuildFileXMLRepository repository;
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.setName("CodeSmithyBuildFileXMLRepositoryTests_AddProjectTest1");
+    repository.addBuildFileNode("Project1", error);
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFileNode("Project1", error);
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    build_file->addProject("Project1");
+
+    repository.close();
+
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
+    ISHIKO_TEST_PASS();
+}
+
 void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& test)
 {
     const char* output_name = "CodeSmithyBuildFileXMLRepositoryTests_AddSourceFileTest1.csbld";
@@ -139,7 +164,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& tes
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    build_file->addSourceFile("SourceFile1");
+    build_file->addSourceFile("Project1", "SourceFile1");
 
     repository.close();
     

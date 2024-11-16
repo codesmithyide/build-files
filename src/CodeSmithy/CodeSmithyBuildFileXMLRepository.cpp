@@ -6,12 +6,15 @@
 
 using namespace CodeSmithy;
 
-static const char* k_root_element_name = "codesmithy-build-file-repository";
-static const char* versionElementName = "file-format-version";
-static const char* repositoryNameElementName = "name";
-static const char* repositoryProjectsElementName = "projects";
-static const char* projectElementName = "codesmithy-project";
-static const char* projectNameElementName = "name";
+namespace
+{
+    const char* k_root_element_name = "codesmithy-build-file-repository";
+    const char* k_version_element_name = "file-format-version";
+    const char* k_repository_name_element_name = "name";
+    const char* k_build_files_element_name = "build-files";
+    const char* projectElementName = "codesmithy-project";
+    const char* projectNameElementName = "name";
+}
 
 void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
@@ -22,10 +25,10 @@ void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& pat
     DiplodocusDB::XMLTreeDBNode root_node = m_db.appendChildNode(m_db.root(), k_root_element_name, error);
     if (root_node)
     {
-        m_db.appendChildNode(root_node, versionElementName, DiplodocusDB::Value::UTF8String("0.1.0"), error);
-        m_nameNode =
-            m_db.appendChildNode(root_node, repositoryNameElementName, DiplodocusDB::Value::UTF8String(""), error);
-        m_projectsNode = m_db.appendChildNode(root_node, repositoryProjectsElementName, error);
+        m_db.appendChildNode(root_node, k_version_element_name, DiplodocusDB::Value::UTF8String("0.1.0"), error);
+        m_nameNode = m_db.appendChildNode(root_node, k_repository_name_element_name,
+            DiplodocusDB::Value::UTF8String(""), error);
+        m_projectsNode = m_db.appendChildNode(root_node, k_build_files_element_name, error);
     }
 }
 
@@ -33,8 +36,8 @@ void CodeSmithyBuildFileXMLRepository::open(const boost::filesystem::path& path,
 {
     m_db.open(path, error);
     DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), k_root_element_name, error);
-    m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
-    m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
+    m_nameNode = m_db.child(projectRoot, k_repository_name_element_name, error);
+    m_projectsNode = m_db.child(projectRoot, k_build_files_element_name, error);
 }
 
 void CodeSmithyBuildFileXMLRepository::close()

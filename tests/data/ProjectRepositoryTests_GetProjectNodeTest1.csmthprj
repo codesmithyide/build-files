@@ -2,10 +2,10 @@
 <diplodocusdb-xmltreedb data-type="null">
   <codesmithy-build-file-repository data-type="null">
     <name data-type="unicode-string">ProjectRepositoryTests_GetProjectNodeTest1</name>
-    <projects data-type="null">
+    <build-files data-type="null">
       <codesmithy-project data-type="null">
         <name data-type="unicode-string">Project1</name>
       </codesmithy-project>
-    </projects>
+    </build-files>
   </codesmithy-build-file-repository>
 </diplodocusdb-xmltreedb>

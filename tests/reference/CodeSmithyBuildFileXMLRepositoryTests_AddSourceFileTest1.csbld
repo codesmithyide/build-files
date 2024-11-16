@@ -3,13 +3,13 @@
   <codesmithy-build-file-repository>
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
     <name data-type="unicode-string">CodeSmithyBuildFileXMLRepositoryTests_AddSourceFileTest1</name>
-    <projects>
+    <build-files>
       <codesmithy-project>
         <name data-type="unicode-string">Project1</name>
         <source-files>
           <file data-type="unicode-string">SourceFile1</file>
         </source-files>
       </codesmithy-project>
-    </projects>
+    </build-files>
   </codesmithy-build-file-repository>
 </diplodocusdb-xmltreedb>

@@ -6,7 +6,7 @@
 
 using namespace CodeSmithy;
 
-static const char* rootElementName = "codesmithy-project-repository";
+static const char* k_root_element_name = "codesmithy-build-file-repository";
 static const char* versionElementName = "file-format-version";
 static const char* repositoryNameElementName = "name";
 static const char* repositoryProjectsElementName = "projects";
@@ -19,20 +19,20 @@ void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& pat
 
     // TODO : everything is committed immediately but I may be better off using a transaction
     // TODO : handle errors
-    DiplodocusDB::XMLTreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
-    if (rootNode)
+    DiplodocusDB::XMLTreeDBNode root_node = m_db.appendChildNode(m_db.root(), k_root_element_name, error);
+    if (root_node)
     {
-        m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::Value::UTF8String("0.1.0"), error);
+        m_db.appendChildNode(root_node, versionElementName, DiplodocusDB::Value::UTF8String("0.1.0"), error);
         m_nameNode =
-            m_db.appendChildNode(rootNode, repositoryNameElementName, DiplodocusDB::Value::UTF8String(""), error);
-        m_projectsNode = m_db.appendChildNode(rootNode, repositoryProjectsElementName, error);
+            m_db.appendChildNode(root_node, repositoryNameElementName, DiplodocusDB::Value::UTF8String(""), error);
+        m_projectsNode = m_db.appendChildNode(root_node, repositoryProjectsElementName, error);
     }
 }
 
 void CodeSmithyBuildFileXMLRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.open(path, error);
-    DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
+    DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), k_root_element_name, error);
     m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
     m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb>
-  <codesmithy-project-repository>
+  <codesmithy-build-file-repository>
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
     <name data-type="unicode-string">CodeSmithyBuildFileXMLRepositoryTests_AddSourceFileTest1</name>
     <projects>
@@ -11,5 +11,5 @@
         </source-files>
       </codesmithy-project>
     </projects>
-  </codesmithy-project-repository>
+  </codesmithy-build-file-repository>
 </diplodocusdb-xmltreedb>

@@ -25,10 +25,9 @@ namespace CodeSmithy
         // TODO: need to find a better way to encapsulate the XMLTreeDB
         DiplodocusDB::XMLTreeDB& db();
 
-        std::unique_ptr<CodeSmithyBuildFile> getBuildFileNode(const std::string& name, Ishiko::Error& error);
-        DiplodocusDB::XMLTreeDBNode addBuildFileNode(const std::string& name, Ishiko::Error& error);
+        std::unique_ptr<CodeSmithyBuildFile> getBuildFile(Ishiko::Error& error);
 
-        DiplodocusDB::XMLTreeDBNode getBuildFileRawNode(const std::string& name, Ishiko::Error& error);
+        DiplodocusDB::XMLTreeDBNode getBuildFileRawNode(Ishiko::Error& error);
 
     private:
         class BuildFileAdapter : public CodeSmithyBuildFile
@@ -37,7 +36,11 @@ namespace CodeSmithy
             explicit BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,
                 DiplodocusDB::XMLTreeDBNode build_file_node) noexcept;
 
-            void addSourceFile(const std::string& file_path) override;
+            void addProject(const std::string& name) override;
+
+            void addTarget(const std::string& project_name, const std::string& target_name) override;
+
+            void addSourceFile(const std::string& project_name, const std::string& file_path) override;
 
         private:
             DiplodocusDB::XMLTreeDB& m_db;
@@ -47,8 +50,8 @@ namespace CodeSmithy
         // TODO : mutable because used in name(), fix that
         mutable DiplodocusDB::XMLTreeDB m_db;
         // TODO : mutable because used in name(), fix that
-        mutable DiplodocusDB::XMLTreeDBNode m_nameNode;
-        DiplodocusDB::XMLTreeDBNode m_projectsNode;
+        mutable DiplodocusDB::XMLTreeDBNode m_name_node;
+        DiplodocusDB::XMLTreeDBNode m_projects_node;
     };
 }
 

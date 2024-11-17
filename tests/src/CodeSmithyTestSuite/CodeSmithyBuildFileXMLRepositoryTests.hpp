@@ -17,8 +17,9 @@ private:
     static void OpenTest1(Ishiko::Test& test);
     static void OpenTest2(Ishiko::Test& test);
     static void SetNameTest1(Ishiko::Test& test);
-    static void AddBuildFileNodeTest1(Ishiko::Test& test);
-    static void GetBuildFileNodeTest1(Ishiko::Test& test);
+    static void GetBuildFileTest1(Ishiko::Test& test);
+    static void AddProjectTest1(Ishiko::Test& test);
+    static void AddTargetTest1(Ishiko::Test& test);
     static void AddSourceFileTest1(Ishiko::Test& test);
 };
 

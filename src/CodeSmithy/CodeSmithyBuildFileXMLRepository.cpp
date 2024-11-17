@@ -17,6 +17,7 @@ namespace
     const char* k_targets_element_name = "targets";
     const char* k_target_element_name = "target";
     const char* k_target_name_element_name = "name";
+    const char* k_inputs_element_name = "inputs";
 }
 
 void CodeSmithyBuildFileXMLRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
@@ -119,10 +120,16 @@ void CodeSmithyBuildFileXMLRepository::BuildFileAdapter::addSourceFile(const std
 {
     // TODO: handle errors
     Ishiko::Error error;
-    DiplodocusDB::XMLTreeDBNode source_files_node = m_db.child(m_build_file_node, "source-files", error);
-    if (!source_files_node)
+
+    DiplodocusDB::XMLTreeDBNode projects_node = m_db.child(m_build_file_node, k_projects_element_name, error);
+    DiplodocusDB::XMLTreeDBNode project_node = m_db.child(projects_node, k_project_element_name, error);
+    DiplodocusDB::XMLTreeDBNode targets_node = m_db.child(project_node, k_targets_element_name, error);
+    DiplodocusDB::XMLTreeDBNode target_node = m_db.child(targets_node, k_target_element_name, error);
+
+    DiplodocusDB::XMLTreeDBNode inputs_node = m_db.child(target_node, k_inputs_element_name, error);
+    if (!inputs_node)
     {
-        source_files_node = m_db.appendChildNode(m_build_file_node, "source-files", error);
+        inputs_node = m_db.appendChildNode(target_node, k_inputs_element_name, error);
     }
-    m_db.appendChildNode(source_files_node, "file", DiplodocusDB::Value::UTF8String(file_path), error);
+    m_db.appendChildNode(inputs_node, "file", DiplodocusDB::Value::UTF8String(file_path), error);
 }

@@ -170,7 +170,10 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& tes
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    build_file->addSourceFile("Project1", "SourceFile1");
+    build_file->addProject("Project1");
+    build_file->addTarget("Project1", "Target1");
+
+    build_file->addSourceFile("Target1", "SourceFile1");
 
     repository.close();
     

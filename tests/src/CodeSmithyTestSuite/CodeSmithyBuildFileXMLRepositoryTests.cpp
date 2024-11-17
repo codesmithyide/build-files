@@ -16,9 +16,9 @@ CodeSmithyBuildFileXMLRepositoryTests::CodeSmithyBuildFileXMLRepositoryTests(con
     append<Ishiko::HeapAllocationErrorsTest>("open test 1", OpenTest1);
     append<Ishiko::HeapAllocationErrorsTest>("open test 2", OpenTest2);
     append<Ishiko::HeapAllocationErrorsTest>("setName test 1", SetNameTest1);
-    append<Ishiko::HeapAllocationErrorsTest>("addBuildFileNode test 1", AddBuildFileNodeTest1);
-    append<Ishiko::HeapAllocationErrorsTest>("getBuildFileNode test 1", GetBuildFileNodeTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("getBuildFile test 1", GetBuildFileTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addProject test 1", AddProjectTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("addTarget test 1", AddTargetTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addSourceFile test 1", AddSourceFileTest1);
 }
 
@@ -88,23 +88,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::SetNameTest1(Ishiko::Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void CodeSmithyBuildFileXMLRepositoryTests::AddBuildFileNodeTest1(Ishiko::Test& test)
-{
-    const char* outputName = "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj";
-
-    Ishiko::Error error;
-    CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
-    repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
-    DiplodocusDB::XMLTreeDBNode project1 = repository.addBuildFileNode("Project1", error);
-    repository.close();
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
-    ISHIKO_TEST_PASS();
-}
-
-void CodeSmithyBuildFileXMLRepositoryTests::GetBuildFileNodeTest1(Ishiko::Test& test)
+void CodeSmithyBuildFileXMLRepositoryTests::GetBuildFileTest1(Ishiko::Test& test)
 {
     boost::filesystem::path inputPath =
         test.context().getDataPath("ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
@@ -117,7 +101,7 @@ void CodeSmithyBuildFileXMLRepositoryTests::GetBuildFileNodeTest1(Ishiko::Test& 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
 
-    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFileNode("Project1", error);
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFile(error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(build_file);
@@ -132,15 +116,38 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddProjectTest1(Ishiko::Test& test)
     CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(output_name), error);
     repository.setName("CodeSmithyBuildFileXMLRepositoryTests_AddProjectTest1");
-    repository.addBuildFileNode("Project1", error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFileNode("Project1", error);
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFile(error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
     build_file->addProject("Project1");
+
+    repository.close();
+
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
+    ISHIKO_TEST_PASS();
+}
+
+void CodeSmithyBuildFileXMLRepositoryTests::AddTargetTest1(Ishiko::Test& test)
+{
+    const char* output_name = "CodeSmithyBuildFileXMLRepositoryTests_AddTargetTest1.csbld";
+
+    Ishiko::Error error;
+    CodeSmithyBuildFileXMLRepository repository;
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.setName("CodeSmithyBuildFileXMLRepositoryTests_AddProjectTest1");
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFile(error);
+
+    ISHIKO_TEST_ABORT_IF(error);
+
+    build_file->addProject("Project1");
+    build_file->addTarget("Project1", "Target1");
 
     repository.close();
 
@@ -156,11 +163,10 @@ void CodeSmithyBuildFileXMLRepositoryTests::AddSourceFileTest1(Ishiko::Test& tes
     CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(output_name), error);
     repository.setName("CodeSmithyBuildFileXMLRepositoryTests_AddSourceFileTest1");
-    repository.addBuildFileNode("Project1", error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFileNode("Project1", error);
+    std::unique_ptr<CodeSmithyBuildFile> build_file = repository.getBuildFile(error);
 
     ISHIKO_TEST_ABORT_IF(error);
 

@@ -6,6 +6,11 @@
     <projects>
       <project>
         <name data-type="unicode-string">Project1</name>
+        <targets>
+          <target>
+            <name data-type="unicode-string">Target1</name>
+          </target>
+        </targets>
       </project>
     </projects>
   </codesmithy-build-file>

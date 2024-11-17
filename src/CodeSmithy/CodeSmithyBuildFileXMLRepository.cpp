@@ -81,7 +81,7 @@ std::unique_ptr<CodeSmithyBuildFile> CodeSmithyBuildFileXMLRepository::getBuildF
 
 DiplodocusDB::XMLTreeDBNode CodeSmithyBuildFileXMLRepository::getBuildFileRawNode(Ishiko::Error& error)
 {
-    return m_db.child(m_db.root(), k_root_element_name, error);
+    return m_db.child(m_projects_node, k_project_element_name, error);
 }
 
 CodeSmithyBuildFileXMLRepository::BuildFileAdapter::BuildFileAdapter(DiplodocusDB::XMLTreeDB& db,

@@ -2,3 +2,4 @@
 // SPDX-License-Identifier: MIT
 
 #include "Nuime/NuimeBuildFile.hpp"
+#include <Ishiko/TidyYAML.hpp>

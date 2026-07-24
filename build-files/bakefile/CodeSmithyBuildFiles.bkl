@@ -1,9 +1,10 @@
 ishikopath = envvar("ISHIKO_CPP_ROOT");
-import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
 import $(ishikopath)/text/include/Ishiko/Text.bkl;
-import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+import $(ishikopath)/tidy-yaml/include/Ishiko/TidyYAML.bkl;
+import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 
 toolsets = gnu vs2022 vs2019 vs2017;
 
@@ -12,7 +13,7 @@ vs2022.solutionfile = ../vc17/CodeSmithyBuildFiles.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     archs = x86 x86_64;
 

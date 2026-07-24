@@ -161,6 +161,7 @@
     <ClCompile Include="..\..\src\Bakefile\BakefileTokenizer.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeBuildFile.cpp" />
     <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +172,9 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileToken.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CodeSmithy\CodeSmithyBuildFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Nuime\NuimeBuildFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

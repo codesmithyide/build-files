@@ -1,5 +1,3 @@
-diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
-import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
@@ -14,7 +12,7 @@ vs2022.solutionfile = ../vc17/CodeSmithyBuildFiles.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     archs = x86 x86_64;
 
@@ -22,7 +20,7 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
 
     if ($(toolset) == gnu)
     {
-        cxx-compiler-options = "-std=c++11";
+        cxx-compiler-options = "-std=c++14";
         outputdir = ../../lib;
     }
 

@@ -1,0 +1,18 @@
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
+
+#ifndef GUARD_CODESMITHYIDE_BUILDFILES_TESTS_NUIMETESTSUITE_NUIMEBUILDFILETESTS_HPP
+#define GUARD_CODESMITHYIDE_BUILDFILES_TESTS_NUIMETESTSUITE_NUIMEBUILDFILETESTS_HPP
+
+#include <Ishiko/TestFramework.hpp>
+
+class NuimeBuildFileTests : public Ishiko::TestSequence
+{
+public:
+    NuimeBuildFileTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
+
+private:
+    static void ConstructorTest1(Ishiko::Test& test);
+};
+
+#endif

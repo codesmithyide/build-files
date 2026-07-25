@@ -1,11 +1,10 @@
-diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
-import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
-import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
 import $(ishikopath)/text/include/Ishiko/Text.bkl;
-import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+import $(ishikopath)/tidy-yaml/include/Ishiko/TidyYAML.bkl;
+import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 
 toolsets = gnu vs2022 vs2019 vs2017;
 
@@ -14,7 +13,7 @@ vs2022.solutionfile = ../vc17/CodeSmithyBuildFiles.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, IshikoIO, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     archs = x86 x86_64;
 
@@ -22,7 +21,7 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
 
     if ($(toolset) == gnu)
     {
-        cxx-compiler-options = "-std=c++11";
+        cxx-compiler-options = "-std=c++14";
         outputdir = ../../lib;
     }
 
@@ -46,10 +45,9 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
-        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyBuildFile.hpp
-        ../../include/CodeSmithy/BuildFiles/CodeSmithy/CodeSmithyBuildFileXMLRepository.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
+        ../../include/CodeSmithy/BuildFiles/Nuime/NuimeBuildFile.hpp
         ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
     }
 
@@ -60,9 +58,9 @@ library CodeSmithyBuildFiles : DiplodocusEmbeddedDocumentDB, IshikoUUIDs, Ishiko
         ../../src/Bakefile/BakefileTarget.cpp
         ../../src/Bakefile/BakefileToken.cpp
         ../../src/Bakefile/BakefileTokenizer.cpp
-        ../../src/CodeSmithy/CodeSmithyBuildFileXMLRepository.cpp
         ../../src/MSBuild/MSBuildProjectFile.cpp
         ../../src/MSBuild/MSBuildFiltersFile.cpp
+        ../../src/Nuime/NuimeBuildFile.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp
     }
 }

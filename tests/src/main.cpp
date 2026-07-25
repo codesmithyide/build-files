@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
+// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #include "BakefileTestSuite.hpp"
-#include "CodeSmithyTestSuite.hpp"
+#include "NuimeTestSuite.hpp"
 #include "MSBuildTestSuite.hpp"
 #include "VisualStudioSolutionFileTests.h"
 #include "CodeSmithy/BuildFiles/linkoptions.hpp"
@@ -20,8 +20,8 @@ int main(int argc, char* argv[])
     Ishiko::TestHarness theTestHarness("CodeSmithyBuildFiles", configuration);
 
     Ishiko::TestSequence& theTests = theTestHarness.tests();
+    theTests.append<NuimeTestSuite>();
     theTests.append<BakefileTestSuite>();
-    theTests.append<CodeSmithyTestSuite>();
     theTests.append<MSBuildTestSuite>();
     theTests.append<VisualStudioSolutionFileTests>();
 

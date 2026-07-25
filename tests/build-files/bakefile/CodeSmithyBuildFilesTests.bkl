@@ -29,27 +29,26 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     headers
     {
         ../../src/BakefileTestSuite.hpp
-        ../../src/CodeSmithyTestSuite.hpp
         ../../src/MSBuildTestSuite.hpp
+        ../../src/NuimeTestSuite.hpp
         ../../src/VisualStudioSolutionFileTests.h
-
         ../../src/BakefileTestSuite/BakefilePushParserTests.hpp
         ../../src/BakefileTestSuite/BakefilePushParserTestCallbacks.hpp
         ../../src/BakefileTestSuite/BakefileTargetTests.h
         ../../src/BakefileTestSuite/BakefileTests.h
         ../../src/BakefileTestSuite/BakefileTokenizerTests.h
         ../../src/BakefileTestSuite/BakefileTokenTests.h
-        ../../src/CodeSmithyTestSuite/CodeSmithyBuildFileXMLRepositoryTests.hpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.h
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.h
+        ../../src/NuimeTestSuite/NuimeBuildFileTests.hpp
     }
 
     sources
     {
         ../../src/BakefileTestSuite.cpp
-        ../../src/CodeSmithyTestSuite.cpp
         ../../src/main.cpp
         ../../src/MSBuildTestSuite.cpp
+        ../../src/NuimeTestSuite.cpp
         ../../src/VisualStudioSolutionFileTests.cpp
 
         ../../src/BakefileTestSuite/BakefilePushParserTests.cpp
@@ -58,8 +57,8 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTestSuite/BakefileTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenizerTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenTests.cpp
-        ../../src/CodeSmithyTestSuite/CodeSmithyBuildFileXMLRepositoryTests.cpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.cpp
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.cpp
+        ../../src/NuimeTestSuite/NuimeBuildFileTests.cpp
     }
 }

@@ -161,9 +161,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite.cpp" />
+    <ClCompile Include="..\..\src\NuimeTestSuite.cpp" />
     <ClCompile Include="..\..\src\VisualStudioSolutionFileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.cpp" />
@@ -171,14 +171,14 @@
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.cpp" />
     <ClCompile Include="..\..\src\BakefileTestSuite\BakefileTokenTests.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.cpp" />
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite.hpp" />
     <ClInclude Include="..\..\src\MSBuildTestSuite.hpp" />
+    <ClInclude Include="..\..\src\NuimeTestSuite.hpp" />
     <ClInclude Include="..\..\src\VisualStudioSolutionFileTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTests.hpp" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefilePushParserTestCallbacks.hpp" />
@@ -186,9 +186,9 @@
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenizerTests.h" />
     <ClInclude Include="..\..\src\BakefileTestSuite\BakefileTokenTests.h" />
-    <ClInclude Include="..\..\src\CodeSmithyTestSuite\CodeSmithyBuildFileXMLRepositoryTests.hpp" />
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h" />
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.h" />
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

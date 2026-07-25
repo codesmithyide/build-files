@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
+import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/io/include/Ishiko/IO.bkl;
 import $(ishikopath)/text/include/Ishiko/Text.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
@@ -13,7 +14,7 @@ vs2022.solutionfile = ../vc17/CodeSmithyBuildFiles.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
 
-library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoIO, IshikoText, IshikoErrors, Boost
+library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     archs = x86 x86_64;
 
@@ -45,6 +46,8 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoIO, IshikoText
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
         ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
+        ../../include/CodeSmithy/BuildFiles/CMake/CMakeBuildFile.hpp
+        ../../include/CodeSmithy/BuildFiles/CMake/CMakeListsWriter.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
         ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/CodeSmithy/BuildFiles/Nuime/NuimeBuildFile.hpp
@@ -58,6 +61,8 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoIO, IshikoText
         ../../src/Bakefile/BakefileTarget.cpp
         ../../src/Bakefile/BakefileToken.cpp
         ../../src/Bakefile/BakefileTokenizer.cpp
+        ../../src/CMake/CMakeBuildFile.cpp
+        ../../src/CMake/CMakeListsWriter.cpp
         ../../src/MSBuild/MSBuildProjectFile.cpp
         ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/Nuime/NuimeBuildFile.cpp

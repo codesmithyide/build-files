@@ -1,0 +1,4 @@
+add_library(MyLibrary STATIC
+    source1.cpp
+    source2.cpp
+)

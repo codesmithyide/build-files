@@ -159,6 +159,8 @@
     <ClCompile Include="..\..\src\Bakefile\BakefileTarget.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileToken.cpp" />
     <ClCompile Include="..\..\src\Bakefile\BakefileTokenizer.cpp" />
+    <ClCompile Include="..\..\src\CMake\CMakeBuildFile.cpp" />
+    <ClCompile Include="..\..\src\CMake\CMakeListsWriter.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeBuildFile.cpp" />
@@ -172,6 +174,8 @@
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileToken.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CMake\CMakeBuildFile.hpp" />
+    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CMake\CMakeListsWriter.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
     <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Nuime\NuimeBuildFile.hpp" />

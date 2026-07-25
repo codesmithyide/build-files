@@ -19,7 +19,7 @@ namespace CodeSmithy
 
         void writeAddLibraryCommand();
         void writeCMakeMinimumRequiredCommand(const std::string& version);
-        void writeProjectCommand();
+        void writeProjectCommand(const std::string& project_name);
 
     private:
         Ishiko::TextFile m_output_file;

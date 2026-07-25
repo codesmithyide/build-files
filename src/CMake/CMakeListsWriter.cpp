@@ -27,7 +27,9 @@ void CMakeListsWriter::writeCMakeMinimumRequiredCommand(const std::string& versi
     m_output_file.writeLine(")");
 }
 
-void CMakeListsWriter::writeProjectCommand()
+void CMakeListsWriter::writeProjectCommand(const std::string& project_name)
 {
-    // TODO
+    m_output_file.write("project(");
+    m_output_file.write(project_name);
+    m_output_file.writeLine(" LANGUAGES CXX)");
 }

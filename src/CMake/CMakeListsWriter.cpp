@@ -15,9 +15,26 @@ void CMakeListsWriter::close()
     m_output_file.close();
 }
 
-void CMakeListsWriter::writeAddLibraryCommand()
+void CMakeListsWriter::writeAddLibraryCommand(const std::string& library_name,
+    const std::vector<std::string>& source_files)
 {
-    // TODO
+    m_output_file.write("add_library(");
+    m_output_file.write(library_name);
+    m_output_file.write(" STATIC");
+    if (source_files.empty())
+    {
+        m_output_file.writeLine(")");
+    }
+    else
+    {
+        m_output_file.writeLine("");
+        for (const std::string& source_file : source_files)
+        {
+            m_output_file.write("    ");
+            m_output_file.writeLine(source_file);
+        }
+        m_output_file.writeLine(")");
+    }
 }
 
 void CMakeListsWriter::writeCMakeMinimumRequiredCommand(const std::string& version)

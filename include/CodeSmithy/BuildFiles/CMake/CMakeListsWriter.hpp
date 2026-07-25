@@ -8,6 +8,7 @@
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>
 #include <string>
+#include <vector>
 
 namespace CodeSmithy
 {
@@ -17,7 +18,7 @@ namespace CodeSmithy
         CMakeListsWriter(const boost::filesystem::path& output_file, Ishiko::Error& error);
         void close();
 
-        void writeAddLibraryCommand();
+        void writeAddLibraryCommand(const std::string& library_name, const std::vector<std::string>& source_files);
         void writeCMakeMinimumRequiredCommand(const std::string& version);
         void writeProjectCommand(const std::string& project_name);
 

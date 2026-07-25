@@ -29,6 +29,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     headers
     {
         ../../src/BakefileTestSuite.hpp
+        ../../src/CMakeTestSuite.hpp
         ../../src/MSBuildTestSuite.hpp
         ../../src/NuimeTestSuite.hpp
         ../../src/VisualStudioSolutionFileTests.h
@@ -38,6 +39,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTestSuite/BakefileTests.h
         ../../src/BakefileTestSuite/BakefileTokenizerTests.h
         ../../src/BakefileTestSuite/BakefileTokenTests.h
+        ../../src/CMakeTestSuite/CMakeListsWriterTests.hpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.h
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.h
         ../../src/NuimeTestSuite/NuimeBuildFileTests.hpp
@@ -46,6 +48,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
     sources
     {
         ../../src/BakefileTestSuite.cpp
+        ../../src/CMakeTestSuite.cpp
         ../../src/main.cpp
         ../../src/MSBuildTestSuite.cpp
         ../../src/NuimeTestSuite.cpp
@@ -57,6 +60,7 @@ program CodeSmithyBuildFilesTests : CodeSmithyBuildFiles, IshikoTestFramework
         ../../src/BakefileTestSuite/BakefileTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenizerTests.cpp
         ../../src/BakefileTestSuite/BakefileTokenTests.cpp
+        ../../src/CMakeTestSuite/CMakeListsWriterTests.cpp
         ../../src/MSBuildTestSuite/MSBuildProjectFileTests.cpp
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.cpp
         ../../src/NuimeTestSuite/NuimeBuildFileTests.cpp

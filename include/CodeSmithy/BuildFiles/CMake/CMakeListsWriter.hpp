@@ -8,6 +8,10 @@ namespace CodeSmithy
 {
     class CMakeListsWriter
     {
+    public:
+        void writeAddLibraryCommand();
+        void writeCMakeMinimumRequiredCommand();
+        void writeProjectCommand();
     };
 }
 

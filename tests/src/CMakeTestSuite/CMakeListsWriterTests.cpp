@@ -11,11 +11,34 @@ CMakeListsWriterTests::CMakeListsWriterTests(const Ishiko::TestNumber& number, c
     : TestSequence(number, "CMakeListsWriter tests", context)
 {
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("writeCMakeMinimumRequiredCommand test 1",
+        WriteCMakeMinimumRequiredCommandTest1);
 }
 
 void CMakeListsWriterTests::ConstructorTest1(Ishiko::Test& test)
 {
-    CMakeListsWriter cmakelists_writer;
+    const path output_path = test.context().getOutputPath("CMakeListsWriterTests_ConstructorTest1.txt");
 
+    Ishiko::Error error;
+    CMakeListsWriter writer(output_path, error);
+
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_PASS();
+}
+
+void CMakeListsWriterTests::WriteCMakeMinimumRequiredCommandTest1(Ishiko::Test& test)
+{
+    const char* output_name = "CMakeListsWriterTests_WriteCMakeMinimumRequiredCommandTest1.txt";
+    const path output_path = test.context().getOutputPath(output_name);
+
+    Ishiko::Error error;
+    CMakeListsWriter writer(output_path, error);
+    ISHIKO_TEST_FAIL_IF(error);
+
+    writer.writeCMakeMinimumRequiredCommand("3.10");
+
+    writer.close();
+
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }

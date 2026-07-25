@@ -5,14 +5,26 @@
 
 using namespace CodeSmithy;
 
+CMakeListsWriter::CMakeListsWriter(const boost::filesystem::path& output_file, Ishiko::Error& error)
+{
+    m_output_file.create(output_file, error);
+}
+
+void CMakeListsWriter::close()
+{
+    m_output_file.close();
+}
+
 void CMakeListsWriter::writeAddLibraryCommand()
 {
     // TODO
 }
 
-void CMakeListsWriter::writeCMakeMinimumRequiredCommand()
+void CMakeListsWriter::writeCMakeMinimumRequiredCommand(const std::string& version)
 {
-    // TODO
+    m_output_file.write("cmake_minimum_required(VERSION ");
+    m_output_file.write(version);
+    m_output_file.writeLine(")");
 }
 
 void CMakeListsWriter::writeProjectCommand()

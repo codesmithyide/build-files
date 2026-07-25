@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "BakefileTestSuite.hpp"
+#include "CMakeTestSuite.hpp"
 #include "NuimeTestSuite.hpp"
 #include "MSBuildTestSuite.hpp"
 #include "VisualStudioSolutionFileTests.h"
@@ -21,6 +22,7 @@ int main(int argc, char* argv[])
 
     Ishiko::TestSequence& theTests = theTestHarness.tests();
     theTests.append<NuimeTestSuite>();
+    theTests.append<CMakeTestSuite>();
     theTests.append<BakefileTestSuite>();
     theTests.append<MSBuildTestSuite>();
     theTests.append<VisualStudioSolutionFileTests>();

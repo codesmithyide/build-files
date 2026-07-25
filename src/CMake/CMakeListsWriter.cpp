@@ -1,0 +1,52 @@
+// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
+
+#include "CMake/CMakeListsWriter.hpp"
+
+using namespace CodeSmithy;
+
+CMakeListsWriter::CMakeListsWriter(const boost::filesystem::path& output_file, Ishiko::Error& error)
+{
+    m_output_file.create(output_file, error);
+}
+
+void CMakeListsWriter::close()
+{
+    m_output_file.close();
+}
+
+void CMakeListsWriter::writeAddLibraryCommand(const std::string& library_name,
+    const std::vector<std::string>& source_files)
+{
+    m_output_file.write("add_library(");
+    m_output_file.write(library_name);
+    m_output_file.write(" STATIC");
+    if (source_files.empty())
+    {
+        m_output_file.writeLine(")");
+    }
+    else
+    {
+        m_output_file.writeLine("");
+        for (const std::string& source_file : source_files)
+        {
+            m_output_file.write("    ");
+            m_output_file.writeLine(source_file);
+        }
+        m_output_file.writeLine(")");
+    }
+}
+
+void CMakeListsWriter::writeCMakeMinimumRequiredCommand(const std::string& version)
+{
+    m_output_file.write("cmake_minimum_required(VERSION ");
+    m_output_file.write(version);
+    m_output_file.writeLine(")");
+}
+
+void CMakeListsWriter::writeProjectCommand(const std::string& project_name)
+{
+    m_output_file.write("project(");
+    m_output_file.write(project_name);
+    m_output_file.writeLine(" LANGUAGES CXX)");
+}

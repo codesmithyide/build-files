@@ -9,6 +9,8 @@
 #include "BuildFiles/Bakefile/BakefileTarget.hpp"
 #include "BuildFiles/Bakefile/BakefileToken.hpp"
 #include "BuildFiles/Bakefile/BakefileTokenizer.hpp"
+#include "BuildFiles/CMake/CMakeBuildFile.hpp"
+#include "BuildFiles/CMake/CMakeListsWriter.hpp"
 #include "BuildFiles/linkoptions.hpp"
 #include "BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
 #include "BuildFiles/MSBuild/MSBuildProjectFile.hpp"

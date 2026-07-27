@@ -10,15 +10,15 @@ import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 toolsets = gnu vs2022 vs2019 vs2017;
 
 gnu.makefile = ../gnumake/GNUmakefile;
-vs2022.solutionfile = ../vc17/CodeSmithyBuildFiles.sln;
-vs2019.solutionfile = ../vc16/CodeSmithyBuildFiles.sln;
-vs2017.solutionfile = ../vc15/CodeSmithyBuildFiles.sln;
+vs2022.solutionfile = ../vc17/nuime_buildfiles.sln;
+vs2019.solutionfile = ../vc16/nuime_buildfiles.sln;
+vs2017.solutionfile = ../vc15/nuime_buildfiles.sln;
 
-library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, IshikoIO, IshikoText, IshikoErrors, Boost
+library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, IshikoIO, IshikoText, IshikoErrors, Boost
 {
     archs = x86 x86_64;
 
-    includedirs += ../../include/CodeSmithy/BuildFiles;
+    includedirs += ../../include/Nuime/BuildFiles;
 
     if ($(toolset) == gnu)
     {
@@ -34,7 +34,7 @@ library CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Is
 
     if ($(config) == Debug)
     {
-        basename = CodeSmithyBuildFiles-d;
+        basename = NuimeBuildFiles-d;
     }
 
     headers

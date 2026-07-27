@@ -17,18 +17,18 @@ jobs:
           command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./nuime_buildfiles_tests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/NuimeBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output
           destination: test-output
       - store_artifacts:
           name: Upload test report files
-          path: /build/test-results/CodeSmithyBuildFiles.xml
-          destination: CodeSmithyBuildFiles-test-results.xml
+          path: /build/test-results/NuimeBuildFiles.xml
+          destination: NuimeBuildFiles-test-results.xml
       - store_test_results:
           name: Upload test results to CircleCI
-          path: /build/test-results/CodeSmithyBuildFiles.xml
+          path: /build/test-results/NuimeBuildFiles.xml
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.18.0
@@ -46,18 +46,18 @@ jobs:
           command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./nuime_buildfiles_tests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/NuimeBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output
           destination: test-output
       - store_artifacts:
           name: Upload test report files
-          path: /build/test-results/CodeSmithyBuildFiles.xml
-          destination: CodeSmithyBuildFiles-test-results.xml
+          path: /build/test-results/NuimeBuildFiles.xml
+          destination: NuimeBuildFiles-test-results.xml
       - store_test_results:
           name: Upload test results to CircleCI
-          path: /build/test-results/CodeSmithyBuildFiles.xml
+          path: /build/test-results/NuimeBuildFiles.xml
 workflows:
   version: 2
   continuous_build:

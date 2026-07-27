@@ -7,7 +7,7 @@
 #include "MSBuildFiltersFileTests.h"
 #include "Nuime/BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace Ishiko;
 
 MSBuildFiltersFileTests::MSBuildFiltersFileTests(const TestNumber& number, const TestContext& environment)

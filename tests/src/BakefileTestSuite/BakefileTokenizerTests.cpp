@@ -36,7 +36,7 @@ void BakefileTokenizerTests::CreationTest1(Ishiko::Test& test)
     boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefileTokenizer tokenizer(input);
+    Nuime::BakefileTokenizer tokenizer(input);
 
 	ISHIKO_TEST_PASS();
 }
@@ -46,9 +46,9 @@ void BakefileTokenizerTests::GetNextToken(Ishiko::Test& test)
     boost::filesystem::path inputPath(test.context().getDataDirectory() / "MinimalBakefile.bkl");
 
     std::ifstream input(inputPath.c_str());
-    CodeSmithy::BakefileTokenizer tokenizer(input);
-    CodeSmithy::BakefileToken token;
+    Nuime::BakefileTokenizer tokenizer(input);
+    Nuime::BakefileToken token;
 
-	ISHIKO_TEST_FAIL_IF_NOT(tokenizer.getNextToken(token) == CodeSmithy::BakefileTokenizer::eEnd);
+	ISHIKO_TEST_FAIL_IF_NOT(tokenizer.getNextToken(token) == Nuime::BakefileTokenizer::eEnd);
     ISHIKO_TEST_PASS();
 }

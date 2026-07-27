@@ -37,7 +37,7 @@ BakefilePushParserTests::BakefilePushParserTests(const Ishiko::TestNumber& numbe
 void BakefilePushParserTests::ConstructorTest1(Test& test)
 {
     BakefilePushParserTestCallbacks callbacks;
-    CodeSmithy::BakefilePushParser parser{callbacks};
+    Nuime::BakefilePushParser parser{callbacks};
 
     ISHIKO_TEST_PASS();
 }
@@ -48,7 +48,7 @@ void BakefilePushParserTests::OnDataTest1(Test& test)
     std::string bakefile_data = Ishiko::FileSystem::ReadFile(input_path);
 
     BakefilePushParserTestCallbacks callbacks;
-    CodeSmithy::BakefilePushParser parser{callbacks};
+    Nuime::BakefilePushParser parser{callbacks};
 
     bool complete = parser.onData(bakefile_data, true);
 
@@ -66,7 +66,7 @@ void BakefilePushParserTests::OnDataTest2(Test& test)
     std::string bakefile_data = Ishiko::FileSystem::ReadFile(input_path);
 
     BakefilePushParserTestCallbacks callbacks;
-    CodeSmithy::BakefilePushParser parser{callbacks};
+    Nuime::BakefilePushParser parser{callbacks};
 
     bool complete = parser.onData(bakefile_data, true);
 
@@ -84,7 +84,7 @@ void BakefilePushParserTests::OnDataTest3(Test& test)
     std::string bakefile_data = Ishiko::FileSystem::ReadFile(input_path);
 
     BakefilePushParserTestCallbacks callbacks;
-    CodeSmithy::BakefilePushParser parser{callbacks};
+    Nuime::BakefilePushParser parser{callbacks};
 
     bool complete = parser.onData(bakefile_data, true);
 

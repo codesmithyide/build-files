@@ -10,7 +10,7 @@
 #include <Ishiko/UUIDs.hpp>
 #include <boost/filesystem/operations.hpp>
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace Ishiko;
 
 VisualStudioSolutionFileTests::VisualStudioSolutionFileTests(const TestNumber& number, const TestContext& environment)

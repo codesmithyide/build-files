@@ -13,7 +13,7 @@
 #include <utility>
 #include <vector>
 
-class BakefilePushParserTestCallbacks : public CodeSmithy::BakefilePushParser::Callbacks
+class BakefilePushParserTestCallbacks : public Nuime::BakefilePushParser::Callbacks
 {
 public:
     void onHeader(boost::string_view path) override;

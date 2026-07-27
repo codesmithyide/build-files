@@ -31,7 +31,7 @@ BakefileTests::BakefileTests(const Ishiko::TestNumber& number, const Ishiko::Tes
 
 void BakefileTests::CreationTest1(Ishiko::Test& test)
 {
-    CodeSmithy::Bakefile bakefile;
+    Nuime::Bakefile bakefile;
 
 	ISHIKO_TEST_PASS();
 }

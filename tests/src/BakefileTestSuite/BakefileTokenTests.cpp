@@ -31,7 +31,7 @@ BakefileTokenTests::BakefileTokenTests(const Ishiko::TestNumber& number, const I
 
 void BakefileTokenTests::CreationTest1(Ishiko::Test& test)
 {
-    CodeSmithy::BakefileToken token;
+    Nuime::BakefileToken token;
     
 	ISHIKO_TEST_PASS();
 }

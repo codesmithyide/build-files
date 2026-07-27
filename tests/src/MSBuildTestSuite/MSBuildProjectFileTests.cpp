@@ -8,7 +8,7 @@
 #include "Nuime/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace Ishiko;
 
 MSBuildProjectFileTests::MSBuildProjectFileTests(const TestNumber& number, const TestContext& environment)

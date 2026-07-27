@@ -5,9 +5,9 @@
 #define GUARD_NUIME_BUILDFILES_LINKOPTIONS_HPP
 
 #ifdef _DEBUG
-#pragma comment(lib, "CodeSmithyBuildFiles-d.lib")
+#pragma comment(lib, "NuimeBuildFiles-d.lib")
 #else
-#pragma comment(lib, "CodeSmithyBuildFiles.lib")
+#pragma comment(lib, "NuimeBuildFiles.lib")
 #endif
 
 #endif

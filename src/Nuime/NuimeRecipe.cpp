@@ -5,8 +5,9 @@
 
 using namespace Nuime;
 
-NuimeRecipe::NuimeRecipe(const NuimeTarget& target, const std::vector<NuimeInput>& inputs)
-    : m_target(target), m_inputs(inputs)
+NuimeRecipe::NuimeRecipe(const NuimeTarget& target, const std::vector<NuimeInput>& inputs,
+    const std::vector<NuimeOutput>& outputs)
+    : m_target(target), m_inputs(inputs), m_outputs(outputs)
 {
 }
 
@@ -18,4 +19,9 @@ const NuimeTarget& NuimeRecipe::target() const
 const std::vector<NuimeInput>& NuimeRecipe::inputs() const
 {
     return m_inputs;
+}
+
+const std::vector<NuimeOutput>& NuimeRecipe::outputs() const
+{
+    return m_outputs;
 }

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "NuimeBuildFileTests.hpp"
-#include "CodeSmithy/BuildFiles/Nuime/NuimeBuildFile.hpp"
+#include "Nuime/BuildFiles/Nuime/NuimeBuildFile.hpp"
 
 using namespace CodeSmithy;
 using namespace boost::filesystem;

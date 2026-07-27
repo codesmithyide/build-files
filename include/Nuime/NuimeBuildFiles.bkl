@@ -7,23 +7,23 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 import $(ishikopath)/tidy-yaml/include/Ishiko/TidyYAML.bkl;
 import $(ishikopath)/uuids/include/Ishiko/UUIDs.bkl;
 
-setting CODESMITHYIDE_BUILDFILES_ROOT
+setting NUIME_BUILDFILES_ROOT
 {
-    help = "Path to the CodeSmithyIDE/BuildFiles installation";
-    default = '$(CODESMITHYIDE_ROOT)/build-files';
+    help = "Path to the Nuime/BuildFiles installation";
+    default = '$(NUIME_ROOT)/build-files';
 }
 
-template CodeSmithyBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, IshikoIO, IshikoText, IshikoErrors, Boost
+template NuimeBuildFiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, IshikoIO, IshikoText, IshikoErrors, Boost
 {
-    includedirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/include;
+    includedirs += $(NUIME_BUILDFILES_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/lib;
+        libdirs += $(NUIME_BUILDFILES_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(CODESMITHYIDE_BUILDFILES_ROOT)/lib/$(arch);
+        libdirs += $(NUIME_BUILDFILES_ROOT)/lib/$(arch);
     }
 }

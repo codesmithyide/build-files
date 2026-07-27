@@ -5,8 +5,8 @@
 */
 
 #include "VisualStudioSolutionFileTests.h"
-#include "CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
-#include "CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp"
+#include "Nuime/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
+#include "Nuime/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 #include <boost/filesystem/operations.hpp>
 

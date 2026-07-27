@@ -5,7 +5,7 @@
 */
 
 #include "MSBuildProjectFileTests.h"
-#include "CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
+#include "Nuime/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 
 using namespace CodeSmithy;

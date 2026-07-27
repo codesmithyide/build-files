@@ -22,7 +22,7 @@
 
 #include "BakefilePushParserTests.hpp"
 #include "BakefilePushParserTestCallbacks.hpp"
-#include "CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp"
+#include "Nuime/BuildFiles/Bakefile/BakefilePushParser.hpp"
 #include <Ishiko/FileSystem.hpp>
 
 BakefilePushParserTests::BakefilePushParserTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)

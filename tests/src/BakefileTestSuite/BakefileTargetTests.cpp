@@ -21,7 +21,7 @@
 */
 
 #include "BakefileTargetTests.h"
-#include "CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp"
+#include "Nuime/BuildFiles/Bakefile/BakefileTarget.hpp"
 
 BakefileTargetTests::BakefileTargetTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
 	: Ishiko::TestSequence(number, "BakefileTarget tests", context)

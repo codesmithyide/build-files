@@ -5,7 +5,7 @@
 */
 
 #include "MSBuildFiltersFileTests.h"
-#include "CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
+#include "Nuime/BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
 
 using namespace CodeSmithy;
 using namespace Ishiko;

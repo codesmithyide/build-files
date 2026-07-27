@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "CMakeListsWriterTests.hpp"
-#include "CodeSmithy/BuildFiles/CMake/CMakeListsWriter.hpp"
+#include "Nuime/BuildFiles/CMake/CMakeListsWriter.hpp"
 
 using namespace CodeSmithy;
 using namespace boost::filesystem;

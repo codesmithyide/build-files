@@ -6,7 +6,7 @@
 #include "NuimeTestSuite.hpp"
 #include "MSBuildTestSuite.hpp"
 #include "VisualStudioSolutionFileTests.h"
-#include "CodeSmithy/BuildFiles/linkoptions.hpp"
+#include "Nuime/BuildFiles/linkoptions.hpp"
 #include <Ishiko/TestFramework.hpp>
 
 int main(int argc, char* argv[])

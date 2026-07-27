@@ -1,4 +1,4 @@
-# CodeSmithy - Build Files
+# Nuime - Build Files
 
 A library to manipulate various kind of build files.
 
@@ -12,9 +12,9 @@ A library to manipulate various kind of build files.
 
 ## Project Status
 
-[![CodeSmithy](https://circleci.com/gh/codesmithyide/build-files.svg?style=shield)](https://circleci.com/gh/codesmithyide/build-files)
+[![nuime-build](https://circleci.com/gh/nuime-build/build-files.svg?style=shield)](https://circleci.com/gh/nuime-build/build-files)
 
-This project is intended for use by its author only.
+This project is in early development and not ready for public use yet.
 
 ## Usage
 
@@ -26,7 +26,7 @@ None.
 
 ## License
 
-Copyright (c) 2017-2023 Xavier Leclercq
+Copyright (c) 2017-2026 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),

@@ -5,19 +5,20 @@
 #define GUARD_NUIME_BUILDFILES_NUIME_NUIMEBUILDFILE_HPP
 
 #include "NuimeRecipe.hpp"
+#include <vector>
 
 namespace Nuime
 {
-    // TODO: this should hold a list of targets. For now it just holds a single recipe.
     class NuimeBuildFile
     {
     public:
+        NuimeBuildFile();
         explicit NuimeBuildFile(const NuimeRecipe& recipe);
 
-        const NuimeRecipe& recipe() const;
+        const std::vector<NuimeRecipe>& recipes() const;
 
     private:
-        NuimeRecipe m_recipe;
+        std::vector<NuimeRecipe> m_recipes;
     };
 }
 

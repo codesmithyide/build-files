@@ -6,12 +6,16 @@
 
 using namespace Nuime;
 
-NuimeBuildFile::NuimeBuildFile(const NuimeRecipe& recipe)
-    : m_recipe(recipe)
+NuimeBuildFile::NuimeBuildFile()
 {
 }
 
-const NuimeRecipe& NuimeBuildFile::recipe() const
+NuimeBuildFile::NuimeBuildFile(const NuimeRecipe& recipe)
 {
-    return m_recipe;
+    m_recipes.push_back(recipe);
+}
+
+const std::vector<NuimeRecipe>& NuimeBuildFile::recipes() const
+{
+    return m_recipes;
 }

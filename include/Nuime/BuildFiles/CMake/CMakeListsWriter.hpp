@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_CMAKE_CMAKELISTSWRITER_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_CMAKE_CMAKELISTSWRITER_HPP
+#ifndef GUARD_NUIME_BUILDFILES_CMAKE_CMAKELISTSWRITER_HPP
+#define GUARD_NUIME_BUILDFILES_CMAKE_CMAKELISTSWRITER_HPP
 
 #include <boost/filesystem.hpp>
 #include <Ishiko/Errors.hpp>
@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class CMakeListsWriter
     {

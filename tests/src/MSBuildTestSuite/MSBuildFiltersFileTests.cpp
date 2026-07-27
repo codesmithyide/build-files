@@ -1,13 +1,10 @@
-/*
-    Copyright (c) 2021-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "MSBuildFiltersFileTests.h"
 #include "Nuime/BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace Ishiko;
 
 MSBuildFiltersFileTests::MSBuildFiltersFileTests(const TestNumber& number, const TestContext& environment)

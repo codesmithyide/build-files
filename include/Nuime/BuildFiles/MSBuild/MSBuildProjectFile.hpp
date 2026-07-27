@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2020-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_MSBUILD_MSBUILDPROJECTFILE_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_MSBUILD_MSBUILDPROJECTFILE_HPP
+#ifndef GUARD_NUIME_BUILDFILES_MSBUILD_MSBUILDPROJECTFILE_HPP
+#define GUARD_NUIME_BUILDFILES_MSBUILD_MSBUILDPROJECTFILE_HPP
 
 #include <Ishiko/UUIDs/UUIDGenerator.h>
 #include <Ishiko/Errors.hpp>
@@ -13,7 +10,7 @@
 #include <vector>
 #include <string>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class MSBuildProjectFile
     {

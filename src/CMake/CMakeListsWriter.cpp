@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #include "CMake/CMakeListsWriter.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 
 CMakeListsWriter::CMakeListsWriter(const boost::filesystem::path& output_file, Ishiko::Error& error)
 {

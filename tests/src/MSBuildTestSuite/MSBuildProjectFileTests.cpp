@@ -1,14 +1,11 @@
-/*
-    Copyright (c) 2020-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "MSBuildProjectFileTests.h"
 #include "Nuime/BuildFiles/MSBuild/MSBuildProjectFile.hpp"
 #include <Ishiko/UUIDs.hpp>
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace Ishiko;
 
 MSBuildProjectFileTests::MSBuildProjectFileTests(const TestNumber& number, const TestContext& environment)

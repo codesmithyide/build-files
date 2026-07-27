@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
+#ifndef GUARD_NUIME_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
+#define GUARD_NUIME_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
 
-namespace CodeSmithy
+namespace Nuime
 {
     class CMakeBuildFile
     {

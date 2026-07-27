@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/codesmithyide/build-files/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
-#ifndef GUARD_CODESMITHYIDE_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
-#define GUARD_CODESMITHYIDE_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
+#ifndef GUARD_NUIME_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
+#define GUARD_NUIME_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
 
 #include "Nuime/BuildFiles/Bakefile/BakefilePushParser.hpp"
 #include <boost/filesystem.hpp>
@@ -13,7 +10,7 @@
 #include <utility>
 #include <vector>
 
-class BakefilePushParserTestCallbacks : public CodeSmithy::BakefilePushParser::Callbacks
+class BakefilePushParserTestCallbacks : public Nuime::BakefilePushParser::Callbacks
 {
 public:
     void onHeader(boost::string_view path) override;

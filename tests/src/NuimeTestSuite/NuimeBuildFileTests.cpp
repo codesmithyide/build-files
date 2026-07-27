@@ -15,7 +15,17 @@ NuimeBuildFileTests::NuimeBuildFileTests(const Ishiko::TestNumber& number, const
 
 void NuimeBuildFileTests::ConstructorTest1(Ishiko::Test& test)
 {
-    NuimeBuildFile build_file;
+    NuimeTarget target("lib");
+    std::vector<NuimeInput> inputs;
+    inputs.push_back(NuimeInput("src/main.cpp"));
+    std::vector<NuimeOutput> outputs;
+    outputs.push_back(NuimeOutput("example"));
+    NuimeRecipe recipe(target, inputs, outputs);
 
+    NuimeBuildFile build_file(recipe);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipe().target().asString(), "lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipe().inputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipe().outputs().size(), 1);
     ISHIKO_TEST_PASS();
 }

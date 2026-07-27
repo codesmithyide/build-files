@@ -39,19 +39,19 @@ library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Ishiko
 
     headers
     {
-        ../../include/CodeSmithy/BuildFiles.hpp
-        ../../include/CodeSmithy/BuildFiles/linkoptions.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/Bakefile.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTarget.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp
-        ../../include/CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp
-        ../../include/CodeSmithy/BuildFiles/CMake/CMakeBuildFile.hpp
-        ../../include/CodeSmithy/BuildFiles/CMake/CMakeListsWriter.hpp
-        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildProjectFile.hpp
-        ../../include/CodeSmithy/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
-        ../../include/CodeSmithy/BuildFiles/Nuime/NuimeBuildFile.hpp
-        ../../include/CodeSmithy/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
+        ../../include/Nuime/BuildFiles.hpp
+        ../../include/Nuime/BuildFiles/linkoptions.hpp
+        ../../include/Nuime/BuildFiles/Bakefile/Bakefile.hpp
+        ../../include/Nuime/BuildFiles/Bakefile/BakefilePushParser.hpp
+        ../../include/Nuime/BuildFiles/Bakefile/BakefileTarget.hpp
+        ../../include/Nuime/BuildFiles/Bakefile/BakefileToken.hpp
+        ../../include/Nuime/BuildFiles/Bakefile/BakefileTokenizer.hpp
+        ../../include/Nuime/BuildFiles/CMake/CMakeBuildFile.hpp
+        ../../include/Nuime/BuildFiles/CMake/CMakeListsWriter.hpp
+        ../../include/Nuime/BuildFiles/MSBuild/MSBuildProjectFile.hpp
+        ../../include/Nuime/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
+        ../../include/Nuime/BuildFiles/Nuime/NuimeBuildFile.hpp
+        ../../include/Nuime/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
     }
 
     sources

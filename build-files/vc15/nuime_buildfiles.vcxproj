@@ -167,19 +167,19 @@
     <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\linkoptions.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\Bakefile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefilePushParser.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTarget.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileToken.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Bakefile\BakefileTokenizer.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CMake\CMakeBuildFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\CMake\CMakeListsWriter.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\Nuime\NuimeBuildFile.hpp" />
-    <ClInclude Include="..\..\include\CodeSmithy\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\linkoptions.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Bakefile\Bakefile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Bakefile\BakefilePushParser.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Bakefile\BakefileTarget.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Bakefile\BakefileToken.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Bakefile\BakefileTokenizer.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\CMake\CMakeBuildFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\CMake\CMakeListsWriter.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeBuildFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

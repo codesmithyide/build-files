@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #ifndef _CODESMITHYIDE_BUILFILES_TESTS_VISUALSTUDIOSOLUTIONFILETESTS_H_

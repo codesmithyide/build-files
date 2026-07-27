@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2021-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #ifndef GUARD_NUIME_BUILDFILES_MSBUILD_MSBUILDFILTERSFILE_HPP
 #define GUARD_NUIME_BUILDFILES_MSBUILD_MSBUILDFILTERSFILE_HPP

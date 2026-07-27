@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017-2024 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #ifndef GUARD_NUIME_BUILDFILES_TESTS_BAKEFILETESTSUITE_HPP

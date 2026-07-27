@@ -44,6 +44,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.h
         ../../src/NuimeTestSuite/NuimeBuildFileTests.hpp
         ../../src/NuimeTestSuite/NuimeInputTests.hpp
+        ../../src/NuimeTestSuite/NuimeOutputTests.hpp
         ../../src/NuimeTestSuite/NuimeRecipeTests.hpp
         ../../src/NuimeTestSuite/NuimeTargetTests.hpp
     }
@@ -68,6 +69,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.cpp
         ../../src/NuimeTestSuite/NuimeBuildFileTests.cpp
         ../../src/NuimeTestSuite/NuimeInputTests.cpp
+        ../../src/NuimeTestSuite/NuimeOutputTests.cpp
         ../../src/NuimeTestSuite/NuimeRecipeTests.cpp
         ../../src/NuimeTestSuite/NuimeTargetTests.cpp
     }

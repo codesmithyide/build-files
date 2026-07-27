@@ -14,7 +14,16 @@ NuimeRecipeTests::NuimeRecipeTests(const Ishiko::TestNumber& number, const Ishik
 
 void NuimeRecipeTests::ConstructorTest1(Ishiko::Test& test)
 {
-    NuimeRecipe recipe;
+    NuimeTarget target("lib");
+    std::vector<NuimeInput> inputs;
+    inputs.push_back(NuimeInput("src/Error.cpp"));
+    inputs.push_back(NuimeInput("src/Exception.cpp"));
 
+    NuimeRecipe recipe(target, inputs);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.target().asString(), "lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs().size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[0].asString(), "src/Error.cpp");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[1].asString(), "src/Exception.cpp");
     ISHIKO_TEST_PASS();
 }

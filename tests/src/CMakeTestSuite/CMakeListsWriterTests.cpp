@@ -4,7 +4,7 @@
 #include "CMakeListsWriterTests.hpp"
 #include "Nuime/BuildFiles/CMake/CMakeListsWriter.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace boost::filesystem;
 
 CMakeListsWriterTests::CMakeListsWriterTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)

@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2021-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/BuildFiles/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "MSBuild/MSBuildFiltersFile.hpp"
 #include <Ishiko/IO.hpp>
@@ -11,7 +8,7 @@
 
 using namespace Ishiko;
 
-namespace CodeSmithy
+namespace Nuime
 {
 
 namespace

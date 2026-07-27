@@ -62,6 +62,15 @@
     <ClInclude Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeInputTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeRecipeTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeTargetTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BakefileTestSuite.cpp">
@@ -110,6 +119,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeInputTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeRecipeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeTargetTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

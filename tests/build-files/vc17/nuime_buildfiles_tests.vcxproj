@@ -176,6 +176,9 @@
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.cpp" />
     <ClCompile Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.cpp" />
     <ClCompile Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.cpp" />
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeInputTests.cpp" />
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeRecipeTests.cpp" />
+    <ClCompile Include="..\..\src\NuimeTestSuite\NuimeTargetTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BakefileTestSuite.hpp" />
@@ -193,6 +196,9 @@
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildProjectFileTests.h" />
     <ClInclude Include="..\..\src\MSBuildTestSuite\MSBuildFiltersFileTests.h" />
     <ClInclude Include="..\..\src\NuimeTestSuite\NuimeBuildFileTests.hpp" />
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeInputTests.hpp" />
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeRecipeTests.hpp" />
+    <ClInclude Include="..\..\src\NuimeTestSuite\NuimeTargetTests.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017-2026 Xavier Leclercq
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #ifndef GUARD_NUIME_BUILDFILES_BAKEFILE_BAKEFILE_HPP
@@ -8,7 +8,7 @@
 #include <vector>
 #include <memory>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class Bakefile
     {

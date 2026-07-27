@@ -1,21 +1,18 @@
-/*
-    Copyright (c) 2017-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/codesmithyide/build-files/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "Bakefile/BakefileTokenizer.hpp"
 
-CodeSmithy::BakefileTokenizer::BakefileTokenizer(std::istream& input)
+Nuime::BakefileTokenizer::BakefileTokenizer(std::istream& input)
     : m_input(input)
 {
 }
 
-CodeSmithy::BakefileTokenizer::~BakefileTokenizer()
+Nuime::BakefileTokenizer::~BakefileTokenizer()
 {
 }
 
-int CodeSmithy::BakefileTokenizer::getNextToken(BakefileToken& token)
+int Nuime::BakefileTokenizer::getNextToken(BakefileToken& token)
 {
     const int bufferSize = 1024;
     std::string buffer;

@@ -4,7 +4,7 @@
 #include "NuimeBuildFileTests.hpp"
 #include "Nuime/BuildFiles/Nuime/NuimeBuildFile.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 using namespace boost::filesystem;
 
 NuimeBuildFileTests::NuimeBuildFileTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)

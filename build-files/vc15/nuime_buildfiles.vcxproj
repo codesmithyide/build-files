@@ -164,6 +164,9 @@
     <ClCompile Include="..\..\src\MSBuild\MSBuildProjectFile.cpp" />
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeBuildFile.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeInput.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeRecipe.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeTarget.cpp" />
     <ClCompile Include="..\..\src\VisualStudio\VisualStudioSolutionFile.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +182,9 @@
     <ClInclude Include="..\..\include\Nuime\BuildFiles\MSBuild\MSBuildProjectFile.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeBuildFile.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeInput.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeRecipe.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeTarget.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

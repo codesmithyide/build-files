@@ -3,9 +3,15 @@
 
 #include "NuimeTestSuite.hpp"
 #include "NuimeTestSuite/NuimeBuildFileTests.hpp"
+#include "NuimeTestSuite/NuimeInputTests.hpp"
+#include "NuimeTestSuite/NuimeRecipeTests.hpp"
+#include "NuimeTestSuite/NuimeTargetTests.hpp"
 
 NuimeTestSuite::NuimeTestSuite(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
     : Ishiko::TestSequence(number, "Nuime test suite", context)
 {
+    append<NuimeInputTests>();
+    append<NuimeTargetTests>();
+    append<NuimeRecipeTests>();
     append<NuimeBuildFileTests>();
 }

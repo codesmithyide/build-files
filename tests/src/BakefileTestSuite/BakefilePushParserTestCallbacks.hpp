@@ -7,7 +7,7 @@
 #ifndef GUARD_CODESMITHYIDE_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
 #define GUARD_CODESMITHYIDE_BUILDFILES_TESTS_BAKEFILETESTSUITE_BAKEFILEPUSHPARSERTESTCALLBACKS_HPP
 
-#include "CodeSmithy/BuildFiles/Bakefile/BakefilePushParser.hpp"
+#include "Nuime/BuildFiles/Bakefile/BakefilePushParser.hpp"
 #include <boost/filesystem.hpp>
 #include <string>
 #include <utility>

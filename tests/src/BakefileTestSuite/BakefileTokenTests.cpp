@@ -21,7 +21,7 @@
 */
 
 #include "BakefileTokenTests.h"
-#include "CodeSmithy/BuildFiles/Bakefile/BakefileToken.hpp"
+#include "Nuime/BuildFiles/Bakefile/BakefileToken.hpp"
 
 BakefileTokenTests::BakefileTokenTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)
 	: Ishiko::TestSequence(number, "BakefileToken tests", context)

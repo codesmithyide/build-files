@@ -21,7 +21,7 @@
 */
 
 #include "BakefileTokenizerTests.h"
-#include "CodeSmithy/BuildFiles/Bakefile/BakefileTokenizer.hpp"
+#include "Nuime/BuildFiles/Bakefile/BakefileTokenizer.hpp"
 #include <fstream>
 
 BakefileTokenizerTests::BakefileTokenizerTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context)

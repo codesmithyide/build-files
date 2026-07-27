@@ -1,23 +1,23 @@
-version: 2
+version: 2.1
 jobs:
   bootstrap-build:
     docker:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.14.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
+          name: "Set NUIME_ROOT environment variables"
+          command: echo 'export NUIME_ROOT="/workspace/projects/nuime"' >> $BASH_ENV
       - checkout:
-          path: /workspace/projects/codesmithyide/build-files
+          path: /workspace/projects/nuime/build-files
       - run:
           name: Build
-          command: cd /workspace/projects/codesmithyide/build-files/build-files/gnumake && make
+          command: cd /workspace/projects/nuime/build-files/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && make
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output
@@ -34,19 +34,19 @@ jobs:
       - image: codesmithy/gcc-build-prerequisites:0.18.0
     steps:
       - run:
-          name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
+          name: "Set NUIME_ROOT environment variables"
+          command: echo 'export NUIME_ROOT="/workspace/projects/nuime"' >> $BASH_ENV
       - checkout:
-          path: /workspace/projects/codesmithyide/build-files
+          path: /workspace/projects/nuime/build-files
       - run:
           name: Build
-          command: cd /workspace/projects/codesmithyide/build-files/build-files/gnumake && make
+          command: cd /workspace/projects/nuime/build-files/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && make
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /workspace/projects/codesmithyide/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
+          command: cd /workspace/projects/nuime/build-files/tests/build-files/gnumake && ./CodeSmithyBuildFilesTests --persistent-storage=/build/test-output --junit-xml-test-report=/build/test-results/CodeSmithyBuildFiles.xml
       - store_artifacts:
           name: Upload test output files
           path: /build/test-output

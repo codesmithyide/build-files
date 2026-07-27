@@ -24,29 +24,29 @@ namespace
     }
 }
 
-void CodeSmithy::BakefilePushParser::Callbacks::onHeader(boost::string_view path)
+void Nuime::BakefilePushParser::Callbacks::onHeader(boost::string_view path)
 {
 }
 
-void CodeSmithy::BakefilePushParser::Callbacks::onSource(boost::string_view path)
+void Nuime::BakefilePushParser::Callbacks::onSource(boost::string_view path)
 {
 }
 
-void CodeSmithy::BakefilePushParser::Callbacks::onTargetStart(boost::string_view id)
+void Nuime::BakefilePushParser::Callbacks::onTargetStart(boost::string_view id)
 {
 }
 
-void CodeSmithy::BakefilePushParser::Callbacks::onToolset(boost::string_view value)
+void Nuime::BakefilePushParser::Callbacks::onToolset(boost::string_view value)
 {
 }
 
-CodeSmithy::BakefilePushParser::BakefilePushParser(Callbacks& callbacks)
+Nuime::BakefilePushParser::BakefilePushParser(Callbacks& callbacks)
     : m_callbacks{callbacks}
 {
     m_parsing_mode_stack.push_back(ParsingMode::bakefile);
 }
 
-bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
+bool Nuime::BakefilePushParser::onData(boost::string_view data, bool eod)
 {
     const char* previous = data.data();
     const char* current = previous;
@@ -255,7 +255,7 @@ bool CodeSmithy::BakefilePushParser::onData(boost::string_view data, bool eod)
     return false;
 }
 
-bool CodeSmithy::BakefilePushParser::tokenEquals(const char* start, const char* end, const char* token) const
+bool Nuime::BakefilePushParser::tokenEquals(const char* start, const char* end, const char* token) const
 {
     // TODO: take m_fragmented_data into account
     // TOOD: use something that doesn't allocate memory

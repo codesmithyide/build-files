@@ -11,7 +11,7 @@
 
 using namespace Ishiko;
 
-namespace CodeSmithy
+namespace Nuime
 {
 
 namespace

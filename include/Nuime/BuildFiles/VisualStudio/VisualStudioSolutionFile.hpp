@@ -12,7 +12,7 @@
 #include <Ishiko/Errors.hpp>
 #include <boost/filesystem/path.hpp>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class VisualStudioSolutionFile
     {

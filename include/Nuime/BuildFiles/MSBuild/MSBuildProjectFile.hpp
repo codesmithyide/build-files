@@ -13,7 +13,7 @@
 #include <vector>
 #include <string>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class MSBuildProjectFile
     {

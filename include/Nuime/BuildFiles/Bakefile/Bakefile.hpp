@@ -8,7 +8,7 @@
 #include <vector>
 #include <memory>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class Bakefile
     {

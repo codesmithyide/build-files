@@ -23,7 +23,7 @@
 #ifndef GUARD_NUIME_BAKEFILE_BAKEFILETOKEN_HPP
 #define GUARD_NUIME_BAKEFILE_BAKEFILETOKEN_HPP
 
-namespace CodeSmithy
+namespace Nuime
 {
 
 class BakefileToken

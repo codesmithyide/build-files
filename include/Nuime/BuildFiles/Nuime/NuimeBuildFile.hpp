@@ -4,7 +4,7 @@
 #ifndef GUARD_NUIME_BUILDFILES_NUIME_NUIMEBUILDFILE_HPP
 #define GUARD_NUIME_BUILDFILES_NUIME_NUIMEBUILDFILE_HPP
 
-namespace CodeSmithy
+namespace Nuime
 {
     class NuimeBuildFile
     {

@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class CMakeListsWriter
     {

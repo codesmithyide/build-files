@@ -4,7 +4,7 @@
 #ifndef GUARD_NUIME_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
 #define GUARD_NUIME_BUILDFILES_CMAKE_CMAKEBUILDFILE_HPP
 
-namespace CodeSmithy
+namespace Nuime
 {
     class CMakeBuildFile
     {

@@ -10,7 +10,7 @@
 #include "BakefileToken.hpp"
 #include <istream>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class BakefileTokenizer
     {

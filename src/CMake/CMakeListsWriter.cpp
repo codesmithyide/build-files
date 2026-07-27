@@ -3,7 +3,7 @@
 
 #include "CMake/CMakeListsWriter.hpp"
 
-using namespace CodeSmithy;
+using namespace Nuime;
 
 CMakeListsWriter::CMakeListsWriter(const boost::filesystem::path& output_file, Ishiko::Error& error)
 {

@@ -6,16 +6,16 @@
 
 #include "Bakefile/BakefileTokenizer.hpp"
 
-CodeSmithy::BakefileTokenizer::BakefileTokenizer(std::istream& input)
+Nuime::BakefileTokenizer::BakefileTokenizer(std::istream& input)
     : m_input(input)
 {
 }
 
-CodeSmithy::BakefileTokenizer::~BakefileTokenizer()
+Nuime::BakefileTokenizer::~BakefileTokenizer()
 {
 }
 
-int CodeSmithy::BakefileTokenizer::getNextToken(BakefileToken& token)
+int Nuime::BakefileTokenizer::getNextToken(BakefileToken& token)
 {
     const int bufferSize = 1024;
     std::string buffer;

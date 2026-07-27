@@ -10,7 +10,7 @@
 #include <Ishiko/Errors.hpp>
 #include <fstream>
 
-namespace CodeSmithy
+namespace Nuime
 {
 
 namespace

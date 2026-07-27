@@ -22,15 +22,15 @@
 
 #include "Bakefile/Bakefile.hpp"
 
-CodeSmithy::Bakefile::Bakefile()
+Nuime::Bakefile::Bakefile()
 {
 }
 
-CodeSmithy::Bakefile::~Bakefile()
+Nuime::Bakefile::~Bakefile()
 {
 }
 
-std::vector<std::shared_ptr<CodeSmithy::BakefileTarget>>& CodeSmithy::Bakefile::targets()
+std::vector<std::shared_ptr<Nuime::BakefileTarget>>& Nuime::Bakefile::targets()
 {
     return m_targets;
 }

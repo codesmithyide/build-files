@@ -22,10 +22,10 @@
 
 #include "Bakefile/BakefileToken.hpp"
 
-CodeSmithy::BakefileToken::BakefileToken()
+Nuime::BakefileToken::BakefileToken()
 {
 }
 
-CodeSmithy::BakefileToken::~BakefileToken()
+Nuime::BakefileToken::~BakefileToken()
 {
 }

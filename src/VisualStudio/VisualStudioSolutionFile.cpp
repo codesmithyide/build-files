@@ -12,7 +12,7 @@
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
-namespace CodeSmithy
+namespace Nuime
 {
 
 VisualStudioSolutionFile::VisualStudioSolutionFile()

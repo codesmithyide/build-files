@@ -6,10 +6,10 @@
 
 #include "Bakefile/BakefileTarget.hpp"
 
-CodeSmithy::BakefileTarget::BakefileTarget()
+Nuime::BakefileTarget::BakefileTarget()
 {
 }
 
-CodeSmithy::BakefileTarget::~BakefileTarget()
+Nuime::BakefileTarget::~BakefileTarget()
 {
 }

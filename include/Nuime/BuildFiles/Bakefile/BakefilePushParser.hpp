@@ -10,7 +10,7 @@
 #include "Bakefile.hpp"
 #include <boost/utility/string_view.hpp>
 
-namespace CodeSmithy
+namespace Nuime
 {
     class BakefilePushParser
     {

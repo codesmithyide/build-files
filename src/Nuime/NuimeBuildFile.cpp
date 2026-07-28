@@ -30,6 +30,11 @@ void NuimeBuildFile::load(const boost::filesystem::path& path, Ishiko::Error& er
         {
             NuimeTarget target(target_node["name"].as<std::string>());
 
+            for (const auto& label : target_node["labels"])
+            {
+                target.addLabel(NuimeLabel(label.as<std::string>()));
+            }
+
             // Groups are not represented internally yet: flatten every input-group's inputs
             // straight into the recipe's input list.
             std::vector<NuimeInput> inputs;

@@ -18,7 +18,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
     {
         cxx-compiler-options = "-std=c++11";
         libs += nuime_buildfiles IshikoUUIDs IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
-        libs += fmt boost_filesystem;
+        libs += yaml-cpp fmt boost_filesystem;
     }
 
     if ($(toolset) != gnu)

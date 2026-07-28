@@ -35,7 +35,7 @@ void NuimeBuildFileTests::ConstructorTest2(Ishiko::Test& test)
     NuimeBuildFile build_file(recipe);
 
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().asString(), "lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs().size(), 1);
     ISHIKO_TEST_PASS();
@@ -52,7 +52,7 @@ void NuimeBuildFileTests::LoadTest1(Ishiko::Test& test)
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().asString(), "lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs()[0].asString(), "src/main.cpp");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs().size(), 1);

@@ -23,7 +23,7 @@ void NuimeRecipeTests::ConstructorTest1(Ishiko::Test& test)
 
     NuimeRecipe recipe(target, inputs, outputs);
 
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.target().asString(), "lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.target().name(), "lib");
     ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs().size(), 2);
     ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[0].asString(), "src/Error.cpp");
     ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[1].asString(), "src/Exception.cpp");

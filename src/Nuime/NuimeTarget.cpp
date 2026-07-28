@@ -5,12 +5,22 @@
 
 using namespace Nuime;
 
-NuimeTarget::NuimeTarget(const std::string& value)
-    : m_value(value)
+NuimeTarget::NuimeTarget(const std::string& name)
+    : m_name(name)
 {
 }
 
-const std::string& NuimeTarget::asString() const
+const std::string& NuimeTarget::name() const
 {
-    return m_value;
+    return m_name;
+}
+
+const std::vector<NuimeLabel>& NuimeTarget::labels() const
+{
+    return m_labels;
+}
+
+void NuimeTarget::addLabel(const NuimeLabel& label)
+{
+    m_labels.push_back(label);
 }

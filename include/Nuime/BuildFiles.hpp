@@ -15,6 +15,12 @@
 #include "BuildFiles/MSBuild/MSBuildFiltersFile.hpp"
 #include "BuildFiles/MSBuild/MSBuildProjectFile.hpp"
 #include "BuildFiles/Nuime/NuimeBuildFile.hpp"
+#include "BuildFiles/Nuime/NuimeInput.hpp"
+#include "BuildFiles/Nuime/NuimeLabel.hpp"
+#include "BuildFiles/Nuime/NuimeOutput.hpp"
+#include "BuildFiles/Nuime/NuimeRecipe.hpp"
+#include "BuildFiles/Nuime/NuimeTarget.hpp"
+#include "BuildFiles/Nuime/NuimeWellKnownLabels.hpp"
 #include "BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp"
 
 #endif

@@ -53,6 +53,7 @@ library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Ishiko
         ../../include/Nuime/BuildFiles/Nuime/NuimeBuildFile.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeInput.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeLabel.hpp
+        ../../include/Nuime/BuildFiles/Nuime/NuimeWellKnownLabels.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeOutput.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeRecipe.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeTarget.hpp
@@ -74,6 +75,7 @@ library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Ishiko
         ../../src/Nuime/NuimeInput.cpp
         ../../src/Nuime/NuimeLabel.cpp
         ../../src/Nuime/NuimeOutput.cpp
+        ../../src/Nuime/NuimeWellKnownLabels.cpp
         ../../src/Nuime/NuimeRecipe.cpp
         ../../src/Nuime/NuimeTarget.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp

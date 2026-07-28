@@ -1,16 +1,16 @@
 // SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "Nuime/NuimeInput.hpp"
+#include "Nuime/NuimeOutput.hpp"
 
 using namespace Nuime;
 
-NuimeInput::NuimeInput(const std::string& value)
+NuimeOutput::NuimeOutput(const std::string& value)
     : m_value(value)
 {
 }
 
-const std::string& NuimeInput::asString() const
+const std::string& NuimeOutput::asString() const
 {
     return m_value;
 }

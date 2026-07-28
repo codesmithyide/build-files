@@ -1,17 +1,17 @@
 // SPDX-FileCopyrightText: 2016-2026 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#ifndef GUARD_NUIME_BUILDFILES_NUIME_NUIMETARGET_HPP
-#define GUARD_NUIME_BUILDFILES_NUIME_NUIMETARGET_HPP
+#ifndef GUARD_NUIME_BUILDFILES_NUIME_NUIMEOUTPUT_HPP
+#define GUARD_NUIME_BUILDFILES_NUIME_NUIMEOUTPUT_HPP
 
 #include <string>
 
 namespace Nuime
 {
-    class NuimeTarget
+    class NuimeOutput
     {
     public:
-        explicit NuimeTarget(const std::string& value);
+        explicit NuimeOutput(const std::string& value);
 
         const std::string& asString() const;
 

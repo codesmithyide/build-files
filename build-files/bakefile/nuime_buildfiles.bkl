@@ -52,6 +52,7 @@ library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Ishiko
         ../../include/Nuime/BuildFiles/MSBuild/MSBuildFiltersFile.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeBuildFile.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeInput.hpp
+        ../../include/Nuime/BuildFiles/Nuime/NuimeOutput.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeRecipe.hpp
         ../../include/Nuime/BuildFiles/Nuime/NuimeTarget.hpp
         ../../include/Nuime/BuildFiles/VisualStudio/VisualStudioSolutionFile.hpp
@@ -70,6 +71,7 @@ library nuime_buildfiles : IshikoUUIDs, IshikoTidyYAML, IshikoFileSystem, Ishiko
         ../../src/MSBuild/MSBuildFiltersFile.cpp
         ../../src/Nuime/NuimeBuildFile.cpp
         ../../src/Nuime/NuimeInput.cpp
+        ../../src/Nuime/NuimeOutput.cpp
         ../../src/Nuime/NuimeRecipe.cpp
         ../../src/Nuime/NuimeTarget.cpp
         ../../src/VisualStudio/VisualStudioSolutionFile.cpp

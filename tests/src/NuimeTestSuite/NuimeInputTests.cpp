@@ -14,7 +14,8 @@ NuimeInputTests::NuimeInputTests(const Ishiko::TestNumber& number, const Ishiko:
 
 void NuimeInputTests::ConstructorTest1(Ishiko::Test& test)
 {
-    NuimeInput input;
+    NuimeInput input("src/Error.cpp");
 
+    ISHIKO_TEST_FAIL_IF_NEQ(input.asString(), "src/Error.cpp");
     ISHIKO_TEST_PASS();
 }

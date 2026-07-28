@@ -14,7 +14,8 @@ NuimeTargetTests::NuimeTargetTests(const Ishiko::TestNumber& number, const Ishik
 
 void NuimeTargetTests::ConstructorTest1(Ishiko::Test& test)
 {
-    NuimeTarget target;
+    NuimeTarget target("lib");
 
+    ISHIKO_TEST_FAIL_IF_NEQ(target.asString(), "lib");
     ISHIKO_TEST_PASS();
 }

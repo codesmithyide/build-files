@@ -18,7 +18,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
     {
         cxx-compiler-options = "-std=c++11";
         libs += nuime_buildfiles IshikoUUIDs IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
-        libs += fmt boost_filesystem;
+        libs += yaml-cpp fmt boost_filesystem;
     }
 
     if ($(toolset) != gnu)
@@ -44,6 +44,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.h
         ../../src/NuimeTestSuite/NuimeBuildFileTests.hpp
         ../../src/NuimeTestSuite/NuimeInputTests.hpp
+        ../../src/NuimeTestSuite/NuimeOutputTests.hpp
         ../../src/NuimeTestSuite/NuimeRecipeTests.hpp
         ../../src/NuimeTestSuite/NuimeTargetTests.hpp
     }
@@ -68,6 +69,7 @@ program nuime_buildfiles_tests : NuimeBuildFiles, IshikoTestFramework
         ../../src/MSBuildTestSuite/MSBuildFiltersFileTests.cpp
         ../../src/NuimeTestSuite/NuimeBuildFileTests.cpp
         ../../src/NuimeTestSuite/NuimeInputTests.cpp
+        ../../src/NuimeTestSuite/NuimeOutputTests.cpp
         ../../src/NuimeTestSuite/NuimeRecipeTests.cpp
         ../../src/NuimeTestSuite/NuimeTargetTests.cpp
     }

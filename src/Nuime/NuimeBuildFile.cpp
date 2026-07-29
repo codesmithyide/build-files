@@ -42,28 +42,29 @@ void NuimeBuildFile::load(const boost::filesystem::path& path, Ishiko::Error& er
                 target.addLabel(NuimeLabel(label.as<std::string>()));
             }
 
-            // Groups are not represented internally yet: flatten every input-group's inputs
-            // straight into the recipe's input list.
-            std::vector<NuimeInput> inputs;
-            for (const auto& group : target_node["input-groups"])
+            std::vector<NuimeInputGroup> input_groups;
+            for (const auto& group_node : target_node["input-groups"])
             {
-                for (const auto& input : group["inputs"])
+                NuimeInputGroup input_group;
+                for (const auto& input : group_node["inputs"])
                 {
-                    inputs.push_back(NuimeInput(input.as<std::string>()));
+                    input_group.addInput(NuimeInput(input.as<std::string>()));
                 }
+                input_groups.push_back(input_group);
             }
 
-            // Same for the output-groups.
-            std::vector<NuimeOutput> outputs;
-            for (const auto& group : target_node["output-groups"])
+            std::vector<NuimeOutputGroup> output_groups;
+            for (const auto& group_node : target_node["output-groups"])
             {
-                for (const auto& output : group["outputs"])
+                NuimeOutputGroup output_group;
+                for (const auto& output : group_node["outputs"])
                 {
-                    outputs.push_back(NuimeOutput(output.as<std::string>()));
+                    output_group.addOutput(NuimeOutput(output.as<std::string>()));
                 }
+                output_groups.push_back(output_group);
             }
 
-            m_recipes.push_back(NuimeRecipe(target, inputs, outputs));
+            m_recipes.push_back(NuimeRecipe(target, input_groups, output_groups));
         }
     }
     catch (const std::exception& e)

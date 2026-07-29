@@ -5,9 +5,9 @@
 
 using namespace Nuime;
 
-NuimeRecipe::NuimeRecipe(const NuimeTarget& target, const std::vector<NuimeInput>& inputs,
-    const std::vector<NuimeOutput>& outputs)
-    : m_target(target), m_inputs(inputs), m_outputs(outputs)
+NuimeRecipe::NuimeRecipe(const NuimeTarget& target, const std::vector<NuimeInputGroup>& input_groups,
+    const std::vector<NuimeOutputGroup>& output_groups)
+    : m_target(target), m_input_groups(input_groups), m_output_groups(output_groups)
 {
 }
 
@@ -16,12 +16,12 @@ const NuimeTarget& NuimeRecipe::target() const
     return m_target;
 }
 
-const std::vector<NuimeInput>& NuimeRecipe::inputs() const
+const std::vector<NuimeInputGroup>& NuimeRecipe::inputGroups() const
 {
-    return m_inputs;
+    return m_input_groups;
 }
 
-const std::vector<NuimeOutput>& NuimeRecipe::outputs() const
+const std::vector<NuimeOutputGroup>& NuimeRecipe::outputGroups() const
 {
-    return m_outputs;
+    return m_output_groups;
 }

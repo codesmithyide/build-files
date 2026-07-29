@@ -165,8 +165,10 @@
     <ClCompile Include="..\..\src\MSBuild\MSBuildFiltersFile.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeBuildFile.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeInput.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeInputGroup.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeLabel.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeOutput.cpp" />
+    <ClCompile Include="..\..\src\Nuime\NuimeOutputGroup.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeWellKnownLabels.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeRecipe.cpp" />
     <ClCompile Include="..\..\src\Nuime\NuimeTarget.cpp" />
@@ -186,9 +188,11 @@
     <ClInclude Include="..\..\include\Nuime\BuildFiles\MSBuild\MSBuildFiltersFile.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeBuildFile.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeInput.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeInputGroup.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeLabel.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeWellKnownLabels.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeOutput.hpp" />
+    <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeOutputGroup.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeRecipe.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\Nuime\NuimeTarget.hpp" />
     <ClInclude Include="..\..\include\Nuime\BuildFiles\VisualStudio\VisualStudioSolutionFile.hpp" />

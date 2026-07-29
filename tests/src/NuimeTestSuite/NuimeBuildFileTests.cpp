@@ -28,18 +28,25 @@ void NuimeBuildFileTests::ConstructorTest1(Ishiko::Test& test)
 void NuimeBuildFileTests::ConstructorTest2(Ishiko::Test& test)
 {
     NuimeTarget target("lib");
-    std::vector<NuimeInput> inputs;
-    inputs.push_back(NuimeInput("src/main.cpp"));
-    std::vector<NuimeOutput> outputs;
-    outputs.push_back(NuimeOutput("example"));
-    NuimeRecipe recipe(target, inputs, outputs);
+
+    NuimeInputGroup input_group;
+    input_group.addInput(NuimeInput("src/main.cpp"));
+    std::vector<NuimeInputGroup> input_groups;
+    input_groups.push_back(input_group);
+
+    NuimeOutputGroup output_group;
+    output_group.addOutput(NuimeOutput("example"));
+    std::vector<NuimeOutputGroup> output_groups;
+    output_groups.push_back(output_group);
+
+    NuimeRecipe recipe(target, input_groups, output_groups);
 
     NuimeBuildFile build_file(recipe);
 
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups().size(), 1);
     ISHIKO_TEST_PASS();
 }
 
@@ -56,10 +63,12 @@ void NuimeBuildFileTests::LoadTest1(Ishiko::Test& test)
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.name(), "example");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs()[0].asString(), "src/main.cpp");
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs()[0].asString(), "example");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups()[0].inputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups()[0].inputs()[0].asString(), "src/main.cpp");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups()[0].outputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups()[0].outputs()[0].asString(), "example");
     ISHIKO_TEST_PASS();
 }
 
@@ -78,7 +87,7 @@ void NuimeBuildFileTests::LoadTest2(Ishiko::Test& test)
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().labels().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().labels()[0].asString(), "nuime:product");
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputs().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups().size(), 1);
     ISHIKO_TEST_PASS();
 }

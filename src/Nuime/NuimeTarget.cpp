@@ -24,3 +24,15 @@ void NuimeTarget::addLabel(const NuimeLabel& label)
 {
     m_labels.push_back(label);
 }
+
+bool NuimeTarget::hasLabel(const std::string& label) const
+{
+    for (const NuimeLabel& target_label : m_labels)
+    {
+        if (target_label.asString() == label)
+        {
+            return true;
+        }
+    }
+    return false;
+}

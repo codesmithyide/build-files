@@ -15,19 +15,27 @@ NuimeRecipeTests::NuimeRecipeTests(const Ishiko::TestNumber& number, const Ishik
 void NuimeRecipeTests::ConstructorTest1(Ishiko::Test& test)
 {
     NuimeTarget target("lib");
-    std::vector<NuimeInput> inputs;
-    inputs.push_back(NuimeInput("src/Error.cpp"));
-    inputs.push_back(NuimeInput("src/Exception.cpp"));
-    std::vector<NuimeOutput> outputs;
-    outputs.push_back(NuimeOutput("IshikoErrors"));
 
-    NuimeRecipe recipe(target, inputs, outputs);
+    NuimeInputGroup input_group;
+    input_group.addInput(NuimeInput("src/Error.cpp"));
+    input_group.addInput(NuimeInput("src/Exception.cpp"));
+    std::vector<NuimeInputGroup> input_groups;
+    input_groups.push_back(input_group);
+
+    NuimeOutputGroup output_group;
+    output_group.addOutput(NuimeOutput("IshikoErrors"));
+    std::vector<NuimeOutputGroup> output_groups;
+    output_groups.push_back(output_group);
+
+    NuimeRecipe recipe(target, input_groups, output_groups);
 
     ISHIKO_TEST_FAIL_IF_NEQ(recipe.target().name(), "lib");
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs().size(), 2);
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[0].asString(), "src/Error.cpp");
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputs()[1].asString(), "src/Exception.cpp");
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.outputs().size(), 1);
-    ISHIKO_TEST_FAIL_IF_NEQ(recipe.outputs()[0].asString(), "IshikoErrors");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputGroups()[0].inputs().size(), 2);
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputGroups()[0].inputs()[0].asString(), "src/Error.cpp");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.inputGroups()[0].inputs()[1].asString(), "src/Exception.cpp");
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.outputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.outputGroups()[0].outputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(recipe.outputGroups()[0].outputs()[0].asString(), "IshikoErrors");
     ISHIKO_TEST_PASS();
 }

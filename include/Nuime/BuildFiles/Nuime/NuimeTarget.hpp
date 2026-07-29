@@ -19,6 +19,7 @@ namespace Nuime
 
         const std::vector<NuimeLabel>& labels() const;
         void addLabel(const NuimeLabel& label);
+        bool hasLabel(const std::string& label) const;
 
     private:
         std::string m_name;

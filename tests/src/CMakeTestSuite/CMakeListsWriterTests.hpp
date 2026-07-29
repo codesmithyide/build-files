@@ -17,6 +17,8 @@ private:
     static void WriteProjectCommandTest1(Ishiko::Test& test);
     static void WriteAddLibraryCommandTest1(Ishiko::Test& test);
     static void WriteAddLibraryCommandTest2(Ishiko::Test& test);
+    static void WriteAddExecutableCommandTest1(Ishiko::Test& test);
+    static void WriteAddExecutableCommandTest2(Ishiko::Test& test);
 };
 
 #endif

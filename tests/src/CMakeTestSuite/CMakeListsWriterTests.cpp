@@ -16,6 +16,8 @@ CMakeListsWriterTests::CMakeListsWriterTests(const Ishiko::TestNumber& number, c
     append<Ishiko::HeapAllocationErrorsTest>("writeProjectCommand test 1", WriteProjectCommandTest1);
     append<Ishiko::HeapAllocationErrorsTest>("writeAddLibraryCommand test 1", WriteAddLibraryCommandTest1);
     append<Ishiko::HeapAllocationErrorsTest>("writeAddLibraryCommand test 2", WriteAddLibraryCommandTest2);
+    append<Ishiko::HeapAllocationErrorsTest>("writeAddExecutableCommand test 1", WriteAddExecutableCommandTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("writeAddExecutableCommand test 2", WriteAddExecutableCommandTest2);
 }
 
 void CMakeListsWriterTests::ConstructorTest1(Ishiko::Test& test)
@@ -90,6 +92,40 @@ void CMakeListsWriterTests::WriteAddLibraryCommandTest2(Ishiko::Test& test)
     ISHIKO_TEST_FAIL_IF(error);
 
     writer.writeAddLibraryCommand("MyLibrary", {"source1.cpp", "source2.cpp"});
+
+    writer.close();
+
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
+    ISHIKO_TEST_PASS();
+}
+
+void CMakeListsWriterTests::WriteAddExecutableCommandTest1(Ishiko::Test& test)
+{
+    const char* output_name = "CMakeListsWriterTests_WriteAddExecutableCommandTest1.txt";
+    const path output_path = test.context().getOutputPath(output_name);
+
+    Ishiko::Error error;
+    CMakeListsWriter writer(output_path, error);
+    ISHIKO_TEST_FAIL_IF(error);
+
+    writer.writeAddExecutableCommand("MyExecutable", {});
+
+    writer.close();
+
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
+    ISHIKO_TEST_PASS();
+}
+
+void CMakeListsWriterTests::WriteAddExecutableCommandTest2(Ishiko::Test& test)
+{
+    const char* output_name = "CMakeListsWriterTests_WriteAddExecutableCommandTest2.txt";
+    const path output_path = test.context().getOutputPath(output_name);
+
+    Ishiko::Error error;
+    CMakeListsWriter writer(output_path, error);
+    ISHIKO_TEST_FAIL_IF(error);
+
+    writer.writeAddExecutableCommand("MyExecutable", {"source1.cpp", "source2.cpp"});
 
     writer.close();
 

@@ -15,6 +15,11 @@ NuimeBuildFile::NuimeBuildFile(const NuimeRecipe& recipe)
     m_recipes.push_back(recipe);
 }
 
+const std::string& NuimeBuildFile::name() const
+{
+    return m_name;
+}
+
 const std::vector<NuimeRecipe>& NuimeBuildFile::recipes() const
 {
     return m_recipes;
@@ -25,6 +30,8 @@ void NuimeBuildFile::load(const boost::filesystem::path& path, Ishiko::Error& er
     try
     {
         YAML::Node root = YAML::LoadFile(path.string());
+
+        m_name = root["name"].as<std::string>();
 
         for (const auto& target_node : root["targets"])
         {

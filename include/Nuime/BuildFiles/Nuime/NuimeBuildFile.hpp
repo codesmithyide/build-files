@@ -7,6 +7,7 @@
 #include "NuimeRecipe.hpp"
 #include <Ishiko/Errors.hpp>
 #include <boost/filesystem/path.hpp>
+#include <string>
 #include <vector>
 
 namespace Nuime
@@ -17,11 +18,14 @@ namespace Nuime
         NuimeBuildFile();
         explicit NuimeBuildFile(const NuimeRecipe& recipe);
 
+        const std::string& name() const;
+
         const std::vector<NuimeRecipe>& recipes() const;
 
         void load(const boost::filesystem::path& path, Ishiko::Error& error);
 
     private:
+        std::string m_name;
         std::vector<NuimeRecipe> m_recipes;
     };
 }

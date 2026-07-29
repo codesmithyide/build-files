@@ -37,6 +37,27 @@ void CMakeListsWriter::writeAddLibraryCommand(const std::string& library_name,
     }
 }
 
+void CMakeListsWriter::writeAddExecutableCommand(const std::string& executable_name,
+    const std::vector<std::string>& source_files)
+{
+    m_output_file.write("add_executable(");
+    m_output_file.write(executable_name);
+    if (source_files.empty())
+    {
+        m_output_file.writeLine(")");
+    }
+    else
+    {
+        m_output_file.writeLine("");
+        for (const std::string& source_file : source_files)
+        {
+            m_output_file.write("    ");
+            m_output_file.writeLine(source_file);
+        }
+        m_output_file.writeLine(")");
+    }
+}
+
 void CMakeListsWriter::writeCMakeMinimumRequiredCommand(const std::string& version)
 {
     m_output_file.write("cmake_minimum_required(VERSION ");

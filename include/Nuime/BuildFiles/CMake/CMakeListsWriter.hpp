@@ -19,6 +19,8 @@ namespace Nuime
         void close();
 
         void writeAddLibraryCommand(const std::string& library_name, const std::vector<std::string>& source_files);
+        void writeAddExecutableCommand(const std::string& executable_name,
+            const std::vector<std::string>& source_files);
         void writeCMakeMinimumRequiredCommand(const std::string& version);
         void writeProjectCommand(const std::string& project_name);
 

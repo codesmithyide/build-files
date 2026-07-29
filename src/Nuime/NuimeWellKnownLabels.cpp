@@ -5,4 +5,5 @@
 
 using namespace Nuime;
 
+const char* const WellKnownLabels::k_executable = "nuime:code:executable";
 const char* const WellKnownLabels::k_static_library = "nuime:code:static-library";

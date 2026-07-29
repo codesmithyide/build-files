@@ -14,6 +14,8 @@ public:
 private:
     static void ConstructorTest1(Ishiko::Test& test);
     static void AddLabelTest1(Ishiko::Test& test);
+    static void HasLabelTest1(Ishiko::Test& test);
+    static void HasLabelTest2(Ishiko::Test& test);
 };
 
 #endif

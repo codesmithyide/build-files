@@ -11,6 +11,8 @@ NuimeTargetTests::NuimeTargetTests(const Ishiko::TestNumber& number, const Ishik
 {
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addLabel test 1", AddLabelTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("hasLabel test 1", HasLabelTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("hasLabel test 2", HasLabelTest2);
 }
 
 void NuimeTargetTests::ConstructorTest1(Ishiko::Test& test)
@@ -29,5 +31,23 @@ void NuimeTargetTests::AddLabelTest1(Ishiko::Test& test)
 
     ISHIKO_TEST_FAIL_IF_NEQ(target.labels().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(target.labels()[0].asString(), "nuime:product");
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeTargetTests::HasLabelTest1(Ishiko::Test& test)
+{
+    NuimeTarget target("lib");
+    target.addLabel(NuimeLabel("nuime:product"));
+
+    ISHIKO_TEST_FAIL_IF_NOT(target.hasLabel("nuime:product"));
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeTargetTests::HasLabelTest2(Ishiko::Test& test)
+{
+    NuimeTarget target("lib");
+    target.addLabel(NuimeLabel("nuime:product"));
+
+    ISHIKO_TEST_FAIL_IF(target.hasLabel("nuime:tests"));
     ISHIKO_TEST_PASS();
 }

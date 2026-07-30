@@ -18,6 +18,7 @@ namespace Nuime
         NuimeBuildFile();
         explicit NuimeBuildFile(const NuimeRecipe& recipe);
 
+        const boost::filesystem::path& path() const;
         const std::string& name() const;
 
         const std::vector<NuimeRecipe>& recipes() const;
@@ -25,6 +26,7 @@ namespace Nuime
         void load(const boost::filesystem::path& path, Ishiko::Error& error);
 
     private:
+        boost::filesystem::path m_path;
         std::string m_name;
         std::vector<NuimeRecipe> m_recipes;
     };

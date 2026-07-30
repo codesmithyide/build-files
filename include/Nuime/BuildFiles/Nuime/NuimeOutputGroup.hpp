@@ -5,6 +5,7 @@
 #define GUARD_NUIME_BUILDFILES_NUIME_NUIMEOUTPUTGROUP_HPP
 
 #include "NuimeOutput.hpp"
+#include <string>
 #include <vector>
 
 namespace Nuime
@@ -12,10 +13,14 @@ namespace Nuime
     class NuimeOutputGroup
     {
     public:
+        const std::string& base() const;
+        void setBase(const std::string& base);
+
         const std::vector<NuimeOutput>& outputs() const;
         void addOutput(const NuimeOutput& output);
 
     private:
+        std::string m_base;
         std::vector<NuimeOutput> m_outputs;
     };
 }

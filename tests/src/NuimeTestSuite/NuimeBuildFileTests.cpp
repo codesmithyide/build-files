@@ -14,6 +14,7 @@ NuimeBuildFileTests::NuimeBuildFileTests(const Ishiko::TestNumber& number, const
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<Ishiko::HeapAllocationErrorsTest>("load test 1", LoadTest1);
     append<Ishiko::HeapAllocationErrorsTest>("load test 2", LoadTest2);
+    append<Ishiko::HeapAllocationErrorsTest>("load test 3", LoadTest3);
 }
 
 void NuimeBuildFileTests::ConstructorTest1(Ishiko::Test& test)
@@ -89,5 +90,26 @@ void NuimeBuildFileTests::LoadTest2(Ishiko::Test& test)
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().labels()[0].asString(), "nuime:product");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups().size(), 1);
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeBuildFileTests::LoadTest3(Ishiko::Test& test)
+{
+    boost::filesystem::path input_path = test.context().getDataPath("minimal_with_base.nuime");
+
+    NuimeBuildFile build_file;
+
+    Ishiko::Error error;
+    build_file.load(input_path, error);
+
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups()[0].base(), "../../src");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups()[0].inputs().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].inputGroups()[0].inputs()[0].asString(), "main.cpp");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups()[0].base(), "../../lib");
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].outputGroups()[0].outputs()[0].asString(), "example");
     ISHIKO_TEST_PASS();
 }

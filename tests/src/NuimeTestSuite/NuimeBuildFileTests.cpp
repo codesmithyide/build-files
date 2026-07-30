@@ -21,6 +21,7 @@ void NuimeBuildFileTests::ConstructorTest1(Ishiko::Test& test)
 {
     NuimeBuildFile build_file;
 
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.path(), "");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.name(), "");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 0);
     ISHIKO_TEST_PASS();
@@ -61,6 +62,7 @@ void NuimeBuildFileTests::LoadTest1(Ishiko::Test& test)
     build_file.load(input_path, error);
 
     ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NEQ(build_file.path(), input_path);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.name(), "example");
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes().size(), 1);
     ISHIKO_TEST_FAIL_IF_NEQ(build_file.recipes()[0].target().name(), "lib");

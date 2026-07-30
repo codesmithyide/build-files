@@ -71,3 +71,16 @@ void CMakeListsWriter::writeProjectCommand(const std::string& project_name)
     m_output_file.write(project_name);
     m_output_file.writeLine(" LANGUAGES CXX)");
 }
+
+void CMakeListsWriter::writeSetCommand(const std::string& variable_name, const std::vector<std::string>& values)
+{
+    m_output_file.write("set(");
+    m_output_file.write(variable_name);
+    for (const std::string& value : values)
+    {
+        m_output_file.writeLine("");
+        m_output_file.write("    ");
+        m_output_file.write(value);
+    }
+    m_output_file.writeLine(")");
+}

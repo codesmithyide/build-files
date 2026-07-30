@@ -13,6 +13,8 @@ public:
 
 private:
     static void ConstructorTest1(Ishiko::Test& test);
+    static void AddLabelTest1(Ishiko::Test& test);
+    static void HasLabelTest1(Ishiko::Test& test);
     static void SetBaseTest1(Ishiko::Test& test);
     static void AddOutputTest1(Ishiko::Test& test);
 };

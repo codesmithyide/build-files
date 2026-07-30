@@ -5,5 +5,7 @@
 
 using namespace Nuime;
 
+const char* const WellKnownLabels::k_cpp_header = "nuime:code:cpp-header";
+const char* const WellKnownLabels::k_cpp_source = "nuime:code:cpp-source";
 const char* const WellKnownLabels::k_executable = "nuime:code:executable";
 const char* const WellKnownLabels::k_static_library = "nuime:code:static-library";

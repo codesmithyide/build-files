@@ -10,6 +10,8 @@ NuimeInputGroupTests::NuimeInputGroupTests(const Ishiko::TestNumber& number, con
     : TestSequence(number, "NuimeInputGroup tests", context)
 {
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("addLabel test 1", AddLabelTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("hasLabel test 1", HasLabelTest1);
     append<Ishiko::HeapAllocationErrorsTest>("setBase test 1", SetBaseTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addInput test 1", AddInputTest1);
 }
@@ -18,8 +20,29 @@ void NuimeInputGroupTests::ConstructorTest1(Ishiko::Test& test)
 {
     NuimeInputGroup input_group;
 
+    ISHIKO_TEST_FAIL_IF_NEQ(input_group.labels().size(), 0);
     ISHIKO_TEST_FAIL_IF_NEQ(input_group.base(), "");
     ISHIKO_TEST_FAIL_IF_NEQ(input_group.inputs().size(), 0);
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeInputGroupTests::AddLabelTest1(Ishiko::Test& test)
+{
+    NuimeInputGroup input_group;
+    input_group.addLabel(NuimeLabel("nuime:code:cpp-source"));
+
+    ISHIKO_TEST_FAIL_IF_NEQ(input_group.labels().size(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(input_group.labels()[0].asString(), "nuime:code:cpp-source");
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeInputGroupTests::HasLabelTest1(Ishiko::Test& test)
+{
+    NuimeInputGroup input_group;
+    input_group.addLabel(NuimeLabel("nuime:code:cpp-source"));
+
+    ISHIKO_TEST_FAIL_IF_NOT(input_group.hasLabel("nuime:code:cpp-source"));
+    ISHIKO_TEST_FAIL_IF(input_group.hasLabel("nuime:code:cpp-header"));
     ISHIKO_TEST_PASS();
 }
 

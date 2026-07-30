@@ -1,0 +1,14 @@
+%YAML 1.2
+---
+nuime-version: "0.1"
+name: example
+targets:
+  - name: lib
+    input-groups:
+      - base: ../../src
+        inputs:
+          - main.cpp
+    output-groups:
+      - base: ../../lib
+        outputs:
+          - example

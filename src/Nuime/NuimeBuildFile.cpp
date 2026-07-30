@@ -46,6 +46,10 @@ void NuimeBuildFile::load(const boost::filesystem::path& path, Ishiko::Error& er
             for (const auto& group_node : target_node["input-groups"])
             {
                 NuimeInputGroup input_group;
+                if (group_node["base"])
+                {
+                    input_group.setBase(group_node["base"].as<std::string>());
+                }
                 for (const auto& input : group_node["inputs"])
                 {
                     input_group.addInput(NuimeInput(input.as<std::string>()));
@@ -57,6 +61,10 @@ void NuimeBuildFile::load(const boost::filesystem::path& path, Ishiko::Error& er
             for (const auto& group_node : target_node["output-groups"])
             {
                 NuimeOutputGroup output_group;
+                if (group_node["base"])
+                {
+                    output_group.setBase(group_node["base"].as<std::string>());
+                }
                 for (const auto& output : group_node["outputs"])
                 {
                     output_group.addOutput(NuimeOutput(output.as<std::string>()));

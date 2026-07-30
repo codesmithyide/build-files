@@ -11,6 +11,8 @@ namespace Nuime
     // reference them by name.
     struct WellKnownLabels
     {
+        static const char* const k_cpp_header;
+        static const char* const k_cpp_source;
         static const char* const k_executable;
         static const char* const k_static_library;
     };

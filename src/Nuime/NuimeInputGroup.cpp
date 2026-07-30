@@ -5,6 +5,28 @@
 
 using namespace Nuime;
 
+const std::vector<NuimeLabel>& NuimeInputGroup::labels() const
+{
+    return m_labels;
+}
+
+void NuimeInputGroup::addLabel(const NuimeLabel& label)
+{
+    m_labels.push_back(label);
+}
+
+bool NuimeInputGroup::hasLabel(const std::string& label) const
+{
+    for (const NuimeLabel& group_label : m_labels)
+    {
+        if (group_label.asString() == label)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 const std::string& NuimeInputGroup::base() const
 {
     return m_base;

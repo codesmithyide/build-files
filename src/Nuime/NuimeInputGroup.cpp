@@ -5,6 +5,16 @@
 
 using namespace Nuime;
 
+const std::string& NuimeInputGroup::base() const
+{
+    return m_base;
+}
+
+void NuimeInputGroup::setBase(const std::string& base)
+{
+    m_base = base;
+}
+
 const std::vector<NuimeInput>& NuimeInputGroup::inputs() const
 {
     return m_inputs;

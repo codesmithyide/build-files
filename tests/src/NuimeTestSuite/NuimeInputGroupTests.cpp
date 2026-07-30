@@ -10,6 +10,7 @@ NuimeInputGroupTests::NuimeInputGroupTests(const Ishiko::TestNumber& number, con
     : TestSequence(number, "NuimeInputGroup tests", context)
 {
     append<Ishiko::HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<Ishiko::HeapAllocationErrorsTest>("setBase test 1", SetBaseTest1);
     append<Ishiko::HeapAllocationErrorsTest>("addInput test 1", AddInputTest1);
 }
 
@@ -17,7 +18,17 @@ void NuimeInputGroupTests::ConstructorTest1(Ishiko::Test& test)
 {
     NuimeInputGroup input_group;
 
+    ISHIKO_TEST_FAIL_IF_NEQ(input_group.base(), "");
     ISHIKO_TEST_FAIL_IF_NEQ(input_group.inputs().size(), 0);
+    ISHIKO_TEST_PASS();
+}
+
+void NuimeInputGroupTests::SetBaseTest1(Ishiko::Test& test)
+{
+    NuimeInputGroup input_group;
+    input_group.setBase("../../src");
+
+    ISHIKO_TEST_FAIL_IF_NEQ(input_group.base(), "../../src");
     ISHIKO_TEST_PASS();
 }
 

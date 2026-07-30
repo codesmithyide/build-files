@@ -1,0 +1,3 @@
+set(SOURCE_FILES
+    source1.cpp
+    source2.cpp)

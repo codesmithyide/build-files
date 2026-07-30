@@ -23,6 +23,7 @@ namespace Nuime
             const std::vector<std::string>& source_files);
         void writeCMakeMinimumRequiredCommand(const std::string& version);
         void writeProjectCommand(const std::string& project_name);
+        void writeSetCommand(const std::string& variable_name, const std::vector<std::string>& values);
 
     private:
         Ishiko::TextFile m_output_file;
